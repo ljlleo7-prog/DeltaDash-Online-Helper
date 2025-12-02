@@ -2,7 +2,19 @@
   "name": "delta-dash-online-assistant",
   "version": "1.0.0",
   "description": "Delta Dash Online Assistant - A powerful assistant for your tasks",
-  "keywords": ["delta-dash", "assistant", "online"],
+  "keywords": [
+    "delta-dash",
+    "assistant",
+    "online"
+  ],
   "author": "",
-  "license": "MIT"
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
