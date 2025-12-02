@@ -18,14 +18,35 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies (skip if none)
+      - name: Install dependencies (if present)
         run: |
           if [ -f package.json ]; then npm ci --omit=dev || true; fi
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Run generate script (if present)
+        run: |
+          if [ -f package.json ] && grep -q '"generate"' package.json; then
+            npm run generate || true
+          else
+            echo "No generate script found; skipping build step"
+          fi
+
+      - name: Prepare artifact directory
+        run: |
+          rm -rf ./out || true
+          if [ -d ./generated ]; then
+            cp -r ./generated ./out
+          elif [ -d ./public ]; then
+            cp -r ./public ./out
+          elif [ -d ./dist ]; then
+            cp -r ./dist ./out
+          else
+            echo "No known build output folder found (generated/public/dist). Creating empty out directory." && mkdir -p ./out
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          # keep_empty is helpful to ensure branch exists even when empty
-          keep_empty: true
+          path: ./out
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
