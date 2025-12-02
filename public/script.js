@@ -274,12 +274,9 @@ function setupFeedbackForm() {
    * Show modal with online email service options
    */
   function showEmailServiceModal(subject, body, userEmail) {
-    const recipient = 'ljl.leo7@gmail.com';
-    const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const outlookLive = `https://outlook.live.com/owa/?path=/mail/action/compose&to=${recipient}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const outlookOffice = `https://outlook.office.com/mail/deeplink/compose?to=${recipient}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const yahoo = `https://compose.mail.yahoo.com/?to=${recipient}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=ljl.leo7@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const outlook = `https://outlook.live.com/?path=/mail/action/compose&to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const yahoo = `https://compose.mail.yahoo.com/?to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Create modal
     const modal = document.createElement('div');
@@ -291,31 +288,20 @@ function setupFeedbackForm() {
           <button class="modal-close">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Select your preferred email service to send feedback. Note: web services require you to be signed in to prefill the compose window.</p>
+          <p>Select your preferred email service to send feedback:</p>
           <div class="email-options">
-            <a href="${gmail}" target="_blank" rel="noopener" class="email-option gmail-btn">
+            <a href="${gmail}" target="_blank" class="email-option gmail-btn">
               <span class="service-icon">📧</span>
               <span class="service-name">Gmail</span>
             </a>
-            <a href="${outlookLive}" target="_blank" rel="noopener" class="email-option outlook-btn">
+            <a href="${outlook}" target="_blank" class="email-option outlook-btn">
               <span class="service-icon">📬</span>
-              <span class="service-name">Outlook (Live)</span>
+              <span class="service-name">Outlook</span>
             </a>
-            <a href="${outlookOffice}" target="_blank" rel="noopener" class="email-option outlook-btn">
-              <span class="service-icon">📬</span>
-              <span class="service-name">Outlook (Office)</span>
-            </a>
-            <a href="${yahoo}" target="_blank" rel="noopener" class="email-option yahoo-btn">
+            <a href="${yahoo}" target="_blank" class="email-option yahoo-btn">
               <span class="service-icon">📮</span>
               <span class="service-name">Yahoo Mail</span>
             </a>
-          </div>
-          <div class="modal-fallback">
-            <p>If your webmail did not prefill, use one of the options below:</p>
-            <div class="fallback-actions">
-              <button class="copy-btn">📋 Copy message to clipboard</button>
-              <a href="${mailto}" class="email-option gmail-btn" style="display:inline-flex; margin-left:10px;">Open Local Mail Client</a>
-            </div>
           </div>
         </div>
       </div>
@@ -330,25 +316,7 @@ function setupFeedbackForm() {
       if (e.target === modal) modal.remove();
     });
 
-    // Copy to clipboard handler
-    const copyBtn = modal.querySelector('.copy-btn');
-    copyBtn.addEventListener('click', async () => {
-      try {
-        const fullText = `Subject: ${subject}\n\n${body}`;
-        await navigator.clipboard.writeText(fullText);
-        feedbackStatus.className = 'feedback-status success';
-        feedbackStatus.textContent = '✓ Message copied to clipboard — paste it into your email service.';
-      } catch (err) {
-        feedbackStatus.className = 'feedback-status error';
-        feedbackStatus.textContent = '✗ Unable to copy to clipboard. Please select and copy manually.';
-      }
-
-      setTimeout(() => {
-        feedbackStatus.className = 'feedback-status';
-      }, 4000);
-    });
-
-    // Reset form after modal opens
+    // Reset form after selection
     setTimeout(() => {
       feedbackForm.reset();
       feedbackStatus.className = 'feedback-status success';
