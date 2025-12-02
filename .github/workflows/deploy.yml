@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies (if present)
+        run: |
+          if [ -f package.json ]; then npm ci --omit=dev || true; fi
+
+      - name: Run generate script (if present)
+        run: |
+          if [ -f package.json ] && grep -q '"generate"' package.json; then
+            npm run generate || true
+          else
+            echo "No generate script found; skipping build step"
+          fi
+
+      - name: Prepare artifact directory
+        run: |
+          rm -rf ./out || true
+          if [ -d ./generated ]; then
+            cp -r ./generated ./out
+          elif [ -d ./public ]; then
+            cp -r ./public ./out
+          elif [ -d ./dist ]; then
+            cp -r ./dist ./out
+          else
+            echo "No known build output folder found (generated/public/dist). Creating empty out directory." && mkdir -p ./out
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./out
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
