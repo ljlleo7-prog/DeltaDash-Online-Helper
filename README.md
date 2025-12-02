@@ -1,14 +1,22 @@
+git subtree push --prefix public origin gh-pages
 # Delta Dash Online Assistant
 
-A sleek, modern web-based assistant application built with pure HTML, CSS, and JavaScript. Perfect for deployment on GitHub Pages!
+Produced by Geeks Production Studio — Version 1.0 Alpha
+
+Delta Dash Online Assistant is a web-based companion for the F1-themed motorsports boardgame "Delta Dash". This site helps players:
+
+- Get information about the boardgame
+- Calculate race strategy (pit stops, tyre choices, lap management)
+- Send feedback directly to Geeks Production Studio
+
+This project is a static frontend application built with HTML, CSS, and JavaScript and is ready for hosting on GitHub Pages.
 
 ## Features
 
-✨ **Stylized Interface** - Beautiful gradient design with smooth animations
-🚀 **Lightweight** - No backend dependencies, pure frontend solution
-📱 **Responsive Design** - Works seamlessly on desktop and mobile devices
-💬 **Interactive Chat** - Real-time message responses with built-in assistant logic
-⚡ **GitHub Pages Ready** - Deploy directly to GitHub Pages with zero configuration
+- Motorsport-styled UI tailored for the Delta Dash boardgame
+- Interactive chat assistant with race-related guidance
+- Strategy calculator for in-game decision support
+- Feedback form with local and web-mail submission paths
 
 ## Project Structure
 
@@ -19,97 +27,48 @@ DeltaDash-Online-Helper/
 │   ├── styles.css      # Styling and animations
 │   └── script.js       # Client-side JavaScript logic
 ├── package.json        # Project metadata
-├── README.md          # This file
-└── LICENSE            # MIT License
+├── README.md           # This file
+└── LICENSE             # Project license
 ```
 
 ## Getting Started
 
-### Local Development
+### Local Preview
 
-1. Navigate to the project directory:
+1. Open `public/index.html` directly in your browser, or serve it locally:
    ```bash
-   cd DeltaDash-Online-Helper
-   ```
-
-2. Open `public/index.html` directly in your browser, or use a local server:
-   ```bash
-   # Using Python 3
+   # From project root
    python3 -m http.server 8000
-   
-   # Using Python 2
-   python -m SimpleHTTPServer 8000
-   
-   # Using Node.js (with http-server package)
-   npx http-server public -p 8000
+   # then open http://localhost:8000/public/ in your browser
    ```
-
-3. Visit `http://localhost:8000` in your browser
 
 ### Deployment to GitHub Pages
 
 1. Push your repository to GitHub
-2. Go to your repository settings
-3. Scroll to "GitHub Pages" section
-4. Select `main` branch and `/root` folder as source
-5. Your site will be live at `https://yourusername.github.io/DeltaDash-Online-Helper/`
-
-**Alternative: If using a `gh-pages` branch:**
-```bash
-# Push the public folder to gh-pages branch
-git subtree push --prefix public origin gh-pages
-```
+2. Go to repository Settings → Pages
+3. Choose `main` branch and `/root` (or `gh-pages` branch if you prefer)
+4. The site will become available at `https://<yourusername>.github.io/DeltaDash-Online-Helper/`
 
 ## Usage
 
-Simply type your message in the input field and press Enter or click the Send button. The assistant will respond with contextual responses based on your input.
-
-### Available Commands
-
-- **hello/hi** - Greeting response
-- **help** - Get assistance information
-- **time** - Display current time
-- **date** - Display today's date
-- **thanks/thank you** - Acknowledgment
-- **bye/goodbye** - Farewell message
+Use the Chat tab for natural-language questions about the game, the Strategy tab to run calculations for current race scenarios, the Version tab for release info, and the Feedback tab to contact Geeks Production Studio.
 
 ## Customization
 
-### Add More Assistant Responses
+Add or edit assistant responses in `public/script.js` or tune visual styles in `public/styles.css`.
 
-Edit the `assistantResponses` object in `public/script.js`:
+## Version
 
-```javascript
-const assistantResponses = {
-  'your-keyword': 'Your custom response',
-  'another-keyword': 'Another response'
-};
-```
-
-### Customize Colors
-
-Modify the color values in `public/styles.css`:
-
-```css
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-```
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+This release is **v1.0 Alpha**.
 
 ## License
 
-MIT License - See LICENSE file for details
+See `LICENSE` for license details.
 
-## Author
+## Contact
 
-Created for the Delta Dash Online Assistant project
+Geeks Production Studio — email: `ljl.leo7@gmail.com`
 
 ---
 
-**Ready to deploy?** Push to GitHub and enable GitHub Pages in your repository settings!
+Good luck on the track — and may your pit strategy always be on point!
