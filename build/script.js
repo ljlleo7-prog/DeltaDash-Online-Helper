@@ -2,18 +2,6 @@
 const navButtons = document.querySelectorAll('.nav-btn');
 const pageContents = document.querySelectorAll('.page-content');
 
-// Simple assistant responses database
-const assistantResponses = {
-  'hello': 'Welcome to Delta Dash — your F1 motorsports strategy assistant. Ask about race strategy, pit stops, or setup tips!',
-  'hi': 'Hi racer! Need help with tire strategy, pit timing, or a rule clarification?',
-  'help': 'I can assist with race strategy, version info, strategy calculations, or submit feedback about the F1 boardgame.',
-  'time': `Race local time: ${new Date().toLocaleTimeString()}`,
-  'date': `Event date: ${new Date().toLocaleDateString()}`,
-  'thanks': 'Glad to be of service — enjoy the race!',
-  'thank you': 'Glad to be of service — enjoy the race!',
-  'bye': 'See you on the podium! Good luck out there!',
-  'goodbye': 'See you on the podium! Good luck out there!'
-};
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Version page controls may be present — guard before initializing
   if (document.querySelector('.check-update-btn')) {
     setupVersionPage();
+  }
+  // Front background (faint image) — initialize if present
+  if (document.getElementById('front-bg')) {
+    setupFrontBackground();
   }
 });
 
@@ -206,4 +198,41 @@ function setupVersionPage() {
       }, 3000);
     }, 1500);
   });
+}
+
+/**
+ * Setup the front-page faint background behavior.
+ * The image fades and translates upwards as the user scrolls down.
+ */
+function setupFrontBackground(){
+  const front = document.getElementById('front-bg');
+  if (!front) return;
+
+  let lastY = window.scrollY || 0;
+  let ticking = false;
+  const maxFade = 320; // px distance where image is fully faded
+  const maxTranslate = 220; // max upward translate in px
+
+  function update(){
+    const y = Math.max(0, lastY);
+    const t = Math.min(y / maxFade, 1);
+    const translate = Math.min(y * 0.6, maxTranslate);
+    const opacity = Math.max(0, 1 - t) * 0.45;
+
+    front.style.transform = `translateX(-50%) translateY(-${translate}px)`;
+    front.style.opacity = String(opacity);
+    ticking = false;
+  }
+
+  function onScroll(){
+    lastY = window.scrollY || 0;
+    if (!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  // initialize
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
