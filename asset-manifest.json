@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ljlleo7-prog/F1-Lap-Simulation.git/static/css/main.20746fb7.css",
-    "main.js": "/ljlleo7-prog/F1-Lap-Simulation.git/static/js/main.8bb2b778.js",
-    "index.html": "/ljlleo7-prog/F1-Lap-Simulation.git/index.html",
-    "main.20746fb7.css.map": "/ljlleo7-prog/F1-Lap-Simulation.git/static/css/main.20746fb7.css.map",
-    "main.8bb2b778.js.map": "/ljlleo7-prog/F1-Lap-Simulation.git/static/js/main.8bb2b778.js.map"
+    "main.css": "/ljlleo7-prog/Delta.git/static/css/main.20746fb7.css",
+    "main.js": "/ljlleo7-prog/Delta.git/static/js/main.faaf13b5.js",
+    "index.html": "/ljlleo7-prog/Delta.git/index.html",
+    "main.20746fb7.css.map": "/ljlleo7-prog/Delta.git/static/css/main.20746fb7.css.map",
+    "main.faaf13b5.js.map": "/ljlleo7-prog/Delta.git/static/js/main.faaf13b5.js.map"
   },
   "entrypoints": [
     "static/css/main.20746fb7.css",
-    "static/js/main.8bb2b778.js"
+    "static/js/main.faaf13b5.js"
   ]
 }
