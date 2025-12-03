@@ -2,17 +2,6 @@
 // when the script initializes in both dev and production builds.
 
 // Simple assistant responses database
-const assistantResponses = {
-  'hello': 'Welcome to Delta Dash — your F1 motorsports strategy assistant. Ask about race strategy, pit stops, or setup tips!',
-  'hi': 'Hi racer! Need help with tire strategy, pit timing, or a rule clarification?',
-  'help': 'I can assist with race strategy, version info, strategy calculations, or submit feedback about the F1 boardgame.',
-  'time': `Race local time: ${new Date().toLocaleTimeString()}`,
-  'date': `Event date: ${new Date().toLocaleDateString()}`,
-  'thanks': 'Glad to be of service — enjoy the race!',
-  'thank you': 'Glad to be of service — enjoy the race!',
-  'bye': 'See you on the podium! Good luck out there!',
-  'goodbye': 'See you on the podium! Good luck out there!'
-};
 
 // Initialize (works whether script runs before or after DOMContentLoaded)
 function init() {
