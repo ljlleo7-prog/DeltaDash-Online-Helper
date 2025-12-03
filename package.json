@@ -14,8 +14,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "generate": "rm -rf generated && cp -a public generated",
+    "predeploy": "npm run generate",
+    "deploy": "gh-pages -d generated"
   },
   "license": "MIT",
   "dependencies": {

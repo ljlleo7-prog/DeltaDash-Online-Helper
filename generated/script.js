@@ -1,5 +1,9 @@
-// Note: Query DOM elements inside setup functions so they are present
-// when the script initializes in both dev and production builds.
+// DOM Elements
+const userInput = document.getElementById('userInput');
+const submitBtn = document.getElementById('submitBtn');
+const responseContainer = document.getElementById('responseContainer');
+const navButtons = document.querySelectorAll('.nav-btn');
+const pageContents = document.querySelectorAll('.page-content');
 
 // Simple assistant responses database
 const assistantResponses = {
@@ -14,37 +18,27 @@ const assistantResponses = {
   'goodbye': 'See you on the podium! Good luck out there!'
 };
 
-// Initialize (works whether script runs before or after DOMContentLoaded)
-function init() {
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
   setupChatPage();
   setupStrategyCalculator();
   setupFeedbackForm();
   setupVersionPage();
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  // DOM already ready — initialize immediately
-  init();
-}
+});
 
 /**
  * Setup navigation between pages
  */
 function setupNavigation() {
-  const navButtons = document.querySelectorAll('.nav-btn');
-  const pageContents = document.querySelectorAll('.page-content');
-
   navButtons.forEach(button => {
     button.addEventListener('click', () => {
       const pageId = button.dataset.page + '-page';
-
+      
       // Update active button
       navButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
-
+      
       // Update active page
       pageContents.forEach(page => page.classList.remove('active'));
       const activePage = document.getElementById(pageId);
@@ -59,12 +53,6 @@ function setupNavigation() {
  * Setup chat page functionality
  */
 function setupChatPage() {
-  const userInput = document.getElementById('userInput');
-  const submitBtn = document.getElementById('submitBtn');
-  const responseContainer = document.getElementById('responseContainer');
-
-  if (!userInput || !submitBtn || !responseContainer) return;
-
   // Clear welcome message on first input
   userInput.addEventListener('focus', () => {
     if (responseContainer.children.length === 1 && 
@@ -88,10 +76,6 @@ function setupChatPage() {
  * Sends user message and generates a local response
  */
 function sendMessage() {
-  const userInput = document.getElementById('userInput');
-  const responseContainer = document.getElementById('responseContainer');
-  if (!userInput || !responseContainer) return;
-
   const message = userInput.value.trim();
 
   if (!message) {
@@ -153,9 +137,6 @@ function displayMessage(text, sender) {
   messageDiv.className = `response-message ${sender}`;
   messageDiv.textContent = text;
 
-  const responseContainer = document.getElementById('responseContainer');
-  if (!responseContainer) return;
-
   responseContainer.appendChild(messageDiv);
 
   // Auto-scroll to bottom
@@ -172,19 +153,15 @@ function setupStrategyCalculator() {
   const currentRound = document.getElementById('currentRound');
   const playerScore = document.getElementById('playerScore');
 
-  if (!calculateBtn) return;
-
   calculateBtn.addEventListener('click', () => {
-    const players = parseInt(playerCount?.value || '2');
-    const round = parseInt(currentRound?.value || '1');
-    const score = parseInt(playerScore?.value || '0');
+    const players = parseInt(playerCount.value);
+    const round = parseInt(currentRound.value);
+    const score = parseInt(playerScore.value);
 
     const strategy = calculateOptimalStrategy(players, round, score);
     
-    if (strategyResult) {
-      strategyResult.textContent = strategy;
-      strategyResult.classList.add('active');
-    }
+    strategyResult.textContent = strategy;
+    strategyResult.classList.add('active');
   });
 }
 
@@ -239,8 +216,6 @@ function setupFeedbackForm() {
   const submitOnlineBtn = document.getElementById('submitOnlineBtn');
   const feedbackStatus = document.getElementById('feedbackStatus');
 
-  if (!feedbackForm || !submitLocalBtn || !submitOnlineBtn) return;
-
   // Local email client submission
   submitLocalBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -258,21 +233,14 @@ function setupFeedbackForm() {
    * @param {string} method - 'local' for mailto or 'online' for web email services
    */
   function submitFeedback(method) {
-    const nameEl = document.getElementById('feedbackName');
-    const emailEl = document.getElementById('feedbackEmail');
-    const typeEl = document.getElementById('feedbackType');
-    const messageEl = document.getElementById('feedbackMessage');
-
-    const name = nameEl?.value || '';
-    const email = emailEl?.value || '';
-    const type = typeEl?.value || 'general';
-    const message = messageEl?.value || '';
+    const name = document.getElementById('feedbackName').value;
+    const email = document.getElementById('feedbackEmail').value;
+    const type = document.getElementById('feedbackType').value;
+    const message = document.getElementById('feedbackMessage').value;
 
     if (!name || !email || !message) {
-      if (feedbackStatus) {
-        feedbackStatus.className = 'feedback-status error';
-        feedbackStatus.textContent = '✗ Please fill in all required fields.';
-      }
+      feedbackStatus.className = 'feedback-status error';
+      feedbackStatus.textContent = '✗ Please fill in all required fields.';
       return;
     }
 
@@ -285,10 +253,8 @@ function setupFeedbackForm() {
       const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
       
-      if (feedbackStatus) {
-        feedbackStatus.className = 'feedback-status success';
-        feedbackStatus.textContent = '✓ Opening your email client with the feedback form...';
-      }
+      feedbackStatus.className = 'feedback-status success';
+      feedbackStatus.textContent = '✓ Opening your email client with the feedback form...';
     } else if (method === 'online') {
       // Show options for online email services
       showEmailServiceModal(subject, body, email);
@@ -300,7 +266,7 @@ function setupFeedbackForm() {
     
     // Clear message after 4 seconds
     setTimeout(() => {
-      if (feedbackStatus) feedbackStatus.className = 'feedback-status';
+      feedbackStatus.className = 'feedback-status';
     }, 4000);
   }
 
