@@ -17,10 +17,7 @@ const assistantResponses = {
 // Initialize (works whether script runs before or after DOMContentLoaded)
 function init() {
   setupNavigation();
-  setupChatPage();
-  setupStrategyCalculator();
   setupFeedbackForm();
-  setupVersionPage();
 }
 
 if (document.readyState === 'loading') {
@@ -53,181 +50,6 @@ function setupNavigation() {
       }
     });
   });
-}
-
-/**
- * Setup chat page functionality
- */
-function setupChatPage() {
-  const userInput = document.getElementById('userInput');
-  const submitBtn = document.getElementById('submitBtn');
-  const responseContainer = document.getElementById('responseContainer');
-
-  if (!userInput || !submitBtn || !responseContainer) return;
-
-  // Clear welcome message on first input
-  userInput.addEventListener('focus', () => {
-    if (responseContainer.children.length === 1 && 
-        responseContainer.children[0].classList.contains('welcome-message')) {
-      responseContainer.innerHTML = '';
-    }
-  });
-
-  // Send message on button click
-  submitBtn.addEventListener('click', sendMessage);
-
-  // Send message on Enter key
-  userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  });
-}
-
-/**
- * Sends user message and generates a local response
- */
-function sendMessage() {
-  const userInput = document.getElementById('userInput');
-  const responseContainer = document.getElementById('responseContainer');
-  if (!userInput || !responseContainer) return;
-
-  const message = userInput.value.trim();
-
-  if (!message) {
-    return;
-  }
-
-  // Display user message
-  displayMessage(message, 'user');
-
-  // Clear input
-  userInput.value = '';
-
-  // Generate local response
-  const response = generateResponse(message);
-  
-  // Simulate slight delay for better UX
-  setTimeout(() => {
-    displayMessage(response, 'assistant');
-  }, 300);
-
-  // Focus back on input
-  userInput.focus();
-}
-
-/**
- * Generates a response based on user input
- * @param {string} message - The user's message
- * @returns {string} - The assistant's response
- */
-function generateResponse(message) {
-  const lowerMessage = message.toLowerCase();
-
-  // Check for direct matches
-  for (const [key, response] of Object.entries(assistantResponses)) {
-    if (lowerMessage.includes(key)) {
-      return response;
-    }
-  }
-
-  // Default response for unknown queries
-  const defaultResponses = [
-    'That\'s interesting! Can you tell me more?',
-    'I understand. How can I assist you further?',
-    'Great question! I\'m here to help with any other queries.',
-    'Thanks for sharing! What else can I help you with?',
-    'I appreciate that. Feel free to ask me anything else!'
-  ];
-
-  return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-}
-
-/**
- * Displays a message in the response container
- * @param {string} text - The message text
- * @param {string} sender - 'user' or 'assistant'
- */
-function displayMessage(text, sender) {
-  const messageDiv = document.createElement('div');
-  messageDiv.className = `response-message ${sender}`;
-  messageDiv.textContent = text;
-
-  const responseContainer = document.getElementById('responseContainer');
-  if (!responseContainer) return;
-
-  responseContainer.appendChild(messageDiv);
-
-  // Auto-scroll to bottom
-  responseContainer.scrollTop = responseContainer.scrollHeight;
-}
-
-/**
- * Setup strategy calculator
- */
-function setupStrategyCalculator() {
-  const calculateBtn = document.getElementById('calculateBtn');
-  const strategyResult = document.getElementById('strategyResult');
-  const playerCount = document.getElementById('playerCount');
-  const currentRound = document.getElementById('currentRound');
-  const playerScore = document.getElementById('playerScore');
-
-  if (!calculateBtn) return;
-
-  calculateBtn.addEventListener('click', () => {
-    const players = parseInt(playerCount?.value || '2');
-    const round = parseInt(currentRound?.value || '1');
-    const score = parseInt(playerScore?.value || '0');
-
-    const strategy = calculateOptimalStrategy(players, round, score);
-    
-    if (strategyResult) {
-      strategyResult.textContent = strategy;
-      strategyResult.classList.add('active');
-    }
-  });
-}
-
-/**
- * Calculate optimal strategy based on game parameters
- * @param {number} players - Number of players
- * @param {number} round - Current round
- * @param {number} score - Player's current score
- * @returns {string} - Strategy recommendation
- */
-function calculateOptimalStrategy(players, round, score) {
-  const maxRounds = 10;
-  const roundsRemaining = Math.max(0, maxRounds - round + 1);
-  const potentialMax = score + (roundsRemaining * 12);
-
-  let strategy = `Race Analysis:\n`;
-  strategy += `Players: ${players} | Lap Stage: ${round}/${maxRounds} | Your Score: ${score}\n\n`;
-  strategy += `Estimated potential (aggressive): ${potentialMax}\n\n`;
-
-  // Pit stop advice
-  if (round <= 3) {
-    strategy += `Pit Stop Advice:\n- Early race: delay your first pit unless tyres are critical. Save tyres for later strategic stops.\n`;
-  } else if (round <= 7) {
-    strategy += `Pit Stop Advice:\n- Mid race: consider a short undercut if opponents pit early. Balance tyre wear and track position.\n`;
-  } else {
-    strategy += `Pit Stop Advice:\n- Late race: favour aggressive tyre choices and cover opponents' pit windows. Push for points.\n`;
-  }
-
-  // Tyre and playstyle
-  if (players <= 2) {
-    strategy += `Playstyle:\n- Two-player duel: be aggressive on overtakes, pressure the opponent into mistakes.\n`;
-  } else if (players <= 4) {
-    strategy += `Playstyle:\n- Mid pack: mix conservative tyre management with opportunistic overtakes. Watch higher-scoring players.\n`;
-  } else {
-    strategy += `Playstyle:\n- Full grid: play conservatively early, pick off rivals during their pit stops, and capitalise in final laps.\n`;
-  }
-
-  // Final push
-  if (round >= 8) {
-    strategy += `Final Push:\n- Final laps: maximise points with high-risk moves if you need positions. Protect podium spots if leading.\n`;
-  }
-
-  return strategy;
 }
 
 /**
@@ -309,7 +131,7 @@ function setupFeedbackForm() {
    */
   function showEmailServiceModal(subject, body, userEmail) {
     const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=ljl.leo7@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const outlook = `https://outlook.live.com/?path=/mail/action/compose&to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const outlook = `https://outlook.office.com/mail/deeplink/compose?to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     const yahoo = `https://compose.mail.yahoo.com/?to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Create modal
@@ -361,29 +183,4 @@ function setupFeedbackForm() {
       }, 4000);
     }, 500);
   }
-}
-
-/**
- * Setup version page
- */
-function setupVersionPage() {
-  const checkUpdateBtn = document.querySelector('.check-update-btn');
-  
-  checkUpdateBtn.addEventListener('click', () => {
-    const originalText = checkUpdateBtn.textContent;
-    checkUpdateBtn.textContent = 'Checking for updates...';
-    checkUpdateBtn.disabled = true;
-
-    // Simulate API call
-    setTimeout(() => {
-      checkUpdateBtn.textContent = 'You are on the latest version!';
-      checkUpdateBtn.style.background = '#28a745';
-      
-      setTimeout(() => {
-        checkUpdateBtn.textContent = originalText;
-        checkUpdateBtn.disabled = false;
-        checkUpdateBtn.style.background = '';
-      }, 3000);
-    }, 1500);
-  });
 }
