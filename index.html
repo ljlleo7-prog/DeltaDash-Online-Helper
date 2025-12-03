@@ -24,8 +24,8 @@
 
     <!-- Navigation Menu -->
     <nav class="navigation">
-      <button class="nav-btn active" data-page="chat">
-        <span class="icon">💬</span> Chat
+      <button class="nav-btn active" data-page="homepage">
+        <span class="icon">🏠</span> Homepage
       </button>
       <button class="nav-btn" data-page="about">
         <span class="icon">ℹ️</span> About
@@ -44,102 +44,48 @@
     <!-- Main content section -->
     <main class="main-content">
       
-      <!-- Chat Section -->
-      <section id="chat-page" class="page-content active">
-        <div class="input-section">
-          <div class="input-wrapper">
-            <input 
-              type="text" 
-              id="userInput" 
-              class="input-field" 
-              placeholder="Tell me what you need..."
-              autocomplete="off"
-            >
-            <button id="submitBtn" class="submit-btn">Send</button>
-          </div>
-        </div>
-        <div class="response-section">
-          <div id="responseContainer" class="response-container">
-            <p class="welcome-message">Welcome to Delta Dash — F1 strategy assistant. Ask about race strategy, pit stops, tyre choices, or version info.</p>
-          </div>
-        </div>
+      <!-- Homepage Section (was Chat) -->
+      <section id="homepage-page" class="page-content active">
+        <h2>Homepage</h2>
       </section>
 
       <!-- About Section -->
       <section id="about-page" class="page-content">
-        <div class="content-box">
-          <h2>About Delta Dash Online Assistant</h2>
-          <p>Delta Dash is an F1-themed motorsports boardgame assistant designed to help players plan races and make smart strategic choices.</p>
-          <ul>
-            <li>Real-time race strategy guidance (pit timing, tyre choice)</li>
-            <li>Version inquiries and release notes for the boardgame</li>
-            <li>Strategic calculations tailored to in-game race conditions</li>
-            <li>Direct feedback and suggestions for improving gameplay</li>
-          </ul>
-          <p>Built with modern web technologies, this assistant gives a polished, immersive experience for boardgame racers seeking an edge on the track.</p>
-          <h3>Key Features</h3>
-          <ul>
-            <li>🚀 Lightning-fast responses</li>
-            <li>🎮 Game strategy optimization</li>
-            <li>📊 Version tracking and management</li>
-            <li>💬 Interactive chat interface</li>
-            <li>📱 Fully responsive design</li>
-          </ul>
-        </div>
+        <h2>About</h2>
       </section>
 
-      <!-- Version Inquiry Section -->
+      <!-- Version Section -->
       <section id="version-page" class="page-content">
-        <div class="content-box">
-          <h2>Version Information</h2>
-          <div class="version-info">
-            <div class="version-item">
-              <h3>Current Version</h3>
-              <p class="version-number">1.0.0</p>
+        <h2>Version</h2>
+        <div class="content-box versions-list">
+          <!-- Latest versions listed newest-first -->
+          <div class="version-card beta">
+            <div class="version-header">
+              <h3>Boardgame Version 3.1 Beta</h3>
+              <span class="release-date">Jan 1, 2026</span>
             </div>
-            <div class="version-item">
-              <h3>Release Date</h3>
-              <p class="version-date">December 2, 2025</p>
-            </div>
-            <div class="version-item">
-              <h3>Status</h3>
-              <p class="version-status">Stable</p>
+            <p class="version-brief">The first BETA test stage, involving refined UI and game structure.</p>
+            <div class="version-actions">
+              <a href="#version-description" class="btn version-desc-btn">Version Description</a>
             </div>
           </div>
-          <h3>Version History</h3>
-          <div class="version-history">
-            <div class="history-item">
-              <h4>v1.0.0 - Initial Release</h4>
-              <p>First stable release with core features including chat, about, version inquiry, strategy calculation, and feedback system.</p>
+
+          <div class="version-card alpha">
+            <div class="version-header">
+              <h3>Boardgame Version 3.0 Alpha</h3>
+              <span class="release-date">Dec 1, 2025</span>
+            </div>
+            <p class="version-brief">Base version for 3.0 structure, with updates on track and UI.</p>
+            <div class="version-actions">
+              <a href="#version-description" class="btn version-desc-btn">Version Description</a>
             </div>
           </div>
-          <h3>Check for Updates</h3>
-          <button class="check-update-btn">Check Updates Now</button>
         </div>
       </section>
 
-      <!-- Strategy Calculation Section -->
+      <!-- Strategy Section -->
       <section id="strategy-page" class="page-content">
-        <div class="content-box">
-          <h2>Strategy Calculator</h2>
-          <p>Use this tool to calculate race strategies — pit stop timing, tyre choices, overtaking risk, and lap management for your Delta Dash F1 boardgame.</p>
-          <div class="strategy-form">
-            <div class="form-group">
-              <label for="playerCount">Number of Players:</label>
-              <input type="number" id="playerCount" min="2" max="6" value="2" class="form-input">
-            </div>
-            <div class="form-group">
-              <label for="currentRound">Current Round:</label>
-              <input type="number" id="currentRound" min="1" max="10" value="1" class="form-input">
-            </div>
-            <div class="form-group">
-              <label for="playerScore">Your Score:</label>
-              <input type="number" id="playerScore" min="0" value="0" class="form-input">
-            </div>
-            <button id="calculateBtn" class="calculate-btn">Calculate Strategy</button>
-          </div>
-          <div id="strategyResult" class="strategy-result"></div>
-        </div>
+        <h2>Strategy</h2>
       </section>
 
       <!-- Feedback Section -->

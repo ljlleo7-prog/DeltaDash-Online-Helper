@@ -21,10 +21,24 @@ const assistantResponses = {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
-  setupChatPage();
-  setupStrategyCalculator();
+
+  // Only initialize chat-related features if chat elements are present
+  if (userInput && submitBtn && responseContainer) {
+    setupChatPage();
+  }
+
+  // Initialize strategy calculator only when its elements exist
+  if (document.getElementById('calculateBtn')) {
+    setupStrategyCalculator();
+  }
+
+  // Feedback form should be present in the cleaned site
   setupFeedbackForm();
-  setupVersionPage();
+
+  // Version page controls may be present — guard before initializing
+  if (document.querySelector('.check-update-btn')) {
+    setupVersionPage();
+  }
 });
 
 /**
