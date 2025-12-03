@@ -1,7 +1,4 @@
-// DOM Elements
-const userInput = document.getElementById('userInput');
-const submitBtn = document.getElementById('submitBtn');
-const responseContainer = document.getElementById('responseContainer');
+// DOM Elements (only what's needed)
 const navButtons = document.querySelectorAll('.nav-btn');
 const pageContents = document.querySelectorAll('.page-content');
 
@@ -22,17 +19,7 @@ const assistantResponses = {
 document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
 
-  // Only initialize chat-related features if chat elements are present
-  if (userInput && submitBtn && responseContainer) {
-    setupChatPage();
-  }
-
-  // Initialize strategy calculator only when its elements exist
-  if (document.getElementById('calculateBtn')) {
-    setupStrategyCalculator();
-  }
-
-  // Feedback form should be present in the cleaned site
+  // Feedback form should be present
   setupFeedbackForm();
 
   // Version page controls may be present — guard before initializing
@@ -66,160 +53,13 @@ function setupNavigation() {
 /**
  * Setup chat page functionality
  */
-function setupChatPage() {
-  // Clear welcome message on first input
-  userInput.addEventListener('focus', () => {
-    if (responseContainer.children.length === 1 && 
-        responseContainer.children[0].classList.contains('welcome-message')) {
-      responseContainer.innerHTML = '';
-    }
-  });
-
-  // Send message on button click
-  submitBtn.addEventListener('click', sendMessage);
-
-  // Send message on Enter key
-  userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  });
-}
-
-/**
- * Sends user message and generates a local response
- */
-function sendMessage() {
-  const message = userInput.value.trim();
-
-  if (!message) {
-    return;
-  }
-
-  // Display user message
-  displayMessage(message, 'user');
-
-  // Clear input
-  userInput.value = '';
-
-  // Generate local response
-  const response = generateResponse(message);
-  
-  // Simulate slight delay for better UX
-  setTimeout(() => {
-    displayMessage(response, 'assistant');
-  }, 300);
-
-  // Focus back on input
-  userInput.focus();
-}
-
-/**
- * Generates a response based on user input
- * @param {string} message - The user's message
- * @returns {string} - The assistant's response
- */
-function generateResponse(message) {
-  const lowerMessage = message.toLowerCase();
-
-  // Check for direct matches
-  for (const [key, response] of Object.entries(assistantResponses)) {
-    if (lowerMessage.includes(key)) {
-      return response;
-    }
-  }
-
-  // Default response for unknown queries
-  const defaultResponses = [
-    'That\'s interesting! Can you tell me more?',
-    'I understand. How can I assist you further?',
-    'Great question! I\'m here to help with any other queries.',
-    'Thanks for sharing! What else can I help you with?',
-    'I appreciate that. Feel free to ask me anything else!'
-  ];
-
-  return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-}
-
-/**
- * Displays a message in the response container
- * @param {string} text - The message text
- * @param {string} sender - 'user' or 'assistant'
- */
-function displayMessage(text, sender) {
-  const messageDiv = document.createElement('div');
-  messageDiv.className = `response-message ${sender}`;
-  messageDiv.textContent = text;
-
-  responseContainer.appendChild(messageDiv);
-
-  // Auto-scroll to bottom
-  responseContainer.scrollTop = responseContainer.scrollHeight;
-}
+// Chat, strategy and about helper functions and prefills removed to keep code minimal.
+// Navigation, feedback, and version logic remain.
 
 /**
  * Setup strategy calculator
  */
-function setupStrategyCalculator() {
-  const calculateBtn = document.getElementById('calculateBtn');
-  const strategyResult = document.getElementById('strategyResult');
-  const playerCount = document.getElementById('playerCount');
-  const currentRound = document.getElementById('currentRound');
-  const playerScore = document.getElementById('playerScore');
-
-  calculateBtn.addEventListener('click', () => {
-    const players = parseInt(playerCount.value);
-    const round = parseInt(currentRound.value);
-    const score = parseInt(playerScore.value);
-
-    const strategy = calculateOptimalStrategy(players, round, score);
-    
-    strategyResult.textContent = strategy;
-    strategyResult.classList.add('active');
-  });
-}
-
-/**
- * Calculate optimal strategy based on game parameters
- * @param {number} players - Number of players
- * @param {number} round - Current round
- * @param {number} score - Player's current score
- * @returns {string} - Strategy recommendation
- */
-function calculateOptimalStrategy(players, round, score) {
-  const maxRounds = 10;
-  const roundsRemaining = Math.max(0, maxRounds - round + 1);
-  const potentialMax = score + (roundsRemaining * 12);
-
-  let strategy = `Race Analysis:\n`;
-  strategy += `Players: ${players} | Lap Stage: ${round}/${maxRounds} | Your Score: ${score}\n\n`;
-  strategy += `Estimated potential (aggressive): ${potentialMax}\n\n`;
-
-  // Pit stop advice
-  if (round <= 3) {
-    strategy += `Pit Stop Advice:\n- Early race: delay your first pit unless tyres are critical. Save tyres for later strategic stops.\n`;
-  } else if (round <= 7) {
-    strategy += `Pit Stop Advice:\n- Mid race: consider a short undercut if opponents pit early. Balance tyre wear and track position.\n`;
-  } else {
-    strategy += `Pit Stop Advice:\n- Late race: favour aggressive tyre choices and cover opponents' pit windows. Push for points.\n`;
-  }
-
-  // Tyre and playstyle
-  if (players <= 2) {
-    strategy += `Playstyle:\n- Two-player duel: be aggressive on overtakes, pressure the opponent into mistakes.\n`;
-  } else if (players <= 4) {
-    strategy += `Playstyle:\n- Mid pack: mix conservative tyre management with opportunistic overtakes. Watch higher-scoring players.\n`;
-  } else {
-    strategy += `Playstyle:\n- Full grid: play conservatively early, pick off rivals during their pit stops, and capitalise in final laps.\n`;
-  }
-
-  // Final push
-  if (round >= 8) {
-    strategy += `Final Push:\n- Final laps: maximise points with high-risk moves if you need positions. Protect podium spots if leading.\n`;
-  }
-
-  return strategy;
-}
+// Strategy calculator removed — page is intentionally blank and logic has been trimmed.
 
 /**
  * Setup feedback form
