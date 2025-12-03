@@ -18,14 +18,21 @@ const assistantResponses = {
   'goodbye': 'See you on the podium! Good luck out there!'
 };
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize (works whether script runs before or after DOMContentLoaded)
+function init() {
   setupNavigation();
   setupChatPage();
   setupStrategyCalculator();
   setupFeedbackForm();
   setupVersionPage();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  // DOM already ready — initialize immediately
+  init();
+}
 
 /**
  * Setup navigation between pages
