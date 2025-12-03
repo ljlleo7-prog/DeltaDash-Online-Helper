@@ -1,36 +1,41 @@
-// Note: Query DOM elements inside setup functions so they are present
-// when the script initializes in both dev and production builds.
+// DOM Elements (only what's needed)
+const navButtons = document.querySelectorAll('.nav-btn');
+const pageContents = document.querySelectorAll('.page-content');
 
-// Simple assistant responses database
 
-// Initialize (works whether script runs before or after DOMContentLoaded)
-function init() {
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
-  setupFeedbackForm();
-}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  // DOM already ready — initialize immediately
-  init();
-}
+  // Feedback form should be present
+  setupFeedbackForm();
+
+  // Version page controls may be present — guard before initializing
+  if (document.querySelector('.check-update-btn')) {
+    setupVersionPage();
+  }
+  // Load versions from JSON if container present
+  if (document.getElementById('versions-list') || document.querySelector('#version-page .versions-list')) {
+    loadAndRenderVersions();
+  }
+  // Front background (faint image) — initialize if present
+  if (document.getElementById('front-bg')) {
+    setupFrontBackground();
+  }
+});
 
 /**
  * Setup navigation between pages
  */
 function setupNavigation() {
-  const navButtons = document.querySelectorAll('.nav-btn');
-  const pageContents = document.querySelectorAll('.page-content');
-
   navButtons.forEach(button => {
     button.addEventListener('click', () => {
       const pageId = button.dataset.page + '-page';
-
+      
       // Update active button
       navButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
-
+      
       // Update active page
       pageContents.forEach(page => page.classList.remove('active'));
       const activePage = document.getElementById(pageId);
@@ -42,6 +47,17 @@ function setupNavigation() {
 }
 
 /**
+ * Setup chat page functionality
+ */
+// Chat, strategy and about helper functions and prefills removed to keep code minimal.
+// Navigation, feedback, and version logic remain.
+
+/**
+ * Setup strategy calculator
+ */
+// Strategy calculator removed — page is intentionally blank and logic has been trimmed.
+
+/**
  * Setup feedback form
  */
 function setupFeedbackForm() {
@@ -49,8 +65,6 @@ function setupFeedbackForm() {
   const submitLocalBtn = document.getElementById('submitLocalBtn');
   const submitOnlineBtn = document.getElementById('submitOnlineBtn');
   const feedbackStatus = document.getElementById('feedbackStatus');
-
-  if (!feedbackForm || !submitLocalBtn || !submitOnlineBtn) return;
 
   // Local email client submission
   submitLocalBtn.addEventListener('click', (e) => {
@@ -69,21 +83,14 @@ function setupFeedbackForm() {
    * @param {string} method - 'local' for mailto or 'online' for web email services
    */
   function submitFeedback(method) {
-    const nameEl = document.getElementById('feedbackName');
-    const emailEl = document.getElementById('feedbackEmail');
-    const typeEl = document.getElementById('feedbackType');
-    const messageEl = document.getElementById('feedbackMessage');
-
-    const name = nameEl?.value || '';
-    const email = emailEl?.value || '';
-    const type = typeEl?.value || 'general';
-    const message = messageEl?.value || '';
+    const name = document.getElementById('feedbackName').value;
+    const email = document.getElementById('feedbackEmail').value;
+    const type = document.getElementById('feedbackType').value;
+    const message = document.getElementById('feedbackMessage').value;
 
     if (!name || !email || !message) {
-      if (feedbackStatus) {
-        feedbackStatus.className = 'feedback-status error';
-        feedbackStatus.textContent = '✗ Please fill in all required fields.';
-      }
+      feedbackStatus.className = 'feedback-status error';
+      feedbackStatus.textContent = '✗ Please fill in all required fields.';
       return;
     }
 
@@ -96,10 +103,8 @@ function setupFeedbackForm() {
       const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
       
-      if (feedbackStatus) {
-        feedbackStatus.className = 'feedback-status success';
-        feedbackStatus.textContent = '✓ Opening your email client with the feedback form...';
-      }
+      feedbackStatus.className = 'feedback-status success';
+      feedbackStatus.textContent = '✓ Opening your email client with the feedback form...';
     } else if (method === 'online') {
       // Show options for online email services
       showEmailServiceModal(subject, body, email);
@@ -111,7 +116,7 @@ function setupFeedbackForm() {
     
     // Clear message after 4 seconds
     setTimeout(() => {
-      if (feedbackStatus) feedbackStatus.className = 'feedback-status';
+      feedbackStatus.className = 'feedback-status';
     }, 4000);
   }
 
@@ -172,4 +177,145 @@ function setupFeedbackForm() {
       }, 4000);
     }, 500);
   }
+}
+
+/**
+ * Setup version page
+ */
+function setupVersionPage() {
+  const checkUpdateBtn = document.querySelector('.check-update-btn');
+  
+  checkUpdateBtn.addEventListener('click', () => {
+    const originalText = checkUpdateBtn.textContent;
+    checkUpdateBtn.textContent = 'Checking for updates...';
+    checkUpdateBtn.disabled = true;
+
+    // Simulate API call
+    setTimeout(() => {
+      checkUpdateBtn.textContent = 'You are on the latest version!';
+      checkUpdateBtn.style.background = '#28a745';
+      
+      setTimeout(() => {
+        checkUpdateBtn.textContent = originalText;
+        checkUpdateBtn.disabled = false;
+        checkUpdateBtn.style.background = '';
+      }, 3000);
+    }, 1500);
+  });
+}
+
+/* Load versions.json and render version cards dynamically */
+async function loadAndRenderVersions(){
+  const container = document.getElementById('versions-list') || document.querySelector('#version-page .versions-list');
+  if (!container) return;
+  try {
+    const res = await fetch('versions.json', {cache: 'no-store'});
+    if (!res.ok) throw new Error('Could not load versions.json');
+    const versions = await res.json();
+    container.innerHTML = '';
+    versions.forEach(v => {
+      const card = document.createElement('div');
+      const name = v.name || 'Unnamed Version';
+      const date = v.date || '';
+      const brief = v.brief || '';
+      const desc = v.description || '';
+
+      // guess modifier from name
+      const modifier = /beta/i.test(name) ? 'beta' : (/alpha/i.test(name) ? 'alpha' : '');
+      card.className = `version-card ${modifier}`.trim();
+
+      card.innerHTML = `
+        <div class="version-header">
+          <h3>${escapeHtml(name)}</h3>
+          <span class="release-date">${escapeHtml(date)}</span>
+        </div>
+        <p class="version-brief">${escapeHtml(brief)}</p>
+        <div class="version-actions">
+          <a href="#" class="btn version-desc-btn">Version Description</a>
+        </div>
+      `;
+
+      // attach description data
+      const descBtn = card.querySelector('.version-desc-btn');
+      descBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showVersionModal(name, date, desc);
+      });
+
+      container.appendChild(card);
+    });
+  } catch (err) {
+    container.innerHTML = `<p class="error-note">Unable to load versions.</p>`;
+    console.error(err);
+  }
+}
+
+function showVersionModal(title, date, description){
+  const modal = document.createElement('div');
+  modal.className = 'email-modal'; // reuse modal styling
+  const bodyHtml = (description || '').split('\n\n').map(p => `<p>${escapeHtml(p)}</p>`).join('');
+  modal.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>${escapeHtml(title)} <small style="opacity:.7; font-weight:400; margin-left:12px;">${escapeHtml(date)}</small></h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        ${bodyHtml}
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const closeBtn = modal.querySelector('.modal-close');
+  closeBtn.addEventListener('click', () => modal.remove());
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+}
+
+function escapeHtml(str){
+  return String(str).replace(/[&<>"]+/g, function(match){
+    switch(match){
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      default: return match;
+    }
+  });
+}
+
+/**
+ * Setup the front-page faint background behavior.
+ * The image fades and translates upwards as the user scrolls down.
+ */
+function setupFrontBackground(){
+  const front = document.getElementById('front-bg');
+  if (!front) return;
+
+  let lastY = window.scrollY || 0;
+  let ticking = false;
+  const maxFade = 320; // px distance where image is fully faded
+  const maxTranslate = 220; // max upward translate in px
+
+  function update(){
+    const y = Math.max(0, lastY);
+    const t = Math.min(y / maxFade, 1);
+    const translate = Math.min(y * 0.6, maxTranslate);
+    const opacity = Math.max(0, 1 - t) * 0.45;
+
+    front.style.transform = `translateX(-50%) translateY(-${translate}px)`;
+    front.style.opacity = String(opacity);
+    ticking = false;
+  }
+
+  function onScroll(){
+    lastY = window.scrollY || 0;
+    if (!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  // initialize
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
 }

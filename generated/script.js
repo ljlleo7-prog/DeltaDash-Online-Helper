@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.check-update-btn')) {
     setupVersionPage();
   }
+  // Load versions from JSON if container present
+  if (document.getElementById('versions-list') || document.querySelector('#version-page .versions-list')) {
+    loadAndRenderVersions();
+  }
   // Front background (faint image) — initialize if present
   if (document.getElementById('front-bg')) {
     setupFrontBackground();
@@ -121,7 +125,7 @@ function setupFeedbackForm() {
    */
   function showEmailServiceModal(subject, body, userEmail) {
     const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=ljl.leo7@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const outlook = `https://outlook.live.com/?path=/mail/action/compose&to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const outlook = `https://outlook.office.com/mail/deeplink/compose?to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     const yahoo = `https://compose.mail.yahoo.com/?to=ljl.leo7@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Create modal
@@ -197,6 +201,85 @@ function setupVersionPage() {
         checkUpdateBtn.style.background = '';
       }, 3000);
     }, 1500);
+  });
+}
+
+/* Load versions.json and render version cards dynamically */
+async function loadAndRenderVersions(){
+  const container = document.getElementById('versions-list') || document.querySelector('#version-page .versions-list');
+  if (!container) return;
+  try {
+    const res = await fetch('versions.json', {cache: 'no-store'});
+    if (!res.ok) throw new Error('Could not load versions.json');
+    const versions = await res.json();
+    container.innerHTML = '';
+    versions.forEach(v => {
+      const card = document.createElement('div');
+      const name = v.name || 'Unnamed Version';
+      const date = v.date || '';
+      const brief = v.brief || '';
+      const desc = v.description || '';
+
+      // guess modifier from name
+      const modifier = /beta/i.test(name) ? 'beta' : (/alpha/i.test(name) ? 'alpha' : '');
+      card.className = `version-card ${modifier}`.trim();
+
+      card.innerHTML = `
+        <div class="version-header">
+          <h3>${escapeHtml(name)}</h3>
+          <span class="release-date">${escapeHtml(date)}</span>
+        </div>
+        <p class="version-brief">${escapeHtml(brief)}</p>
+        <div class="version-actions">
+          <a href="#" class="btn version-desc-btn">Version Description</a>
+        </div>
+      `;
+
+      // attach description data
+      const descBtn = card.querySelector('.version-desc-btn');
+      descBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showVersionModal(name, date, desc);
+      });
+
+      container.appendChild(card);
+    });
+  } catch (err) {
+    container.innerHTML = `<p class="error-note">Unable to load versions.</p>`;
+    console.error(err);
+  }
+}
+
+function showVersionModal(title, date, description){
+  const modal = document.createElement('div');
+  modal.className = 'email-modal'; // reuse modal styling
+  const bodyHtml = (description || '').split('\n\n').map(p => `<p>${escapeHtml(p)}</p>`).join('');
+  modal.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>${escapeHtml(title)} <small style="opacity:.7; font-weight:400; margin-left:12px;">${escapeHtml(date)}</small></h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        ${bodyHtml}
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const closeBtn = modal.querySelector('.modal-close');
+  closeBtn.addEventListener('click', () => modal.remove());
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+}
+
+function escapeHtml(str){
+  return String(str).replace(/[&<>"]+/g, function(match){
+    switch(match){
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      default: return match;
+    }
   });
 }
 
