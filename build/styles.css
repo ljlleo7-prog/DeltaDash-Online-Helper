@@ -51,7 +51,7 @@ body {
   }
 
   .main-title {
-    font-size: 44px;
+    font-size: 64px;
     font-weight: 700;
     margin-bottom: 8px;
     letter-spacing: 1px;
@@ -88,7 +88,7 @@ body {
 
   /* Logo inside the main title */
   .site-logo{
-    height:80px;
+    height:100px;
     width:auto;
     border-radius:8px;
     margin-right:12px;
@@ -1072,6 +1072,14 @@ body {
   content: '🧪';
   margin-right: 8px;
 }
+.version-card.indev .version-header h3::before {
+  content: '🔧';
+  margin-right: 8px;
+}
+.version-card.release .version-header h3::before {
+  content: '✅';
+  margin-right: 8px;
+}
 
 .release-date {
   font-size: 13px;
@@ -1427,6 +1435,17 @@ body{
 #version-page .version-card.alpha{ border-color: rgba(111,126,251,0.06) }
 #version-page .version-card.alpha .version-header h3{ color: #eaf0ff }
 #version-page .version-card.alpha .version-actions .btn{ background: linear-gradient(90deg,var(--accent-blue-1), var(--accent-blue-2)); color:#111 }
+
+/* Modifiers: indev uses grey accent, release uses green accent */
+#version-page .version-card.indev::before{ background: linear-gradient(180deg,#555,#222) }
+#version-page .version-card.indev{ border-color: rgba(136,136,136,0.06) }
+#version-page .version-card.indev .version-header h3{ color: #cccccc }
+#version-page .version-card.indev .version-actions .btn{ background: linear-gradient(90deg,#888,#aaa); color:#111 }
+
+#version-page .version-card.release::before{ background: linear-gradient(180deg,#28a745,#1e7e34) }
+#version-page .version-card.release{ border-color: rgba(40,167,69,0.08) }
+#version-page .version-card.release .version-header h3{ color: #d4ffd4 }
+#version-page .version-card.release .version-actions .btn{ background: linear-gradient(90deg,#28a745,#34ce57); color:#111 }
 
 /* make action buttons stand out on dark bg */
 #version-page .version-actions .btn{ padding:8px 14px; border-radius:8px; font-weight:700; box-shadow:0 8px 22px rgba(0,0,0,0.6) }
