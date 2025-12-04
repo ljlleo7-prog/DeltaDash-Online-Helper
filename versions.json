@@ -1,7 +1,13 @@
 [
   {
+    "name": "Delta Dash Version 2026.3.0 Release",
+    "date": "May 1, 2026 (planned)",
+    "brief": "First ever release version of Delta Dash!",
+    "description": "The release version will be named in format 'Year.Structure.Bugfix'. The release version will have even better polished UI than Beta, allowing the public fans to immerse into the game. We are also aware of legal issues, as a publicly published paid version of the game will be subject to copyright laws and may infringe on the intellectual property rights of other motorsports enthusiasts. Therefore, our UI will be redesigned to be more user-friendly and less intrusive, while still maintaining the core gameplay elements."
+  },
+  {
     "name": "Delta Dash Version 3.1 Beta",
-    "date": "Jan 1, 2026",
+    "date": "Jan 1, 2026 (planned)",
     "brief": "The first BETA test stage, involving refined UI and game structure.",
     "description": "Version 3.1 Beta introduces a polished user interface and multiple refinements to the gameplay loop. It is the first ever Beta version, a milestone on the course of game development and marketing. It will be the first time our customers see our product. \n\n However, due to lack of funds, this version will only be released at small scale among our fans, and each user must produce the game itself from digital version in order to reduce an ~$2000 printing and transportation cost."
   },

@@ -345,7 +345,10 @@ async function loadAndRenderVersions(){
       const desc = v.description || '';
 
       // guess modifier from name
-      const modifier = /beta/i.test(name) ? 'beta' : (/alpha/i.test(name) ? 'alpha' : '');
+      const modifier = /beta/i.test(name) ? 'beta' : 
+                     (/alpha/i.test(name) ? 'alpha' : 
+                     (/indev/i.test(name) ? 'indev' : 
+                     (/release/i.test(name) ? 'release' : '')));
       card.className = `version-card ${modifier}`.trim();
 
       card.innerHTML = `
