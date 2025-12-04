@@ -1,0 +1,16 @@
+{
+  "news": [
+    {
+      "img_src": "assets/beta-on-the-move.jpg",
+      "title": "Delta Dash 3.1 Beta Release On the Move!",
+      "date": "2025-12-04",
+      "content": "After a long long wait, we are finally releasing the beta version of Delta Dash in 2025! This update includes new track layouts, enhanced strategy tools, and entirely refined UI. Get ready for the most exciting F1 boardgame experience yet!"
+    },
+    {
+      "img_src": "assets/logo.png",
+      "title": "Rebranding - We are now called Delta Dash!",
+      "date": "2025-11-11",
+      "content": "After fans and internal voting, we finally decide to rename the game as 'Delta Dash', representing the calculation of F1 strategies and the thrill of wheel-to-wheel combat!"
+    }
+  ]
+}
