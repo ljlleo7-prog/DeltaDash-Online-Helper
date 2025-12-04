@@ -1,0 +1,33 @@
+{
+  "about_us": {
+    "company_name": "Geeks Production Studio",
+    "mission": "To revolutionize F1 boardgame through innovative mechanisms to bring out the best of F1 racing characteristics to our passionate fans.",
+    "description": "Delta Dash is developed by passionate motorsports enthusiasts and boardgame designers who believe that motorsports boardgames should illustrate the true essense of the particular racing event to the largest extent without running against legal regulations.",
+    "team": [
+      {
+        "img_src": "https://www.autoracing1.com/wp-content/uploads/2023/f1/bahraintest/pirellitires.jpg",
+        "title": "Most Delicate Strategy Management",
+        "date": "'M-M-H-S' I'm genius!",
+        "content": "Though a boardgame, the strategy management is as sophisticated as the racing event itself but not so regulated. Feel free to press your luck on your own strategies even if they seem insane in real life!"
+      },
+      {
+        "img_src": "assets/memes.png",
+        "title": "Most Amusing Memes",
+        "date": "'Must be the water'",
+        "content": "What makes a game fun? The most sophisticated game will not impress our passionate fans as much as a game with the best memes!"
+      },
+      {
+        "img_src": "assets/DLC_teamwork.jpg",
+        "title": "Most Compatible with Extensions",
+        "date": "You can always trust a DLC",
+        "content": "Do not ever worry if the game is too simple or not sphisticated enough - our design reserves slot for official AND civil expansions for the game, making it customized to fit the needs of our fans."
+      }
+    ],
+   
+    "contact": {
+      "email": "ljl.leo7@gmail.com",
+      "website": "DeltaDashOnline.com",
+      "location": "Global Motorsports Community"
+    }
+  }
+}
