@@ -45,32 +45,72 @@
       </button>
     </nav>
 
-    <!-- Main content section - Content will be dynamically loaded by JavaScript -->
+    <!-- Main content section -->
     <main class="main-content">
       
-      <!-- Homepage Section -->
+      <!-- Homepage Section (was Chat) -->
       <section id="homepage-page" class="page-content active">
-        <!-- Content will be dynamically loaded -->
+     
+        <!-- News and About Us sections will be dynamically loaded by script.js -->
       </section>
 
       <!-- About Section -->
       <section id="about-page" class="page-content">
-        <!-- Content will be dynamically loaded -->
+  
       </section>
 
       <!-- Version Section -->
       <section id="version-page" class="page-content">
-        <!-- Content will be dynamically loaded -->
+     
+        <div class="content-box versions-list" id="versions-list">
+          <!-- Versions will be loaded from `versions.json` and rendered here -->
+          <p class="loading-note">Loading versions…</p>
+        </div>
       </section>
 
       <!-- Strategy Section -->
       <section id="strategy-page" class="page-content">
-        <!-- Content will be dynamically loaded -->
+    
       </section>
 
       <!-- Feedback Section -->
       <section id="feedback-page" class="page-content">
-        <!-- Content will be dynamically loaded -->
+        <div class="content-box">
+          <h2>Send Your Feedback</h2>
+          <p>We'd love to hear from you! Your feedback helps us improve the assistant.</p>
+          <form id="feedbackForm" class="feedback-form">
+            <div class="form-group">
+              <label for="feedbackName">Your Name:</label>
+              <input type="text" id="feedbackName" placeholder="Enter your name" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="feedbackEmail">Email Address:</label>
+              <input type="email" id="feedbackEmail" placeholder="Enter your email" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="feedbackType">Feedback Type:</label>
+              <select id="feedbackType" class="form-input">
+                <option value="suggestion">Suggestion</option>
+                <option value="bug">Bug Report</option>
+                <option value="feature">Feature Request</option>
+                <option value="general">General Feedback</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feedbackMessage">Your Message:</label>
+              <textarea id="feedbackMessage" placeholder="Share your thoughts..." class="form-textarea" rows="5"></textarea>
+            </div>
+            <div class="button-group">
+              <button type="button" id="submitLocalBtn" class="submit-feedback-btn local-btn">
+                <span class="btn-icon">📧</span> Send via Local Client
+              </button>
+              <button type="button" id="submitOnlineBtn" class="submit-feedback-btn online-btn">
+                <span class="btn-icon">🌐</span> Send via Outlook/Gmail
+              </button>
+            </div>
+          </form>
+          <div id="feedbackStatus" class="feedback-status"></div>
+        </div>
       </section>
 
     </main>
@@ -82,20 +122,9 @@
     </footer>
   </div>
 
-  <!-- React root element -->
+</n  <!-- React root element -->
   <div id="root"></div>
 
-  <!-- Load utility functions first -->
-  <script src="pages/utils.js"></script>
-  
-  <!-- Load individual page modules -->
-  <script src="pages/homepage.js"></script>
-  <script src="pages/about.js"></script>
-  <script src="pages/version.js"></script>
-  <script src="pages/strategy.js"></script>
-  <script src="pages/feedback.js"></script>
-  
-  <!-- Load main application coordinator -->
-  <script src="app.js"></script>
+  <script src="../src/app.js"></script>
 </body>
 </html>
