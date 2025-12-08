@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import App from './App';
 
-// Load the existing application script
-import './app.js';
-
-// Render React root (will be hidden, app logic runs via app.js)
+// Render React App component
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<></>);
+root.render(<App />);

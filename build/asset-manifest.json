@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/ljlleo7-prog/Delta.git/static/css/main.20746fb7.css",
-    "main.js": "/ljlleo7-prog/Delta.git/static/js/main.101c26dc.js",
-    "index.html": "/ljlleo7-prog/Delta.git/index.html",
-    "main.20746fb7.css.map": "/ljlleo7-prog/Delta.git/static/css/main.20746fb7.css.map",
-    "main.101c26dc.js.map": "/ljlleo7-prog/Delta.git/static/js/main.101c26dc.js.map"
+    "main.css": "/DeltaDash-Online-Helper/static/css/main.f41337b3.css",
+    "main.js": "/DeltaDash-Online-Helper/static/js/main.1f71e6f7.js",
+    "static/media/front_page.jpg": "/DeltaDash-Online-Helper/static/media/front_page.98e709d86890e441b728.jpg",
+    "index.html": "/DeltaDash-Online-Helper/index.html",
+    "main.f41337b3.css.map": "/DeltaDash-Online-Helper/static/css/main.f41337b3.css.map",
+    "main.1f71e6f7.js.map": "/DeltaDash-Online-Helper/static/js/main.1f71e6f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.20746fb7.css",
-    "static/js/main.101c26dc.js"
+    "static/css/main.f41337b3.css",
+    "static/js/main.1f71e6f7.js"
   ]
 }

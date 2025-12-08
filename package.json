@@ -1,7 +1,7 @@
 {
   "name": "delta-dash-online-assistant",
   "version": "1.0.0",
-  "homepage": "https://github.com/ljlleo7-prog/Delta.git",
+  "homepage": "https://ljlleo7-prog.github.io/DeltaDash-Online-Helper/",
   "description": "Delta Dash Online Assistant - A powerful assistant for your tasks",
   "keywords": [
     "delta-dash",
@@ -14,8 +14,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "rm -rf generated && cp -a public generated",
-    "predeploy": "npm run generate",
+    "generate": "rm -rf generated && cp -a build generated",
+    "predeploy": "npm run build && npm run generate",
     "deploy": "gh-pages -d generated"
   },
   "license": "MIT",
