@@ -1,0 +1,28 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "strategies": "Strategies", 
+    "versions": "Versions",
+    "feedback": "Feedback",
+    "contact": "Contact",
+    "email": "Email",
+    "bilibili": "Bilibili",
+    "learn_more": "Learn More",
+    "read_more": "Read More",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "homepage": {
+    "welcome": "Welcome to Delta Dash Online Assistant",
+    "subtitle": "Your AI-powered trading companion",
+    "description": "Delta Dash is the ultimate F1 boardgame experience that combines strategic depth with thrilling racing action. Our online assistant helps you master the game's mechanics and develop winning strategies.",
+    "features": "Key Features",
+    "contact_info": "Contact Information"
+  },
+  "about": {
+    "company_name": "Geeks Production Studio",
+    "mission": "To revolutionize F1 boardgame through innovative mechanisms to bring out the best of F1 racing characteristics to our passionate fans.",
+    "description": "Delta Dash is developed by passionate motorsports enthusiasts and boardgame designers who believe that motorsports boardgames should illustrate the true essence of the particular racing event to the largest extent without running against legal regulations."
+  }
+}

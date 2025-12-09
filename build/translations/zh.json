@@ -1,0 +1,28 @@
+{
+  "common": {
+    "home": "首页",
+    "about": "关于我们",
+    "strategies": "策略指南", 
+    "versions": "版本信息",
+    "feedback": "意见反馈",
+    "contact": "联系我们",
+    "email": "邮箱",
+    "bilibili": "哔哩哔哩",
+    "learn_more": "了解更多",
+    "read_more": "阅读更多",
+    "loading": "加载中...",
+    "error": "错误"
+  },
+  "homepage": {
+    "welcome": "欢迎来到Delta Dash在线助手",
+    "subtitle": "您的AI驱动交易伙伴",
+    "description": "Delta Dash是终极F1桌游体验，将策略深度与刺激的赛车动作相结合。我们的在线助手帮助您掌握游戏机制并制定获胜策略。",
+    "features": "主要功能",
+    "contact_info": "联系信息"
+  },
+  "about": {
+    "company_name": "极客制作工作室",
+    "mission": "通过创新机制彻底改变F1桌游，为我们的热情粉丝带来F1赛车的最佳特性。",
+    "description": "Delta Dash由热情的赛车运动爱好者和桌游设计师开发，他们相信赛车运动桌游应该最大程度地展现特定赛车赛事的真实本质，同时不违反法律规定。"
+  }
+}

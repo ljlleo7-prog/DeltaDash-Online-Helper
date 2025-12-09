@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { formatDate, escapeHtml } from '../utils/helpers';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 function VersionPage() {
   const [versions, setVersions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { language } = useContext(LanguageContext);
+
+  // Helper function to get text based on language
+  const getText = (textObj) => {
+    if (!textObj) return '';
+    if (typeof textObj === 'string') return textObj;
+    return textObj[language] || textObj.en || '';
+  };
 
   useEffect(() => {
     loadVersions();
@@ -11,7 +20,7 @@ function VersionPage() {
 
   const loadVersions = async () => {
     try {
-      const response = await fetch('./versions.json', { cache: 'no-store' });
+      const response = await fetch('/versions.json', { cache: 'no-store' });
       if (!response.ok) throw new Error(`Could not load versions.json: ${response.status} ${response.statusText}`);
       const data = await response.json();
       setVersions(Array.isArray(data) ? data : data.versions || []);
@@ -45,30 +54,30 @@ function VersionPage() {
 
   return (
     <section id="version-page" className="page-content">
-      <h2>Version History</h2>
+      <h2>{language === 'zh' ? '版本历史' : 'Version History'}</h2>
       {loading ? (
-        <p>Loading versions...</p>
+        <p>{language === 'zh' ? '加载版本中...' : 'Loading versions...'}</p>
       ) : (
         <div className="versions-list">
           {versions.map((version, index) => {
-            const modifier = /beta/i.test(version.name) ? 'beta' : 
-                           (/alpha/i.test(version.name) ? 'alpha' : 
-                           (/indev/i.test(version.name) ? 'indev' : 
-                           (/release/i.test(version.name) ? 'release' : '')));
+            const modifier = /beta/i.test(getText(version.name)) ? 'beta' : 
+                           (/alpha/i.test(getText(version.name)) ? 'alpha' : 
+                           (/indev/i.test(getText(version.name)) ? 'indev' : 
+                           (/release/i.test(getText(version.name)) ? 'release' : '')));
             
             return (
               <div key={index} className={`version-card ${modifier}`.trim()}>
                 <div className="version-header">
-                  <h3>{version.name || 'Unnamed Version'}</h3>
+                  <h3>{getText(version.name) || (language === 'zh' ? '未命名版本' : 'Unnamed Version')}</h3>
                   <span className="release-date">{version.date || ''}</span>
                 </div>
-                <p className="version-brief">{version.brief || ''}</p>
+                <p className="version-brief">{getText(version.brief) || ''}</p>
                 <div className="version-actions">
                   <button 
                     className="btn version-desc-btn"
-                    onClick={() => showVersionModal(version.name, version.date, version.description)}
+                    onClick={() => showVersionModal(getText(version.name), version.date, getText(version.description))}
                   >
-                    Version Description
+                    {language === 'zh' ? '版本描述' : 'Version Description'}
                   </button>
                 </div>
               </div>

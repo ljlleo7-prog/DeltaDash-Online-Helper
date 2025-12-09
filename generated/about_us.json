@@ -1,26 +1,62 @@
 {
   "about_us": {
-    "company_name": "Geeks Production Studio",
-    "mission": "To revolutionize F1 boardgame through innovative mechanisms to bring out the best of F1 racing characteristics to our passionate fans.",
-    "description": "Delta Dash is developed by passionate motorsports enthusiasts and boardgame designers who believe that motorsports boardgames should illustrate the true essense of the particular racing event to the largest extent without running against legal regulations.",
+    "company_name": {
+      "en": "Geeks Production Studio",
+      "zh": "极客制作工作室"
+    },
+    "mission": {
+      "en": "To revolutionize F1 boardgame through innovative mechanisms to bring out the best of F1 racing characteristics to our passionate fans.",
+      "zh": "通过创新机制彻底改变F1桌游，为我们的热情粉丝带来F1赛车的最佳特性。"
+    },
+    "description": {
+      "en": "Delta Dash is developed by passionate motorsports enthusiasts and boardgame designers who believe that motorsports boardgames should illustrate the true essence of the particular racing event to the largest extent without running against legal regulations.",
+      "zh": "Delta Dash由热情的赛车运动爱好者和桌游设计师开发，他们相信赛车运动桌游应该最大程度地展现特定赛车赛事的真实本质，同时不违反法律规定。"
+    },
     "team": [
       {
         "img_src": "https://www.autoracing1.com/wp-content/uploads/2023/f1/bahraintest/pirellitires.jpg",
-        "title": "Most Delicate Strategy Management",
-        "date": "'M-M-H-S' I'm genius!",
-        "content": "Though a boardgame, the strategy management is as sophisticated as the racing event itself but not so regulated. Feel free to press your luck on your own strategies even if they seem insane in real life!"
+        "title": {
+          "en": "Most Delicate Strategy Management",
+          "zh": "最精密的策略管理"
+        },
+        "date": {
+          "en": "'M-M-H-S' I'm genius!",
+          "zh": "'M-M-H-S' 我是天才！"
+        },
+        "content": {
+          "en": "Though a boardgame, the strategy management is as sophisticated as the racing event itself but not so regulated. Feel free to press your luck on your own strategies even if they seem insane in real life!",
+          "zh": "虽然是桌游，但策略管理与赛车赛事本身一样复杂，但不受那么多限制。即使策略在现实生活中看起来疯狂，也请随意尝试！"
+        }
       },
       {
         "img_src": "assets/memes.png",
-        "title": "Most Amusing Memes",
-        "date": "'Must be the water'",
-        "content": "What makes a game fun? The most sophisticated game will not impress our passionate fans as much as a game with the best memes!"
+        "title": {
+          "en": "Most Amusing Memes",
+          "zh": "最有趣的梗图"
+        },
+        "date": {
+          "en": "'Must be the water'",
+          "zh": "'一定是水的问题'"
+        },
+        "content": {
+          "en": "What makes a game fun? The most sophisticated game will not impress our passionate fans as much as a game with the best memes!",
+          "zh": "什么让游戏变得有趣？最复杂的游戏不会像拥有最佳梗图的游戏那样给我们的热情粉丝留下深刻印象！"
+        }
       },
       {
         "img_src": "assets/DLC_teamwork.jpg",
-        "title": "Most Compatible with Extensions",
-        "date": "You can always trust a DLC",
-        "content": "Do not ever worry if the game is too simple or not sphisticated enough - our design reserves slot for official AND civil expansions for the game, making it customized to fit the needs of our fans."
+        "title": {
+          "en": "Most Compatible with Extensions",
+          "zh": "最兼容扩展"
+        },
+        "date": {
+          "en": "You can always trust a DLC",
+          "zh": "你总是可以相信DLC"
+        },
+        "content": {
+          "en": "Do not ever worry if the game is too simple or not sphisticated enough - our design reserves slot for official AND civil expansions for the game, making it customized to fit the needs of our fans.",
+          "zh": "不用担心游戏太简单或不够复杂 - 我们的设计为官方和民间扩展预留了空间，使其能够根据粉丝的需求进行定制。"
+        }
       }
     ],
    

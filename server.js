@@ -5,11 +5,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware - serve from build directory for production
+app.use('/DeltaDash-Online-Helper', express.static('build'));
 app.use(express.static('build'));
 app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.get('/DeltaDash-Online-Helper', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 

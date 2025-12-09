@@ -8,6 +8,7 @@ import StrategyPage from './components/StrategyPage';
 import FeedbackPage from './components/FeedbackPage';
 import Footer from './components/Footer';
 import { setupFrontBackground } from './utils/frontBackground';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   const [activePage, setActivePage] = useState('homepage');
@@ -28,17 +29,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div id="front-bg" aria-hidden="true"></div>
-      <div className="container">
-        <Header />
-        <Navigation activePage={activePage} setActivePage={setActivePage} />
-        <main className="main-content">
-          {pages[activePage]}
-        </main>
-        <Footer />
+    <LanguageProvider>
+      <div className="App">
+        <div id="front-bg" aria-hidden="true"></div>
+        <div className="container">
+          <Header />
+          <Navigation activePage={activePage} setActivePage={setActivePage} />
+          <main className="main-content">
+            {pages[activePage]}
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </LanguageProvider>
   );
 }
 

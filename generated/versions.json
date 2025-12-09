@@ -1,56 +1,137 @@
 [
   {
-    "name": "Delta Dash Version 2026.3.0 Release",
+    "name": {
+      "en": "Delta Dash Version 2026.3.0 Release",
+      "zh": "Delta Dash 2026.3.0 Release正式版"
+    },
     "date": "May 1, 2026 (planned)",
-    "brief": "First ever release version of Delta Dash!",
-    "description": "The release version will be named in format 'Year.Structure.Bugfix'. The release version will have even better polished UI than Beta, allowing the public fans to immerse into the game. We are also aware of legal issues, as a publicly published paid version of the game will be subject to copyright laws and may infringe on the intellectual property rights of other motorsports enthusiasts. Therefore, our UI will be redesigned to be more user-friendly and less intrusive, while still maintaining the core gameplay elements."
+    "brief": {
+      "en": "First ever release version of Delta Dash!",
+      "zh": "Delta Dash的第一个正式发布版本！"
+    },
+    "description": {
+      "en": "The release version will be named in format 'Year.Structure.Bugfix'. The release version will have even better polished UI than Beta, allowing the public fans to immerse into the game. We are also aware of legal issues, as a publicly published paid version of the game will be subject to copyright laws and may infringe on the intellectual property rights of other motorsports enthusiasts. Therefore, our UI will be redesigned to be more user-friendly and less intrusive, while still maintaining the core gameplay elements.",
+      "zh": "正式版本将采用'年.结构.错误修复'的命名格式。正式版本将拥有比测试版更精美的用户界面，让公众粉丝能够沉浸于游戏中。我们也意识到法律问题，因为公开发布的付费版本将受版权法约束，并可能侵犯其他赛车运动爱好者的知识产权。因此，我们的用户界面将重新设计，使其更加用户友好且不具侵入性，同时仍保持核心游戏玩法元素。"
+    }
   },
   {
-    "name": "Delta Dash Version 3.1 Beta",
+    "name": {
+      "en": "Delta Dash Version 3.1 Beta",
+      "zh": "Delta Dash 3.1 Beta公共测试版"
+    },
     "date": "Jan 1, 2026 (planned)",
-    "brief": "The first BETA test stage, involving refined UI and game structure.",
-    "description": "Version 3.1 Beta introduces a polished user interface and multiple refinements to the gameplay loop. It is the first ever Beta version, a milestone on the course of game development and marketing. It will be the first time our customers see our product. \n\n However, due to lack of funds, this version will only be released at small scale among our fans, and each user must produce the game itself from digital version in order to reduce an ~$2000 printing and transportation cost."
+    "brief": {
+      "en": "The first BETA test stage, involving refined UI and game structure.",
+      "zh": "第一个BETA测试阶段，涉及改进的用户界面和游戏结构。"
+    },
+    "description": {
+      "en": "Version 3.1 Beta introduces a polished user interface and multiple refinements to the gameplay loop. It is the first ever Beta version, a milestone on the course of game development and marketing. It will be the first time our customers see our product. However, due to lack of funds, this version will only be released at small scale among our fans, and each user must produce the game itself from digital version in order to reduce an ~$2000 printing and transportation cost.",
+      "zh": "版本3.1测试版引入了精美的用户界面和对游戏循环的多项改进。这是第一个测试版本，是游戏开发和营销过程中的一个里程碑。这将是我们的客户第一次看到我们的产品。然而，由于缺乏资金，此版本将仅在我们粉丝中小规模发布，每个用户必须从数字版本自行制作游戏，以减少约2000美元的印刷和运输成本。"
+    }
   },
   {
-    "name": "Delta Dash Version 3.0 Alpha",
+    "name": {
+      "en": "Delta Dash Version 3.0 Alpha",
+      "zh": "Delta Dash 3.0 Alpha内部测试版"
+    },
     "date": "Dec 1, 2025",
-    "brief": "Base version for Delta Dash 3.0 structure, with updates on track and UI.",
-    "description": "Version 3.0 Alpha is the foundational release for the 3.x series.\n\nHighlights: core rule refactor, race track re-design, improved component layout and a base implementation for online matchmaking. This alpha focuses on establishing stable game rules and internal data models.\n\nNotes for playtesters: expect rough edges in the user interface. The Alpha stage is primarily for testing core balance and identifying critical bugs before wider beta testing. \n\n Though developed earlier than Beta 3.1, this version will be tested simultaneously with Beta 3.1 version."
+    "brief": {
+      "en": "Base version for Delta Dash 3.0 structure, with updates on track and UI.",
+      "zh": "Delta Dash 3.0结构的基础版本，包含赛道和用户界面的更新。"
+    },
+    "description": {
+      "en": "Version 3.0 Alpha is the foundational release for the 3.x series. Highlights: core rule refactor, race track re-design, improved component layout and a base implementation for online matchmaking. This alpha focuses on establishing stable game rules and internal data models. Notes for playtesters: expect rough edges in the user interface. The Alpha stage is primarily for testing core balance and identifying critical bugs before wider beta testing. Though developed earlier than Beta 3.1, this version will be tested simultaneously with Beta 3.1 version.",
+      "zh": "版本3.0 Alpha是3.x系列的基础发布。亮点：核心规则重构、赛道重新设计、改进的组件布局和在线匹配的基础实现。此Alpha版本主要关注建立稳定的游戏规则和内部数据模型。给测试者的注意事项：用户界面可能存在粗糙之处。Alpha阶段主要是在更广泛的Beta测试之前测试核心平衡性和识别关键错误。虽然比Beta 3.1开发得更早，但此版本将与Beta 3.1版本同时测试。"
+    }
   },
   {
-    "name": "Formula Champion 2.1 Alpha",
+    "name": {
+      "en": "Formula Champion 2.1 Alpha",
+      "zh": "Formula Champion 2.1 Alpha内部测试版"
+    },
     "date": "Oct 5, 2025",
-    "brief": "Last version of Formula Champion before rebranding to Delta Dash; includes bug fixes and minor improvements.",
-    "description": "Version 2.1 Alpha focuses on bug fixes and minor improvements based on previous Alpha version tests, with the largest testing team ever occurred in the history of Geeks Production Studio."
+    "brief": {
+      "en": "Last version of Formula Champion before rebranding to Delta Dash; includes bug fixes and minor improvements.",
+      "zh": "Formula Champion重命名为Delta Dash之前的最后一个版本；包含错误修复和小的改进。"
+    },
+    "description": {
+      "en": "Version 2.1 Alpha focuses on bug fixes and minor improvements based on previous Alpha version tests, with the largest testing team ever occurred in the history of Geeks Production Studio.",
+      "zh": "版本2.1 Alpha基于之前的Alpha版本测试，专注于错误修复和小的改进，拥有Geeks Production Studio历史上最大的测试团队。"
+    }
   },
   {
-    "name": "Formula Champion 2.0 Alpha",
+    "name": {
+      "en": "Formula Champion 2.0 Alpha",
+      "zh": "Formula Champion 2.0 Alpha内部测试版"
+    },
     "date": "Aug 10, 2025",
-    "brief": "Major overhaul introducing new mechanics based on fans' interests.",
-    "description": "Version 2.0 Alpha introduces significant changes to the core mechanics of Formula Champion, including a completely new gameplay mechanism, entirely refactored rule description and UI, introducing the 'delta' mechanism which turned the players' focus from pure racing to strategic resource management, also contributing to today's brand 'Delta Dash'."
+    "brief": {
+      "en": "Major overhaul introducing new mechanics based on fans' interests.",
+      "zh": "基于粉丝兴趣引入新机制的重大改革。"
+    },
+    "description": {
+      "en": "Version 2.0 Alpha introduces significant changes to the core mechanics of Formula Champion, including a completely new gameplay mechanism, entirely refactored rule description and UI, introducing the 'delta' mechanism which turned the players' focus from pure racing to strategic resource management, also contributing to today's brand 'Delta Dash'.",
+      "zh": "版本2.0 Alpha对Formula Champion的核心机制进行了重大更改，包括全新的游戏玩法机制、完全重构的规则描述和用户界面，引入了'delta'机制，将玩家的注意力从纯粹的比赛转向战略资源管理，也为今天的品牌'Delta Dash'做出了贡献。"
+    }
   },
   {
-    "name": "Formula Champion 1.3 Alpha",
+    "name": {
+      "en": "Formula Champion 1.3 Alpha",
+      "zh": "Formula Champion 1.3 Alpha内部测试版"
+    },
     "date": "Jun 10, 2025",
-    "brief": "Last version of Formula Champion before the 'delta' mechanism introduction, a final judgement of the original mechanism.",
-    "description": "Version 1.3 Alpha was said to be the final version of Formula Champion before release, involving a complete bug fix, but due to the negative feedbacks regarding the original mechanics, the development team decided to rework the entire game mechanics, leading to the birth of 2.0 and later versions and the awful reputation of the studio due to 'lack of progress management'."
+    "brief": {
+      "en": "Last version of Formula Champion before the 'delta' mechanism introduction, a final judgement of the original mechanism.",
+      "zh": "在引入'delta'机制之前的Formula Champion最后一个版本，是对原始机制的最后评判。"
+    },
+    "description": {
+      "en": "Version 1.3 Alpha was said to be the final version of Formula Champion before release, involving a complete bug fix, but due to the negative feedbacks regarding the original mechanics, the development team decided to rework the entire game mechanics, leading to the birth of 2.0 and later versions and the awful reputation of the studio due to 'lack of progress management'.",
+      "zh": "版本1.3 Alpha据说是Formula Champion发布前的最终版本，涉及完整的错误修复，但由于对原始机制的负面反馈，开发团队决定重新设计整个游戏机制，导致了2.0及后续版本的诞生，以及工作室因'缺乏进度管理'而声誉不佳。"
+    }
   },
   {
-    "name": "Formula Champion 1.2 InDev",
+    "name": {
+      "en": "Formula Champion 1.2 InDev",
+      "zh": "Formula Champion 1.2 开发版"
+    },
     "date": "~Jan 2025",
-    "brief": "An attempt to simplify previous generations but stopped due to personal issues.",
-    "description": "Version 1.2 InDev, rebranded as 'Formula Champion', was an attempt to simplify the previous generations to make the game more playable, but due to personal issues, the development stopped before testing, leaving a flawed and 'bugful' in-dev version."
+    "brief": {
+      "en": "An attempt to simplify previous generations but stopped due to personal issues.",
+      "zh": "尝试简化前几代但因个人问题而停止。"
+    },
+    "description": {
+      "en": "Version 1.2 InDev, rebranded as 'Formula Champion', was an attempt to simplify the previous generations to make the game more playable, but due to personal issues, the development stopped before testing, leaving a flawed and 'bugful' in-dev version.",
+      "zh": "版本1.2开发版，更名为'Formula Champion'，是尝试简化前几代以使游戏更具可玩性，但由于个人问题，开发在测试前停止，留下了一个有缺陷且充满错误的开发版本。"
+    }
   },
   {
-    "name": "War of Formula Racing 1.1 Alpha",
+    "name": {
+      "en": "War of Formula Racing 1.1 Alpha",
+      "zh": "War of Formula Racing 1.1 Alpha内部测试版"
+    },
     "date": "Aug 18, 2024",
-    "brief": "A massive advancement including realistic enhance, but its complexity made it an awful product also.",
-    "description": "Version 1.1 Alpha was an ultra-realistic version of 1.0 including realistic gear-shift data sheet, re-designed track for better data resolution, and refined UI using F1 font. However, its complexity made it almost unplayable without the developer as host and easy to crash, this version, though said 'better than 1.0', was still horrible as a product and not ready for publish."
+    "brief": {
+      "en": "A massive advancement including realistic enhance, but its complexity made it an awful product also.",
+      "zh": "包含现实增强的重大进步，但其复杂性也使其成为一个糟糕的产品。"
+    },
+    "description": {
+      "en": "Version 1.1 Alpha was an ultra-realistic version of 1.0 including realistic gear-shift data sheet, re-designed track for better data resolution, and refined UI using F1 font. However, its complexity made it almost unplayable without the developer as host and easy to crash, this version, though said 'better than 1.0', was still horrible as a product and not ready for publish.",
+      "zh": "版本1.1 Alpha是1.0的超现实版本，包括现实的换挡数据表、重新设计的赛道以获得更好的数据分辨率，以及使用F1字体的精美用户界面。然而，其复杂性使得没有开发者作为主持人几乎无法玩，并且容易崩溃，这个版本虽然据说'比1.0好'，但作为产品仍然很糟糕，不适合发布。"
+    }
   },
   {
-    "name": "War of Formula Racing 1.0 Alpha",
+    "name": {
+      "en": "War of Formula Racing 1.0 Alpha",
+      "zh": "War of Formula Racing 1.0 Alpha内部测试版"
+    },
     "date": "Nov 27, 2023",
-    "brief": "The first ever version, inspired by ChatGPT. It is simple but no fun at all.",
-    "description": "Version 1.0 Alpha was the first ever version of this series, with a very coarse track and control system inspired by ChatGPT. It featured the most basic racing mechanism: control car speed, take steps on track forward, and not running too fast in the corners. The UI was also very coarse, as there was no driver panel and all control were memorized by the players and resources were represented by solid cards. However, its multi-lap strategy system and ineffective UI made the game extremely slow, and thus a failed project with no likes at all."
+    "brief": {
+      "en": "The first ever version, inspired by ChatGPT. It is simple but no fun at all.",
+      "zh": "第一个版本，受ChatGPT启发。它很简单但一点也不有趣。"
+    },
+    "description": {
+      "en": "Version 1.0 Alpha was the first ever version of this series, with a very coarse track and control system inspired by ChatGPT. It featured the most basic racing mechanism: control car speed, take steps on track forward, and not running too fast in the corners. The UI was also very coarse, as there was no driver panel and all control were memorized by the players and resources were represented by solid cards. However, its multi-lap strategy system and ineffective UI made the game extremely slow, and thus a failed project with no likes at all.",
+      "zh": "版本1.0 Alpha是这个系列的第一个版本，具有非常粗糙的赛道和控制系统，灵感来自ChatGPT。它具有最基本的比赛机制：控制车速，在赛道上向前移动，不要在弯道跑得太快。用户界面也非常粗糙，因为没有驾驶员面板，所有控制都由玩家记忆，资源由实体卡片表示。然而，其多圈策略系统和无效的用户界面使游戏极其缓慢，因此是一个完全不受欢迎的失败项目。"
+    }
   }
 ]

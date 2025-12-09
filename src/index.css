@@ -29,9 +29,12 @@ body {
 
   /* Header and Title Styling */
   .header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 40px;
     animation: slideDown 0.8s ease-out;
+    position: relative;
   }
 
   .title-wrapper {

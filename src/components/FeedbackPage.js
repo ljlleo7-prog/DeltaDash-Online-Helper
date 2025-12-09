@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 function FeedbackPage() {
+  const { language } = useContext(LanguageContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,11 +29,16 @@ function FeedbackPage() {
     }, 4000);
   };
 
+  // Helper function to get text based on language
+  const getText = (enText, zhText) => {
+    return language === 'zh' ? zhText : enText;
+  };
+
   const submitFeedback = (method) => {
     const { name, email, type, message } = formData;
 
     if (!name || !email || !message) {
-      showStatus('✗ Please fill in all required fields.', 'error');
+      showStatus(getText('✗ Please fill in all required fields.', '✗ 请填写所有必填字段。'), 'error');
       return;
     }
 
@@ -44,7 +51,7 @@ function FeedbackPage() {
       const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
       
-      showStatus('✓ Opening your email client with the feedback form...', 'success');
+      showStatus(getText('✓ Opening your email client with the feedback form...', '✓ 正在打开您的邮件客户端并填写反馈表单...'), 'success');
     } else if (method === 'online') {
       // Show online email service options
       showEmailServiceModal(subject, body, email);
@@ -64,13 +71,13 @@ function FeedbackPage() {
     const modal = document.createElement('div');
     modal.className = 'email-modal';
     modal.innerHTML = `
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Choose Your Email Service</h3>
-          <button class="modal-close">&times;</button>
+      <div class=\"modal-content\">
+        <div class=\"modal-header\">
+          <h3>${language === 'zh' ? '选择邮件服务' : 'Choose Your Email Service'}</h3>
+          <button class=\"modal-close\">&times;</button>
         </div>
-        <div class="modal-body">
-          <p>Select your preferred email service to send feedback:</p>
+        <div class=\"modal-body\">
+          <p>${language === 'zh' ? '选择您偏好的邮件服务来发送反馈：' : 'Select your preferred email service to send feedback:'}</p>
           <div class="email-options">
             <a href="${gmail}" target="_blank" class="email-option gmail-btn">
               <span class="service-icon">📧</span>
@@ -101,15 +108,15 @@ function FeedbackPage() {
     // Reset form after selection
     setTimeout(() => {
       setFormData({ name: '', email: '', type: 'suggestion', message: '' });
-      showStatus('✓ Feedback window opened. Complete your email and send!', 'success');
+      showStatus(getText('✓ Feedback window opened. Complete your email and send!', '✓ 反馈窗口已打开。请完成您的邮件并发送！'), 'success');
     }, 500);
   };
 
   return (
     <section id="feedback-page" className="page-content">
       <div className="content-box">
-        <h2>Send Your Feedback</h2>
-        <p>We'd love to hear from you! Your feedback helps us improve the assistant.</p>
+        <h2>{getText('Send Your Feedback', '发送反馈')}</h2>
+        <p>{getText('We\'d love to hear from you! Your feedback helps us improve the assistant.', '我们很乐意听取您的意见！您的反馈有助于我们改进助手。')}</p>
         
         <div id="feedbackStatus" className={`feedback-status ${statusClass}`}>
           {status}
@@ -117,12 +124,12 @@ function FeedbackPage() {
         
         <form id="feedbackForm" className="feedback-form">
           <div className="form-group">
-            <label htmlFor="feedbackName">Your Name:</label>
+            <label htmlFor="feedbackName">{getText('Your Name:', '您的姓名：')}</label>
             <input 
               type="text" 
               id="feedbackName" 
               name="name"
-              placeholder="Enter your name" 
+              placeholder={getText('Enter your name', '请输入您的姓名')} 
               className="form-input"
               value={formData.name}
               onChange={handleInputChange}
@@ -130,12 +137,12 @@ function FeedbackPage() {
           </div>
           
           <div className="form-group">
-            <label htmlFor="feedbackEmail">Email Address:</label>
+            <label htmlFor="feedbackEmail">{getText('Email Address:', '邮箱地址：')}</label>
             <input 
               type="email" 
               id="feedbackEmail" 
               name="email"
-              placeholder="Enter your email" 
+              placeholder={getText('Enter your email', '请输入您的邮箱')} 
               className="form-input"
               value={formData.email}
               onChange={handleInputChange}
@@ -143,7 +150,7 @@ function FeedbackPage() {
           </div>
           
           <div className="form-group">
-            <label htmlFor="feedbackType">Feedback Type:</label>
+            <label htmlFor="feedbackType">{getText('Feedback Type:', '反馈类型：')}</label>
             <select 
               id="feedbackType" 
               name="type"
@@ -151,19 +158,19 @@ function FeedbackPage() {
               value={formData.type}
               onChange={handleInputChange}
             >
-              <option value="suggestion">Suggestion</option>
-              <option value="bug">Bug Report</option>
-              <option value="feature">Feature Request</option>
-              <option value="general">General Feedback</option>
+              <option value="suggestion">{getText('Suggestion', '建议')}</option>
+              <option value="bug">{getText('Bug Report', '错误报告')}</option>
+              <option value="feature">{getText('Feature Request', '功能请求')}</option>
+              <option value="general">{getText('General Feedback', '一般反馈')}</option>
             </select>
           </div>
           
           <div className="form-group">
-            <label htmlFor="feedbackMessage">Your Message:</label>
+            <label htmlFor="feedbackMessage">{getText('Your Message:', '您的消息：')}</label>
             <textarea 
               id="feedbackMessage" 
               name="message"
-              placeholder="Share your thoughts..." 
+              placeholder={getText('Share your thoughts...', '分享您的想法...')} 
               className="form-textarea" 
               rows="5"
               value={formData.message}
@@ -178,7 +185,7 @@ function FeedbackPage() {
               className="submit-feedback-btn local-btn"
               onClick={() => submitFeedback('local')}
             >
-              <span className="btn-icon">📧</span> Send via Local Client
+              <span className="btn-icon">📧</span> {getText('Send via Local Client', '通过本地客户端发送')}
             </button>
             <button 
               type="button" 
@@ -186,7 +193,7 @@ function FeedbackPage() {
               className="submit-feedback-btn online-btn"
               onClick={() => submitFeedback('online')}
             >
-              <span className="btn-icon">🌐</span> Send via Outlook/Gmail
+              <span className="btn-icon">🌐</span> {getText('Send via Outlook/Gmail', '通过Outlook/Gmail发送')}
             </button>
           </div>
         </form>
