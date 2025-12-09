@@ -77,14 +77,15 @@ body {
   }
 
   .main-title .delta,
-  .main-title .dash,
-  .main-title .online,
-  .main-title .assistant {
-    color: #fff;
-    background: linear-gradient(90deg, #e53935 0%, #ffb300 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.main-title .dash,
+.main-title .online,
+.main-title .assistant {
+  color: #fff;
+  background: linear-gradient(90deg, #e53935 0%, #ffb300 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Orbitron', 'Racing Sans One', 'Audiowide', sans-serif;
+}
 
   /* Logo inside the main title */
   .site-logo{
@@ -1421,7 +1422,7 @@ body{
 
 #version-page .version-card::before{ content:''; position:absolute; left:18px; top:12px; bottom:12px; width:10px; border-radius:8px; background:linear-gradient(180deg,#555,#222) }
 
-#version-page .version-header h3{ font-family:'Oswald',sans-serif; font-size:20px; color: #fff }
+#version-page .version-header h3{ font-family:'Racing Sans One','Audiowide',sans-serif; font-size:20px; color: #fff; letter-spacing:1px }
 #version-page .release-date{ color: var(--muted); background: rgba(255,255,255,0.02) }
 #version-page .version-brief{ color:#d0d6dd; font-style:italic }
 

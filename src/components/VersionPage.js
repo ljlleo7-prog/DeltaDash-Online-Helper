@@ -11,7 +11,7 @@ function VersionPage() {
 
   const loadVersions = async () => {
     try {
-      const response = await fetch(window.location.origin + '/versions.json', { cache: 'no-store' });
+      const response = await fetch('./versions.json', { cache: 'no-store' });
       if (!response.ok) throw new Error(`Could not load versions.json: ${response.status} ${response.statusText}`);
       const data = await response.json();
       setVersions(Array.isArray(data) ? data : data.versions || []);
