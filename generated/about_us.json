@@ -26,8 +26,10 @@
    
     "contact": {
       "email": "ljl.leo7@gmail.com",
-      "website": "DeltaDashOnline.com",
-      "location": "Global Motorsports Community"
+      "bilibili": {
+        "text": "开飞机的莱科宁",
+        "url": "https://space.bilibili.com/2042750791?spm_id_from=333.1007.0.0"
+      }
     }
   }
 }

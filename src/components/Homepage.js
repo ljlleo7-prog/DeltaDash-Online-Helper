@@ -97,8 +97,9 @@ function HomePage() {
               <h4>Contact Information</h4>
               <div className="contact-info">
                 <p><strong>Email:</strong> {aboutUs.contact.email}</p>
-                <p><strong>Website:</strong> {aboutUs.contact.website}</p>
-                <p><strong>Location:</strong> {aboutUs.contact.location}</p>
+                {aboutUs.contact.bilibili && (
+                  <p><strong>Bilibili:</strong> <a href={aboutUs.contact.bilibili.url} target="_blank" rel="noopener noreferrer" className="contact-link">{aboutUs.contact.bilibili.text}</a></p>
+                )}
               </div>
             </div>
           </div>
