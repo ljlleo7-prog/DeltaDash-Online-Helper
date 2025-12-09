@@ -2,15 +2,27 @@
   "news": [
     {
       "img_src": "assets/beta-on-the-move.jpg",
-      "title": "Delta Dash 3.1 Beta Release On the Move!",
+      "title": {
+        "en": "Delta Dash 3.1 Beta Release On the Move!",
+        "zh": "Delta Dash 3.1 Beta版本即将发布！"
+      },
       "date": "2025-12-04",
-      "content": "After a long long wait, we are finally releasing the beta version of Delta Dash in 2025! This update includes new track layouts, enhanced strategy tools, and entirely refined UI. Get ready for the most exciting F1 boardgame experience yet!"
+      "content": {
+        "en": "After a long long wait, we are finally releasing the beta version of Delta Dash in 2025! This update includes new track layouts, enhanced strategy tools, and entirely refined UI. Get ready for the most exciting F1 boardgame experience yet!",
+        "zh": "经过漫长的等待，我们终于在2025年发布Delta Dash的测试版本！此更新包括新的赛道布局、增强的策略工具和完全改进的用户界面。准备好迎接最激动人心的F1桌游体验吧！"
+      }
     },
     {
       "img_src": "assets/logo.png",
-      "title": "Rebranding - We are now called Delta Dash!",
+      "title": {
+        "en": "Rebranding - We are now called Delta Dash!",
+        "zh": "品牌重塑 - 我们现在叫Delta Dash！"
+      },
       "date": "2025-11-11",
-      "content": "After fans and internal voting, we finally decide to rename the game as 'Delta Dash', representing the calculation of F1 strategies and the thrill of wheel-to-wheel combat!"
+      "content": {
+        "en": "After fans and internal voting, we finally decide to rename the game as 'Delta Dash', representing the calculation of F1 strategies and the thrill of wheel-to-wheel combat!",
+        "zh": "经过粉丝和内部投票，我们最终决定将游戏重命名为'Delta Dash'，代表F1策略的计算和轮对轮战斗的刺激！"
+      }
     }
   ]
 }
