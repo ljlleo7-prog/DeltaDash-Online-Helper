@@ -7,11 +7,11 @@
     "date": "May 1, 2026 (planned)",
     "brief": {
       "en": "First ever release version of Delta Dash!",
-      "zh": "Delta Dash的第一个正式发布版本！"
+      "zh": "Delta Dash的第一个正式版本！"
     },
     "description": {
       "en": "The release version will be named in format 'Year.Structure.Bugfix'. The release version will have even better polished UI than Beta, allowing the public fans to immerse into the game. We are also aware of legal issues, as a publicly published paid version of the game will be subject to copyright laws and may infringe on the intellectual property rights of other motorsports enthusiasts. Therefore, our UI will be redesigned to be more user-friendly and less intrusive, while still maintaining the core gameplay elements.",
-      "zh": "正式版本将采用'年.结构.错误修复'的命名格式。正式版本将拥有比测试版更精美的用户界面，让公众粉丝能够沉浸于游戏中。我们也意识到法律问题，因为公开发布的付费版本将受版权法约束，并可能侵犯其他赛车运动爱好者的知识产权。因此，我们的用户界面将重新设计，使其更加用户友好且不具侵入性，同时仍保持核心游戏玩法元素。"
+      "zh": "正式版本将采用'年.结构.错误修复'的命名格式。正式版本将拥有比测试版更精美的用户界面，让公众粉丝能够沉浸于游戏中。考虑到法律问题，为了不侵犯相关权限，我们将对用户界面进行安全修改，同时保持核心玩法不变。"
     }
   },
   {

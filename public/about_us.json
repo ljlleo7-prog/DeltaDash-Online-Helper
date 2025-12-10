@@ -2,7 +2,7 @@
   "about_us": {
     "company_name": {
       "en": "Geeks Production Studio",
-      "zh": "理工直男开发组"
+      "zh": "Geeks Production Studio"
     },
     "mission": {
       "en": "To revolutionize F1 boardgame through innovative mechanisms to bring out the best of F1 racing characteristics to our passionate fans.",
@@ -17,15 +17,15 @@
         "img_src": "https://www.autoracing1.com/wp-content/uploads/2023/f1/bahraintest/pirellitires.jpg",
         "title": {
           "en": "Most Delicate Strategy Management",
-          "zh": "最精密的策略管理"
+          "zh": "最极致的策略管理"
         },
         "date": {
           "en": "'M-M-H-S' I'm genius!",
-          "zh": "'M-M-H-S' 我是天才！"
+          "zh": "'黄黄白红'也不是不行"
         },
         "content": {
           "en": "Though a boardgame, the strategy management is as sophisticated as the racing event itself but not so regulated. Feel free to press your luck on your own strategies even if they seem insane in real life!",
-          "zh": "虽然是桌游，但策略管理与赛车赛事本身一样复杂，但不受那么多限制。即使策略在现实生活中看起来疯狂，也请随意尝试！"
+          "zh": "虽是桌游，但保留了精细的策略系统，同时也不如现实的那样限制过多，你总是可以尝试最疯狂的策略，出奇制胜！"
         }
       },
       {
@@ -36,11 +36,11 @@
         },
         "date": {
           "en": "'Must be the water'",
-          "zh": "'一定是水的问题'"
+          "zh": "'状态奇佳，大杀四方'"
         },
         "content": {
           "en": "What makes a game fun? The most sophisticated game will not impress our passionate fans as much as a game with the best memes!",
-          "zh": "什么让游戏变得有趣？最复杂的游戏不会像拥有最佳梗图的游戏那样给我们的热情粉丝留下深刻印象！"
+          "zh": "什么样的游戏最有趣？不是制作最精良的游戏，而是最有梗的游戏！"
         }
       },
       {
@@ -51,11 +51,11 @@
         },
         "date": {
           "en": "You can always trust a DLC",
-          "zh": "你总是可以相信DLC"
+          "zh": "遇事不决，外挂解决"
         },
         "content": {
           "en": "Do not ever worry if the game is too simple or not sphisticated enough - our design reserves slot for official AND civil expansions for the game, making it customized to fit the needs of our fans.",
-          "zh": "不用担心游戏太简单或不够复杂 - 我们的设计为官方和民间扩展预留了空间，使其能够根据粉丝的需求进行定制。"
+          "zh": "假如你对现有的游戏不满意，我们还提供大量的官方和民间扩展包增设空间，实现游戏的定制化。"
         }
       }
     ],
