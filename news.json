@@ -1,6 +1,18 @@
 {
   "news": [
     {
+      "img_src": "assets/news106.png",
+      "title": {
+        "en": "BREAKING: NO CHINESE GP TICKETS FOR DEVELOPERS!",
+        "zh": "突发！开发组没搞到上海站门票！"
+      },
+      "date": "2025-12-11",
+      "content": {
+        "en": "It is 11:00 AM when the Chinese GP tickets released. However, the developers did NOT manage to GIT the tickets in time!!! It was such an embarrassing moment for the developers as lots of their classmates ran around celebrating for getting their tickets. We are really sorry for this, and will do the best to participate in Chinese GP in other ways.",
+        "zh": "上午11:00，上海站正式开票！不过...开发组居然没能搞到上海站的一张门票！这真是太尴尬了，开发组不得不在全校车迷们奔走相告时默不作声，不过我们一定会想法子融入上海站的氛围。"
+      }
+    },
+    {
       "img_src": "assets/beta-on-the-move.jpg",
       "title": {
         "en": "Delta Dash 3.1 Beta Release On the Move!",
