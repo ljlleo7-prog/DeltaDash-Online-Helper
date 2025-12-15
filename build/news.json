@@ -1,6 +1,30 @@
 {
   "news": [
     {
+      "img_src": "https://motorcyclesports.net/wp-content/uploads/2025/07/F1-2026.webp",
+      "title": {
+        "en": "About 2026 Season Policy Application",
+        "zh": "关于是否使用26赛季最新进展"
+      },
+      "date": "2025-12-15",
+      "content": {
+        "en": "The developers announce that they will NOT incorporate the latest progress of 2026 season rules and drivers into the BETA 3.1 & 3.2 version. This is because they have scarce development time and they really want to preserve a Chinese driver in the game. However, there is possibility that the 2026 season pack will be included as a DLC after the release of Release 2026.0.",
+        "zh": "开发组宣布，他们将不会在公测版中加入26赛季元素，而是保留已有的24赛季阵容。一方面，开发组为学业所迫没有充足的时间开发新规；另一方面，他们也希望中国的车迷能够享受祖国的骄傲融入游戏中。尽管如此，他们正在考虑在正式版发布后将26新规作为DLC加入游戏。"
+      }
+    },
+    {
+      "img_src": "assets/news106.png",
+      "title": {
+        "en": "BREAKING: NO CHINESE GP TICKETS FOR DEVELOPERS!",
+        "zh": "突发！开发组没搞到上海站门票！"
+      },
+      "date": "2025-12-11",
+      "content": {
+        "en": "It is 11:00 AM when the Chinese GP tickets released. However, the developers did NOT manage to GIT the tickets in time!!! It was such an embarrassing moment for the developers as lots of their classmates ran around celebrating for getting their tickets. We are really sorry for this, and will do the best to participate in Chinese GP in other ways.",
+        "zh": "上午11:00，上海站正式开票！不过...开发组居然没能搞到上海站的一张门票！这真是太尴尬了，开发组不得不在全校车迷们奔走相告时默不作声，不过我们一定会想法子融入上海站的氛围。"
+      }
+    },
+    {
       "img_src": "assets/beta-on-the-move.jpg",
       "title": {
         "en": "Delta Dash 3.1 Beta Release On the Move!",

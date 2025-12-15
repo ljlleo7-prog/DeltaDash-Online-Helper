@@ -85,7 +85,7 @@ function HomePage() {
             </div>
             
             <div className="team-section">
-              <h4>{language === 'zh' ? '特色成员...' : 'Featuring...'}</h4>
+              <h4>{language === 'zh' ? '咱家特色...' : 'Featuring...'}</h4>
               <div className="team-grid">
                 {aboutUs.team.map((member, index) => (
                   <div key={index} className="team-member">
