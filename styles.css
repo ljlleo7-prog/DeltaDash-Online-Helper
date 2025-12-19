@@ -1924,58 +1924,154 @@ body .content-box h2{ color: var(--accent-orange-2) !important }
   opacity: 0.8;
 }
 
-/* Roll Button */
+/* Roll Button - Enhanced Checkered Flag Style */
 .roll-section {
   text-align: center;
-  margin: 30px 0;
+  margin: 40px 0;
+  position: relative;
+}
+
+.roll-section::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 75%, 
+    transparent 100%);
+  border-radius: 50%;
+  filter: blur(10px);
 }
 
 .roll-button {
-  background: linear-gradient(135deg, #e53935, #ffb300);
+  background: linear-gradient(135deg, 
+    #e53935 0%, 
+    #ff6d00 25%, 
+    #ffb300 50%, 
+    #ffd600 75%, 
+    #ffb300 100%);
   color: #111;
   border: none;
-  padding: 15px 40px;
+  padding: 25px 60px;
   font-family: 'Racing Sans One', 'Audiowide', sans-serif;
-  font-size: 18px;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 25px;
+  letter-spacing: 3px;
+  border-radius: 35px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(229, 57, 53, 0.4);
+  box-shadow: 
+    0 0 0 4px rgba(255, 179, 0, 0.3),
+    0 10px 30px rgba(229, 57, 53, 0.6),
+    0 0 50px rgba(255, 179, 0, 0.4);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transform: perspective(500px) rotateX(5deg);
 }
 
+/* Checkered Flag Pattern Overlay */
 .roll-button::before {
   content: '';
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.1) 10px,
+      rgba(255, 255, 255, 0.1) 20px);
+  border-radius: 35px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+/* Animated Racing Stripes */
+.roll-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
   left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
+  width: 300%;
+  height: 200%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 100%);
+  transform: rotate(45deg);
+  animation: racingStripe 3s linear infinite;
+}
+
+@keyframes racingStripe {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 .roll-button:hover::before {
-  left: 100%;
+  opacity: 0.5;
 }
 
 .roll-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(229, 57, 53, 0.6);
+  transform: perspective(500px) rotateX(0deg) translateY(-8px) scale(1.05);
+  box-shadow: 
+    0 0 0 6px rgba(255, 179, 0, 0.5),
+    0 20px 50px rgba(229, 57, 53, 0.8),
+    0 0 80px rgba(255, 179, 0, 0.6);
+  background: linear-gradient(135deg, 
+    #ff1744 0%, 
+    #ff3d00 25%, 
+    #ffab00 50%, 
+    #ffea00 75%, 
+    #ffab00 100%);
+  letter-spacing: 4px;
 }
 
 .roll-button:active {
-  transform: translateY(-1px);
+  transform: perspective(500px) rotateX(5deg) translateY(-2px) scale(0.98);
+  box-shadow: 
+    0 0 0 4px rgba(255, 179, 0, 0.3),
+    0 5px 20px rgba(229, 57, 53, 0.4),
+    0 0 30px rgba(255, 179, 0, 0.3);
 }
 
 .roll-button:disabled {
-  background: #666;
+  background: linear-gradient(135deg, #666, #888);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+  opacity: 0.6;
+}
+
+.roll-button:disabled::after {
+  animation: none;
+}
+
+/* Button Text Glow Effect */
+.roll-button span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.roll-button:hover span {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 179, 0, 0.6),
+    0 0 30px rgba(255, 179, 0, 0.4);
 }
 
 /* Result Display */

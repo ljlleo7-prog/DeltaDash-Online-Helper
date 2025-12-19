@@ -103,10 +103,10 @@
   ],
   "buffPool": [
     {
-      "id": "lightning_start",
+      "id": "cash_saver",
       "name": {
-        "en": "Lightning Start",
-        "zh": "闪电起步"
+        "en": "Cash Saver",
+        "zh": "开源节流"
       },
       "description": {
         "en": "Gains 3 positions on the first lap",
@@ -115,10 +115,10 @@
       "type": "buff"
     },
     {
-      "id": "rain_master",
+      "id": "water_master",
       "name": {
-        "en": "Rain Master",
-        "zh": "雨战大师"
+        "en": "Water Master",
+        "zh": "御雨风行"
       },
       "description": {
         "en": "+15% performance in wet conditions",
@@ -127,10 +127,10 @@
       "type": "buff"
     },
     {
-      "id": "overtake_king",
+      "id": "car_saver",
       "name": {
-        "en": "Overtake King",
-        "zh": "超车之王"
+        "en": "Expert Saver",
+        "zh": "救车有神功"
       },
       "description": {
         "en": "+20% success rate on overtakes",
@@ -139,10 +139,10 @@
       "type": "buff"
     },
     {
-      "id": "tire_management",
+      "id": "penalty_king",
       "name": {
-        "en": "Tire Management",
-        "zh": "轮胎管理专家"
+        "en": "Penalty King",
+        "zh": "耐罚王"
       },
       "description": {
         "en": "Tires last 25% longer",
@@ -151,14 +151,38 @@
       "type": "buff"
     },
     {
-      "id": "qualifying_specialist",
+      "id": "quick_corrector",
       "name": {
-        "en": "Qualifying Specialist",
-        "zh": "排位赛专家"
+        "en": "Quick Corrector",
+        "zh": "知错就改"
       },
       "description": {
         "en": "+0.3s advantage in qualifying",
         "zh": "排位赛中获得0.3秒优势"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "golden_throttle",
+      "name": {
+        "en": "golden_throttle",
+        "zh": "黄金左脚"
+      },
+      "description": {
+        "en": "Tires last 25% longer",
+        "zh": "轮胎寿命延长25%"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "penalty_king",
+      "name": {
+        "en": "Penalty King",
+        "zh": "耐罚王"
+      },
+      "description": {
+        "en": "Tires last 25% longer",
+        "zh": "轮胎寿命延长25%"
       },
       "type": "buff"
     }
