@@ -1,0 +1,314 @@
+{
+  "driverTemplates": [
+    {
+      "id": "rookie",
+      "name": {
+        "en": "Rookie Sensation",
+        "zh": "新秀之星"
+      },
+      "imgSource": "assets/drivers/rookie.jpg",
+      "basicData": {
+        "age": {
+          "en": "Young Talent (18-22)",
+          "zh": "年轻天才 (18-22岁)"
+        },
+        "experience": {
+          "en": "Junior Series Champion",
+          "zh": "初级系列赛冠军"
+        },
+        "nationality": {
+          "en": "Rising Star Nation",
+          "zh": "新星之国"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 3,
+      "debuffSlots": 1
+    },
+    {
+      "id": "veteran",
+      "name": {
+        "en": "Seasoned Veteran",
+        "zh": "经验丰富的老将"
+      },
+      "imgSource": "assets/drivers/veteran.jpg",
+      "basicData": {
+        "age": {
+          "en": "Experienced (30-35)",
+          "zh": "经验丰富 (30-35岁)"
+        },
+        "experience": {
+          "en": "Multiple Championships",
+          "zh": "多次锦标赛冠军"
+        },
+        "nationality": {
+          "en": "Racing Heritage Nation",
+          "zh": "赛车传统之国"
+        }
+      },
+      "buffSlots": 3,
+      "neutralSlots": 2,
+      "debuffSlots": 0
+    },
+    {
+      "id": "aggressive",
+      "name": {
+        "en": "Aggressive Racer",
+        "zh": "激进型车手"
+      },
+      "imgSource": "assets/drivers/aggressive.jpg",
+      "basicData": {
+        "age": {
+          "en": "Prime (25-30)",
+          "zh": "黄金年龄 (25-30岁)"
+        },
+        "experience": {
+          "en": "Known for Overtakes",
+          "zh": "以超车闻名"
+        },
+        "nationality": {
+          "en": "Passionate Racing Nation",
+          "zh": "激情赛车之国"
+        }
+      },
+      "buffSlots": 3,
+      "neutralSlots": 1,
+      "debuffSlots": 2
+    },
+    {
+      "id": "technical",
+      "name": {
+        "en": "Technical Specialist",
+        "zh": "技术专家"
+      },
+      "imgSource": "assets/drivers/technical.jpg",
+      "basicData": {
+        "age": {
+          "en": "Mature (28-33)",
+          "zh": "成熟稳重 (28-33岁)"
+        },
+        "experience": {
+          "en": "Engineering Background",
+          "zh": "工程学背景"
+        },
+        "nationality": {
+          "en": "Precision Nation",
+          "zh": "精密技术之国"
+        }
+      },
+      "buffSlots": 1,
+      "neutralSlots": 4,
+      "debuffSlots": 0
+    }
+  ],
+  "buffPool": [
+    {
+      "id": "cash_saver",
+      "name": {
+        "en": "Cash Saver",
+        "zh": "开源节流"
+      },
+      "description": {
+        "en": "Gains 3 positions on the first lap",
+        "zh": "在第一圈获得3个位置优势"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "water_master",
+      "name": {
+        "en": "Water Master",
+        "zh": "御雨风行"
+      },
+      "description": {
+        "en": "+15% performance in wet conditions",
+        "zh": "在湿滑条件下性能提升15%"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "car_saver",
+      "name": {
+        "en": "Expert Saver",
+        "zh": "救车有神功"
+      },
+      "description": {
+        "en": "+20% success rate on overtakes",
+        "zh": "超车成功率提升20%"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "penalty_king",
+      "name": {
+        "en": "Penalty King",
+        "zh": "耐罚王"
+      },
+      "description": {
+        "en": "Tires last 25% longer",
+        "zh": "轮胎寿命延长25%"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "quick_corrector",
+      "name": {
+        "en": "Quick Corrector",
+        "zh": "知错就改"
+      },
+      "description": {
+        "en": "+0.3s advantage in qualifying",
+        "zh": "排位赛中获得0.3秒优势"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "golden_throttle",
+      "name": {
+        "en": "golden_throttle",
+        "zh": "黄金左脚"
+      },
+      "description": {
+        "en": "Tires last 25% longer",
+        "zh": "轮胎寿命延长25%"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "penalty_king",
+      "name": {
+        "en": "Penalty King",
+        "zh": "耐罚王"
+      },
+      "description": {
+        "en": "Tires last 25% longer",
+        "zh": "轮胎寿命延长25%"
+      },
+      "type": "buff"
+    }
+  ],
+  "neutralPool": [
+    {
+      "id": "team_player",
+      "name": {
+        "en": "Team Player",
+        "zh": "团队合作者"
+      },
+      "description": {
+        "en": "Better communication with team",
+        "zh": "与团队沟通更顺畅"
+      },
+      "type": "neutral"
+    },
+    {
+      "id": "media_friendly",
+      "name": {
+        "en": "Media Friendly",
+        "zh": "媒体友好"
+      },
+      "description": {
+        "en": "Good relationship with press",
+        "zh": "与媒体关系良好"
+      },
+      "type": "neutral"
+    },
+    {
+      "id": "fitness_fanatic",
+      "name": {
+        "en": "Fitness Fanatic",
+        "zh": "健身狂热者"
+      },
+      "description": {
+        "en": "Excellent physical condition",
+        "zh": "身体状态极佳"
+      },
+      "type": "neutral"
+    },
+    {
+      "id": "data_analyst",
+      "name": {
+        "en": "Data Analyst",
+        "zh": "数据分析师"
+      },
+      "description": {
+        "en": "Good at analyzing telemetry data",
+        "zh": "擅长分析遥测数据"
+      },
+      "type": "neutral"
+    },
+    {
+      "id": "consistent_pacer",
+      "name": {
+        "en": "Consistent Pacer",
+        "zh": "稳定节奏者"
+      },
+      "description": {
+        "en": "Maintains consistent lap times",
+        "zh": "保持稳定的圈速"
+      },
+      "type": "neutral"
+    }
+  ],
+  "debuffPool": [
+    {
+      "id": "poor_starter",
+      "name": {
+        "en": "Poor Starter",
+        "zh": "起步不佳"
+      },
+      "description": {
+        "en": "Loses 2 positions on start",
+        "zh": "起步时丢失2个位置"
+      },
+      "type": "debuff"
+    },
+    {
+      "id": "rain_weakness",
+      "name": {
+        "en": "Rain Weakness",
+        "zh": "雨战弱点"
+      },
+      "description": {
+        "en": "-15% performance in wet conditions",
+        "zh": "在湿滑条件下性能下降15%"
+      },
+      "type": "debuff"
+    },
+    {
+      "id": "tire_eater",
+      "name": {
+        "en": "Tire Eater",
+        "zh": "轮胎消耗者"
+      },
+      "description": {
+        "en": "Tires wear 25% faster",
+        "zh": "轮胎磨损加快25%"
+      },
+      "type": "debuff"
+    },
+    {
+      "id": "qualifying_struggle",
+      "name": {
+        "en": "Qualifying Struggle",
+        "zh": "排位赛挣扎"
+      },
+      "description": {
+        "en": "-0.3s disadvantage in qualifying",
+        "zh": "排位赛中处于0.3秒劣势"
+      },
+      "type": "debuff"
+    },
+    {
+      "id": "overtake_risk",
+      "name": {
+        "en": "Overtake Risk",
+        "zh": "超车风险"
+      },
+      "description": {
+        "en": "20% chance of incident when overtaking",
+        "zh": "超车时有20%几率发生事故"
+      },
+      "type": "debuff"
+    }
+  ]
+}

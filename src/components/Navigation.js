@@ -6,7 +6,8 @@ function Navigation({ activePage, setActivePage }) {
     { id: 'about', label: 'About', icon: 'ℹ️' },
     { id: 'version', label: 'Version', icon: '📌' },
     { id: 'strategy', label: 'Strategy', icon: '⚡' },
-    { id: 'feedback', label: 'Feedback', icon: '💭' }
+    { id: 'feedback', label: 'Feedback', icon: '💭' },
+    { id: 'driverroll', label: 'Driver Roll', icon: '🏎️' }
   ];
 
   return (
