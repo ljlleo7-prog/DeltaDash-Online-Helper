@@ -1,6 +1,18 @@
 {
   "news": [
     {
+      "img_src": "assets/christmas.jpg",
+      "title": {
+        "en": "Christmas Gift: Beta Launch on Time!",
+        "zh": "圣诞礼物：公测如期启动！"
+      },
+      "date": "2025-12-25",
+      "content": {
+        "en": "Finally, after a long, long waiting, the first ever public version, DeltaDash 3.1BETA, is released in our group chat! We are all looking forward to the responses of our 20 fellow players, and we hope that they will enjoy the game as much as we do. Merry X-mas!",
+        "zh": "终于，在圣诞前夕，我们有史以来第一个公众版本DeltaDash 3.1BETA正式在群聊中发布！我们十分期待20名玩家的反馈，同时也为能够如期分享我们的成果感到高兴！圣诞节快乐！"
+      }
+    },
+    {
       "img_src": "https://ts3.tc.mm.bing.net/th/id/OIF-C.id3yXJ9jiWl4U4XkCeLwFQ?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
       "title": {
         "en": "About 2026 Season Policy Application",
@@ -34,18 +46,6 @@
       "content": {
         "en": "After a long long wait, we are finally releasing the beta version of Delta Dash in 2025! This update includes new track layouts, enhanced strategy tools, and entirely refined UI. Get ready for the most exciting F1 boardgame experience yet!",
         "zh": "经过漫长的等待，我们终于将在2025年看到DeltaDash的公测！此更新包括新的赛道布局、增强的策略系统和全面升级的用户界面。准备好迎接最激动人心的F1桌游体验吧！"
-      }
-    },
-    {
-      "img_src": "assets/logo.png",
-      "title": {
-        "en": "Rebranding - We are now called Delta Dash!",
-        "zh": "改名了！DeltaDash 分秒必杀！"
-      },
-      "date": "2025-11-11",
-      "content": {
-        "en": "After fans and internal voting, we finally decide to rename the game as 'Delta Dash', representing the calculation of F1 strategies and the thrill of wheel-to-wheel combat!",
-        "zh": "经过粉丝和内部投票，我们最终决定将游戏重命名为'Delta Dash'（分秒必杀），象征F1策略的计算和轮对轮战斗分秒必争。"
       }
     }
   ]
