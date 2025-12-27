@@ -1,16 +1,16 @@
 {
   "gameInfo": {
     "title": {
-      "en": "Delta Dash: Racing Strategy Board Game",
-      "zh": "Delta Dash：赛车策略棋盘游戏"
+      "en": "Delta Dash: Strategic Motprsports Board Game",
+      "zh": "Delta Dash：策略类赛车桌游"
     },
     "subtitle": {
-      "en": "The Ultimate Motorsports Management Experience",
-      "zh": "终极赛车运动管理体验"
+      "en": "The Ultimate Realistic Racing Experience",
+      "zh": "超真实的赛车竞技体验"
     },
     "description": {
-      "en": "Delta Dash is an innovative racing strategy board game that combines team management, driver development, and tactical racing decisions. Players take on the role of team principals, making strategic choices to lead their racing team to victory in a competitive motorsports world.",
-      "zh": "Delta Dash是一款创新的赛车策略棋盘游戏，结合了团队管理、车手发展和战术赛车决策。玩家扮演车队负责人，在竞争激烈的赛车世界中做出战略选择，带领车队走向胜利。"
+      "en": "Delta Dash is the ideal racing strategy board game for fans of Formula series motorsports. It involves tire management, tactic employment, on-track battle, and a variety of unique drivers to create a realistic and competitive racing experience.",
+      "zh": "Delta Dash是方程式车迷的理想策略类桌游。它综合轮胎管理、战术应用、赛场激战以及一系列独一无二的车手，为玩家提供超真实的赛车竞技体验。"
     },
     "releaseDate": {
       "en": "Coming 2026",
@@ -29,8 +29,8 @@
       "zh": "14岁以上"
     },
     "complexity": {
-      "en": "Medium",
-      "zh": "中等难度"
+      "en": "Advanced-Expert",
+      "zh": "进阶车迷-职业车迷"
     }
   },
   "gameComponents": {
@@ -45,8 +45,8 @@
           "zh": "游戏棋盘"
         },
         "description": {
-          "en": "Modular racetrack board with different circuit configurations",
-          "zh": "模块化赛道棋盘，包含不同赛道配置"
+          "en": "Double-sided A1-sized board with different circuit configurations",
+          "zh": "双面A1版图，包含不同赛道配置"
         },
         "quantity": {
           "en": "1",
@@ -59,40 +59,68 @@
           "zh": "车手卡牌"
         },
         "description": {
-          "en": "Unique driver cards with special abilities and attributes",
-          "zh": "独特的车手卡牌，包含特殊能力和属性"
+          "en": "Unique driver card templates for inserting multiple traits",
+          "zh": "独特的车手卡牌模板，可插入不同的技能"
         },
         "quantity": {
-          "en": "24",
-          "zh": "24张"
+          "en": "20",
+          "zh": "20张"
         }
       },
       {
         "name": {
-          "en": "Team Tokens",
-          "zh": "车队标记"
+          "en": "Tire Tokens",
+          "zh": "轮胎标记"
         },
         "description": {
-          "en": "Team-colored tokens representing cars and resources",
-          "zh": "代表赛车和资源的车队颜色标记"
-        },
-        "quantity": {
-          "en": "80",
-          "zh": "80个"
-        }
-      },
-      {
-        "name": {
-          "en": "Strategy Cards",
-          "zh": "策略卡牌"
-        },
-        "description": {
-          "en": "Tactical cards for pit stops, overtakes, and team management",
-          "zh": "用于进站、超车和团队管理的战术卡牌"
+          "en": "Different colored tokens representing different tires",
+          "zh": "不同颜色的标记，代表不同的轮胎"
         },
         "quantity": {
           "en": "60",
-          "zh": "60张"
+          "zh": "60个"
+        }
+      },
+      {
+        "name": {
+          "en": "Flags",
+          "zh": "旗帜"
+        },
+        "description": {
+          "en": "Flags used by the steward to manage the game",
+          "zh": "赛会用来管理游戏的旗帜"
+        },
+        "quantity": {
+          "en": "29",
+          "zh": "29个"
+        }
+      },
+      {
+        "name": {
+          "en": "Tactic Cards",
+          "zh": "战术卡牌"
+        },
+        "description": {
+          "en": "Tactical cards for special movements or tricks",
+          "zh": "用于执行独特行动的战术卡牌"
+        },
+        "quantity": {
+          "en": "40",
+          "zh": "40张"
+        }
+      },
+      {
+        "name": {
+          "en": "Action Cards",
+          "zh": "行动卡牌"
+        },
+        "description": {
+          "en": "Action cards for managing driving bias and combat",
+          "zh": "用于管理驾驶偏好与缠斗的卡牌"
+        },
+        "quantity": {
+          "en": "68",
+          "zh": "68张"
         }
       },
       {
@@ -105,8 +133,8 @@
           "zh": "用于赛车行动和资源追踪的定制骰子"
         },
         "quantity": {
-          "en": "6 dice, 20 counters",
-          "zh": "6个骰子，20个计数器"
+          "en": "1 dice, 43 counters",
+          "zh": "1个骰子，43个计数器"
         }
       }
     ]
@@ -119,25 +147,25 @@
     "features": [
       {
         "title": {
-          "en": "Dynamic Racing",
-          "zh": "动态赛车"
+          "en": "Unique Mechanism",
+          "zh": "独特的游戏机制"
         },
         "description": {
-          "en": "Real-time racing mechanics with position changes and overtakes",
-          "zh": "具有位置变化和超车功能的实时赛车机制"
+          "en": "Using relative position (or Delta) to manage combat and strategy",
+          "zh": "使用相对位置（或Delta）来管理战斗和策略"
         },
         "icon": "🏎️"
       },
       {
         "title": {
-          "en": "Team Management",
-          "zh": "团队管理"
+          "en": "Resource Management",
+          "zh": "资源管理"
         },
         "description": {
-          "en": "Recruit drivers, manage budgets, and develop team strategies",
-          "zh": "招募车手、管理预算并制定团队策略"
+          "en": "Manage fuel, tire, and concentration to optimize racing performance",
+          "zh": "管理燃油、轮胎和专注度以优化赛车性能"
         },
-        "icon": "👥"
+        "icon": "⛽️"
       },
       {
         "title": {
@@ -145,8 +173,8 @@
           "zh": "战术决策"
         },
         "description": {
-          "en": "Make critical pit stop, tire, and fuel strategy choices",
-          "zh": "做出关键的进站、轮胎和燃油策略选择"
+          "en": "Make critical movements - focus on your own pace or knock out your opponents?",
+          "zh": "做出关键动作：安分守己还是重拳出击？"
         },
         "icon": "🎯"
       },
@@ -163,14 +191,14 @@
       },
       {
         "title": {
-          "en": "Championship Mode",
-          "zh": "锦标赛模式"
+          "en": "Top Surprises",
+          "zh": "顶级彩蛋"
         },
         "description": {
-          "en": "Compete in multi-race championships with evolving storylines",
-          "zh": "在具有发展故事线的多场比赛锦标赛中竞争"
+          "en": "Hidden humor that add a touch of fun to the game",
+          "zh": "隐藏的幽默，为游戏增添乐趣"
         },
-        "icon": "🏆"
+        "icon": "🌟"
       }
     ]
   },
@@ -182,22 +210,22 @@
     "sections": [
       {
         "title": {
-          "en": "Race Weekend Structure",
-          "zh": "比赛周末结构"
+          "en": "Single Race Event",
+          "zh": "一跑定胜负"
         },
         "content": {
-          "en": "Each race weekend consists of Practice, Qualifying, and Race sessions. Players make strategic decisions at each stage to optimize their chances of victory.",
-          "zh": "每个比赛周末包括练习赛、排位赛和正赛。玩家在每个阶段做出战略决策，以优化获胜机会。"
+          "en": "In the basic version, the game is one multi-lap race event. Players race against each other while managing their resources and cards, with the winner being the one with least Delta (or time difference).",
+          "zh": "在基本版本中，游戏是一场多圈争夺。玩家之间激烈缠斗，同时管理资源和卡牌，Delta（或时间差）最小的玩家为胜者。"
         }
       },
       {
         "title": {
-          "en": "Driver Development",
-          "zh": "车手发展"
+          "en": "Delta Mechanism",
+          "zh": "Delta机制"
         },
         "content": {
-          "en": "Drivers gain experience and improve their skills throughout the season. Manage their development to create the perfect racing team.",
-          "zh": "车手在整个赛季中积累经验并提高技能。管理他们的发展，打造完美的赛车队。"
+          "en": "Each round is one lap, simulating the results of one's tactics in the form of Delta (or time difference).",
+          "zh": "每轮即一圈，模拟玩家策略的结果（或时间差），以合理的游戏节奏给玩家以竞争的体验。"
         }
       },
       {
@@ -206,8 +234,8 @@
           "zh": "资源管理"
         },
         "content": {
-          "en": "Balance budget, research & development, and team resources to stay competitive throughout the championship.",
-          "zh": "平衡预算、研发和团队资源，在整个锦标赛期间保持竞争力。"
+          "en": "Optimize speed through careful management of fuel, tire, concentration, and cards.",
+          "zh": "通过细心管理燃油、轮胎、专注度和卡牌，优化赛车速度一举夺魁。"
         }
       }
     ]
@@ -221,7 +249,7 @@
       {
         "name": {
           "en": "Game Design Lead",
-          "zh": "游戏设计负责人"
+          "zh": "游戏设计组长"
         },
         "role": {
           "en": "Mechanics & Strategy",
@@ -230,8 +258,8 @@
       },
       {
         "name": {
-          "en": "Art Director",
-          "zh": "艺术总监"
+          "en": "Art Director (not yet employed)",
+          "zh": "艺术总监（暂未招聘）"
         },
         "role": {
           "en": "Visual Design & Components",
@@ -244,8 +272,8 @@
           "zh": "规则专家"
         },
         "role": {
-          "en": "Game Balance & Testing",
-          "zh": "游戏平衡与测试"
+          "en": "Rule Book Review & Testing",
+          "zh": "规则复核与测试"
         }
       }
     ]
