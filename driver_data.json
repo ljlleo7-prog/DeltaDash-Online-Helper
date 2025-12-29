@@ -459,10 +459,10 @@
       "type": "buff"
     },
     {
-      "id": "penalty_king",
+      "id": "tire_conservation",
       "name": {
-        "en": "Penalty King",
-        "zh": "耐罚王"
+        "en": "Tire Conservation",
+        "zh": "轮胎保护专家"
       },
       "description": {
         "en": "Tires last 25% longer",
@@ -485,24 +485,36 @@
     {
       "id": "golden_throttle",
       "name": {
-        "en": "golden_throttle",
+        "en": "Golden Throttle",
         "zh": "黄金左脚"
       },
       "description": {
-        "en": "Tires last 25% longer",
-        "zh": "轮胎寿命延长25%"
+        "en": "+10% fuel efficiency",
+        "zh": "燃油效率提升10%"
       },
       "type": "buff"
     },
     {
-      "id": "penalty_king",
+      "id": "defensive_master",
       "name": {
-        "en": "Penalty King",
-        "zh": "耐罚王"
+        "en": "Defensive Master",
+        "zh": "防守大师"
       },
       "description": {
-        "en": "Tires last 25% longer",
-        "zh": "轮胎寿命延长25%"
+        "en": "+25% success rate when defending position",
+        "zh": "防守位置时成功率提升25%"
+      },
+      "type": "buff"
+    },
+    {
+      "id": "start_line_expert",
+      "name": {
+        "en": "Start Line Expert",
+        "zh": "起步专家"
+      },
+      "description": {
+        "en": "Gains 2 positions on race start",
+        "zh": "比赛起步时获得2个位置优势"
       },
       "type": "buff"
     }
