@@ -314,3 +314,28 @@
       0 0 60px rgba(255, 179, 0, 0.7);
   }
 }
+
+/* Driver Description Styling */
+.driver-description {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  color: #d0d6dd;
+  font-style: italic;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-left: 3px solid #ffb300;
+  background: rgba(255, 179, 0, 0.05);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.4;
+}
+
+.driver-type {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  color: #ffb300;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
