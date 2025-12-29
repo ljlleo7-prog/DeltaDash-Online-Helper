@@ -1,24 +1,20 @@
 {
   "driverTemplates": [
     {
-      "id": "rookie",
+      "id": "driver1",
       "name": {
-        "en": "Rookie Sensation",
-        "zh": "新秀之星"
+        "en": "Driver 1",
+        "zh": "驾驶员 1"
       },
-      "imgSource": "assets/drivers/rookie.jpg",
+      "imgSource": "assets/drivers/driver1.jpg",
       "basicData": {
         "age": {
-          "en": "Young Talent (18-22)",
-          "zh": "年轻天才 (18-22岁)"
+          "en": "Age: 22-28",
+          "zh": "年龄: 22-28岁"
         },
         "experience": {
-          "en": "Junior Series Champion",
-          "zh": "初级系列赛冠军"
-        },
-        "nationality": {
-          "en": "Rising Star Nation",
-          "zh": "新星之国"
+          "en": "Rookie Talent",
+          "zh": "新秀天才"
         }
       },
       "buffSlots": 2,
@@ -26,24 +22,20 @@
       "debuffSlots": 1
     },
     {
-      "id": "veteran",
+      "id": "driver2",
       "name": {
-        "en": "Seasoned Veteran",
-        "zh": "经验丰富的老将"
+        "en": "Driver 2",
+        "zh": "驾驶员 2"
       },
-      "imgSource": "assets/drivers/veteran.jpg",
+      "imgSource": "assets/drivers/driver2.jpg",
       "basicData": {
         "age": {
-          "en": "Experienced (30-35)",
-          "zh": "经验丰富 (30-35岁)"
+          "en": "Age: 25-30",
+          "zh": "年龄: 25-30岁"
         },
         "experience": {
-          "en": "Multiple Championships",
-          "zh": "多次锦标赛冠军"
-        },
-        "nationality": {
-          "en": "Racing Heritage Nation",
-          "zh": "赛车传统之国"
+          "en": "Developing Racer",
+          "zh": "成长型车手"
         }
       },
       "buffSlots": 3,
@@ -51,24 +43,20 @@
       "debuffSlots": 0
     },
     {
-      "id": "aggressive",
+      "id": "driver3",
       "name": {
-        "en": "Aggressive Racer",
-        "zh": "激进型车手"
+        "en": "Driver 3",
+        "zh": "驾驶员 3"
       },
-      "imgSource": "assets/drivers/aggressive.jpg",
+      "imgSource": "assets/drivers/driver3.jpg",
       "basicData": {
         "age": {
-          "en": "Prime (25-30)",
-          "zh": "黄金年龄 (25-30岁)"
+          "en": "Age: 28-32",
+          "zh": "年龄: 28-32岁"
         },
         "experience": {
-          "en": "Known for Overtakes",
-          "zh": "以超车闻名"
-        },
-        "nationality": {
-          "en": "Passionate Racing Nation",
-          "zh": "激情赛车之国"
+          "en": "Consistent Performer",
+          "zh": "稳定型选手"
         }
       },
       "buffSlots": 3,
@@ -76,29 +64,361 @@
       "debuffSlots": 2
     },
     {
-      "id": "technical",
+      "id": "driver4",
       "name": {
-        "en": "Technical Specialist",
-        "zh": "技术专家"
+        "en": "Driver 4",
+        "zh": "驾驶员 4"
       },
-      "imgSource": "assets/drivers/technical.jpg",
+      "imgSource": "assets/drivers/driver4.jpg",
       "basicData": {
         "age": {
-          "en": "Mature (28-33)",
-          "zh": "成熟稳重 (28-33岁)"
+          "en": "Age: 30-35",
+          "zh": "年龄: 30-35岁"
         },
         "experience": {
-          "en": "Engineering Background",
-          "zh": "工程学背景"
-        },
-        "nationality": {
-          "en": "Precision Nation",
-          "zh": "精密技术之国"
+          "en": "Technical Specialist",
+          "zh": "技术专家"
         }
       },
       "buffSlots": 1,
       "neutralSlots": 4,
       "debuffSlots": 0
+    },
+    {
+      "id": "driver5",
+      "name": {
+        "en": "Driver 5",
+        "zh": "驾驶员 5"
+      },
+      "imgSource": "assets/drivers/driver5.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 26-31",
+          "zh": "年龄: 26-31岁"
+        },
+        "experience": {
+          "en": "Aggressive Racer",
+          "zh": "激进型车手"
+        }
+      },
+      "buffSlots": 4,
+      "neutralSlots": 1,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver6",
+      "name": {
+        "en": "Driver 6",
+        "zh": "驾驶员 6"
+      },
+      "imgSource": "assets/drivers/driver6.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 24-29",
+          "zh": "年龄: 24-29岁"
+        },
+        "experience": {
+          "en": "Strategic Thinker",
+          "zh": "策略型思考者"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 2,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver7",
+      "name": {
+        "en": "Driver 7",
+        "zh": "驾驶员 7"
+      },
+      "imgSource": "assets/drivers/driver7.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 27-33",
+          "zh": "年龄: 27-33岁"
+        },
+        "experience": {
+          "en": "Endurance Expert",
+          "zh": "耐力专家"
+        }
+      },
+      "buffSlots": 1,
+      "neutralSlots": 3,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver8",
+      "name": {
+        "en": "Driver 8",
+        "zh": "驾驶员 8"
+      },
+      "imgSource": "assets/drivers/driver8.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 29-34",
+          "zh": "年龄: 29-34岁"
+        },
+        "experience": {
+          "en": "Wet Weather Specialist",
+          "zh": "雨战专家"
+        }
+      },
+      "buffSlots": 3,
+      "neutralSlots": 2,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver9",
+      "name": {
+        "en": "Driver 9",
+        "zh": "驾驶员 9"
+      },
+      "imgSource": "assets/drivers/driver9.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 23-28",
+          "zh": "年龄: 23-28岁"
+        },
+        "experience": {
+          "en": "Qualifying Specialist",
+          "zh": "排位赛专家"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 2,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver10",
+      "name": {
+        "en": "Driver 10",
+        "zh": "驾驶员 10"
+      },
+      "imgSource": "assets/drivers/driver10.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 31-36",
+          "zh": "年龄: 31-36岁"
+        },
+        "experience": {
+          "en": "Veteran Leader",
+          "zh": "资深领袖"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 3,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver11",
+      "name": {
+        "en": "Driver 11",
+        "zh": "驾驶员 11"
+      },
+      "imgSource": "assets/drivers/driver11.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 25-30",
+          "zh": "年龄: 25-30岁"
+        },
+        "experience": {
+          "en": "Overtaking Master",
+          "zh": "超车大师"
+        }
+      },
+      "buffSlots": 3,
+      "neutralSlots": 1,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver12",
+      "name": {
+        "en": "Driver 12",
+        "zh": "驾驶员 12"
+      },
+      "imgSource": "assets/drivers/driver12.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 28-33",
+          "zh": "年龄: 28-33岁"
+        },
+        "experience": {
+          "en": "Defensive Expert",
+          "zh": "防守专家"
+        }
+      },
+      "buffSlots": 1,
+      "neutralSlots": 4,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver13",
+      "name": {
+        "en": "Driver 13",
+        "zh": "驾驶员 13"
+      },
+      "imgSource": "assets/drivers/driver13.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 26-31",
+          "zh": "年龄: 26-31岁"
+        },
+        "experience": {
+          "en": "Tire Management Pro",
+          "zh": "轮胎管理专家"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 2,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver14",
+      "name": {
+        "en": "Driver 14",
+        "zh": "驾驶员 14"
+      },
+      "imgSource": "assets/drivers/driver14.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 24-29",
+          "zh": "年龄: 24-29岁"
+        },
+        "experience": {
+          "en": "Fuel Efficiency Expert",
+          "zh": "燃油效率专家"
+        }
+      },
+      "buffSlots": 3,
+      "neutralSlots": 2,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver15",
+      "name": {
+        "en": "Driver 15",
+        "zh": "驾驶员 15"
+      },
+      "imgSource": "assets/drivers/driver15.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 30-35",
+          "zh": "年龄: 30-35岁"
+        },
+        "experience": {
+          "en": "Race Strategy Master",
+          "zh": "比赛策略大师"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 3,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver16",
+      "name": {
+        "en": "Driver 16",
+        "zh": "驾驶员 16"
+      },
+      "imgSource": "assets/drivers/driver16.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 27-32",
+          "zh": "年龄: 27-32岁"
+        },
+        "experience": {
+          "en": "Safety Car Expert",
+          "zh": "安全车专家"
+        }
+      },
+      "buffSlots": 1,
+      "neutralSlots": 3,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver17",
+      "name": {
+        "en": "Driver 17",
+        "zh": "驾驶员 17"
+      },
+      "imgSource": "assets/drivers/driver17.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 25-30",
+          "zh": "年龄: 25-30岁"
+        },
+        "experience": {
+          "en": "Pit Stop Specialist",
+          "zh": "进站专家"
+        }
+      },
+      "buffSlots": 3,
+      "neutralSlots": 1,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver18",
+      "name": {
+        "en": "Driver 18",
+        "zh": "驾驶员 18"
+      },
+      "imgSource": "assets/drivers/driver18.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 29-34",
+          "zh": "年龄: 29-34岁"
+        },
+        "experience": {
+          "en": "Start Line Expert",
+          "zh": "起步专家"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 2,
+      "debuffSlots": 2
+    },
+    {
+      "id": "driver19",
+      "name": {
+        "en": "Driver 19",
+        "zh": "驾驶员 19"
+      },
+      "imgSource": "assets/drivers/driver19.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 26-31",
+          "zh": "年龄: 26-31岁"
+        },
+        "experience": {
+          "en": "Overtaking Specialist",
+          "zh": "超车专家"
+        }
+      },
+      "buffSlots": 4,
+      "neutralSlots": 1,
+      "debuffSlots": 1
+    },
+    {
+      "id": "driver20",
+      "name": {
+        "en": "Driver 20",
+        "zh": "驾驶员 20"
+      },
+      "imgSource": "assets/drivers/driver20.jpg",
+      "basicData": {
+        "age": {
+          "en": "Age: 28-33",
+          "zh": "年龄: 28-33岁"
+        },
+        "experience": {
+          "en": "All-Round Performer",
+          "zh": "全能型选手"
+        }
+      },
+      "buffSlots": 2,
+      "neutralSlots": 3,
+      "debuffSlots": 1
     }
   ],
   "buffPool": [
