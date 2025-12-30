@@ -277,21 +277,27 @@ function StrategyPage() {
       
       if (!stintData) return;
 
-      const wearRate = parseFloat(stintData.wear_rate_per_lap);
-      const baseDelta = parseFloat(stintData.base_delta) || 0;
+      const baseWearRate = parseFloat(stintData.wear_rate_per_lap);
       const boxLap = Math.min(parseInt(stint.boxLap), totalLaps);
       const stintLaps = stintIndex === stints.length - 1 ? 
         totalLaps - currentLap + 1 : 
         boxLap - currentLap + 1;
 
+      // Calculate push/conserve effect per lap based on stint length
+      const pushPerLap = stint.pushConserve / stintLaps; // Divide push by stint length
+      const wearRateMultiplier = 1 + (pushPerLap * 0.5); // +5% wear per 0.1 push
+      const timeModifierPerLap = -pushPerLap * 1.5; // -0.15s per lap per 0.1 push
+
       for (let lap = 1; lap <= stintLaps && currentLap <= totalLaps; lap++, currentLap++) {
-        const degradation = Math.min(lap * wearRate, 100);
+        // Apply push/conserve wear rate multiplier
+        const adjustedWearRate = baseWearRate * wearRateMultiplier;
+        
+        const degradation = Math.min(lap * adjustedWearRate, 100);
         const degradationKey = `degradation_${Math.floor(degradation / 10) * 10}`;
         const degradationDelta = parseFloat(stintData[degradationKey]);
         
-        // Apply base delta and push/conserve modifier
-        const modifier = stint.pushConserve * 0.1; // Each +1 adds 0.1s, each -1 subtracts 0.1s
-        const lapDelta = baseDelta + degradationDelta + modifier;
+        // Apply push/conserve time modifier per lap
+        const lapDelta = degradationDelta + timeModifierPerLap;
         
         cumulativeDelta += lapDelta;
         
@@ -515,7 +521,7 @@ function StrategyPage() {
                   <span>Delta</span>
                   <span>Cumulative</span>
                 </div>
-                {lapTimes.slice(-20).map((lapData) => (
+                {lapTimes.slice(0, 20).map((lapData) => (
                   <div key={lapData.lap} className="lap-row">
                     <span>{lapData.lap}</span>
                     <span>{lapData.stint}</span>
