@@ -31,31 +31,120 @@ function StrategyPage() {
   const [stints, setStints] = useState([]);
   const [lapTimes, setLapTimes] = useState([]);
   const [totalDelta, setTotalDelta] = useState(0);
+  const [circuits, setCircuits] = useState([]);
+  const [tireTypes, setTireTypes] = useState([]);
+
+  // List of possible CSV file paths for different build environments
+  const csvPaths = [
+    '/tire_degradation_data.csv',                    // Production build (served from public/)
+    './tire_degradation_data.csv',                   // Relative path in development
+    '../public/tire_degradation_data.csv',           // Relative to src/components
+    '../../public/tire_degradation_data.csv',        // Relative to src/components
+    '/public/tire_degradation_data.csv',             // Absolute path in development
+    '/build/tire_degradation_data.csv',              // Build directory
+    '/generated/tire_degradation_data.csv',          // Generated directory
+    'tire_degradation_data.csv'                      // Same directory (fallback)
+  ];
+
+  // Function to try loading CSV from multiple paths
+  const loadCSVData = async () => {
+    for (const path of csvPaths) {
+      try {
+        console.log(`Trying to load CSV from: ${path}`);
+        const response = await fetch(path);
+        
+        if (!response.ok) {
+          console.log(`Path ${path} not found, trying next path...`);
+          continue;
+        }
+        
+        const csvText = await response.text();
+        
+        return new Promise((resolve, reject) => {
+          Papa.parse(csvText, {
+            header: true,
+            complete: (result) => {
+              console.log(`CSV loaded successfully from: ${path}`);
+              console.log('CSV parsed successfully:', result.data);
+              setCircuitData(result.data);
+              
+              // Extract unique circuits
+              const uniqueCircuits = [...new Set(result.data.map(item => item.circuit))].filter(Boolean);
+              setCircuits(uniqueCircuits);
+              
+              if (uniqueCircuits.length > 0) {
+                const firstCircuit = uniqueCircuits[0];
+                setSelectedCircuit(firstCircuit);
+                
+                // Extract tire types for the selected circuit
+                const circuitTireTypes = [...new Set(result.data
+                  .filter(item => item.circuit === firstCircuit)
+                  .map(item => item.tire_type))].filter(Boolean);
+                setTireTypes(circuitTireTypes);
+              }
+              resolve(result.data);
+            },
+            error: (error) => {
+              console.error(`Error parsing CSV from ${path}:`, error);
+              reject(error);
+            }
+          });
+        });
+        
+      } catch (error) {
+        console.log(`Failed to load from ${path}:`, error.message);
+        // Continue to next path
+      }
+    }
+    
+    // If all paths fail, use fallback data
+    throw new Error('All CSV paths failed, using fallback data');
+  };
 
   // Load CSV data on component mount
   useEffect(() => {
-    fetch('/tire_degradation_data.csv')
-      .then(response => response.text())
-      .then(csvText => {
-        Papa.parse(csvText, {
-          header: true,
-          complete: (result) => {
-            setCircuitData(result.data);
-            if (result.data.length > 0) {
-              setSelectedCircuit(result.data[0].circuit);
-            }
-          }
-        });
+    loadCSVData()
+      .catch(error => {
+        console.error('Error loading CSV data:', error);
+        // Set up default circuits and tires if CSV fails to load
+        console.log('Using fallback data...');
+        const fallbackData = [
+          { circuit: 'Monaco', total_laps: '78', tire_type: 'Soft', wear_rate_per_lap: '1.8', degradation_0: '0.0', degradation_10: '0.2', degradation_20: '0.5', degradation_30: '0.9', degradation_40: '1.4', degradation_50: '2.0', degradation_60: '2.7', degradation_70: '3.5', degradation_80: '4.4', degradation_90: '5.4', degradation_100: '6.5' },
+          { circuit: 'Monaco', total_laps: '78', tire_type: 'Medium', wear_rate_per_lap: '1.2', degradation_0: '0.0', degradation_10: '0.1', degradation_20: '0.3', degradation_30: '0.6', degradation_40: '1.0', degradation_50: '1.5', degradation_60: '2.1', degradation_70: '2.8', degradation_80: '3.6', degradation_90: '4.5', degradation_100: '5.5' },
+          { circuit: 'Monaco', total_laps: '78', tire_type: 'Hard', wear_rate_per_lap: '0.8', degradation_0: '0.0', degradation_10: '0.0', degradation_20: '0.1', degradation_30: '0.3', degradation_40: '0.6', degradation_50: '1.0', degradation_60: '1.5', degradation_70: '2.1', degradation_80: '2.8', degradation_90: '3.6', degradation_100: '4.5' },
+          { circuit: 'Silverstone', total_laps: '52', tire_type: 'Soft', wear_rate_per_lap: '2.1', degradation_0: '0.0', degradation_10: '0.3', degradation_20: '0.7', degradation_30: '1.2', degradation_40: '1.8', degradation_50: '2.5', degradation_60: '3.3', degradation_70: '4.2', degradation_80: '5.2', degradation_90: '6.3', degradation_100: '7.5' },
+          { circuit: 'Silverstone', total_laps: '52', tire_type: 'Medium', wear_rate_per_lap: '1.5', degradation_0: '0.0', degradation_10: '0.2', degradation_20: '0.5', degradation_30: '0.9', degradation_40: '1.4', degradation_50: '2.0', degradation_60: '2.7', degradation_70: '3.5', degradation_80: '4.4', degradation_90: '5.4', degradation_100: '6.5' },
+          { circuit: 'Silverstone', total_laps: '52', tire_type: 'Hard', wear_rate_per_lap: '1.0', degradation_0: '0.0', degradation_10: '0.1', degradation_20: '0.3', degradation_30: '0.6', degradation_40: '1.0', degradation_50: '1.5', degradation_60: '2.1', degradation_70: '2.8', degradation_80: '3.6', degradation_90: '4.5', degradation_100: '5.5' }
+        ];
+        setCircuitData(fallbackData);
+        
+        const fallbackCircuits = ['Monaco', 'Silverstone'];
+        setCircuits(fallbackCircuits);
+        setSelectedCircuit('Monaco');
+        setTireTypes(['Soft', 'Medium', 'Hard']);
       });
   }, []);
 
-  // Get unique circuits
-  const circuits = [...new Set(circuitData.map(item => item.circuit))];
+  // Update tire types when selected circuit changes
+  useEffect(() => {
+    if (selectedCircuit && circuitData.length > 0) {
+      const circuitTireTypes = [...new Set(circuitData
+        .filter(item => item.circuit === selectedCircuit)
+        .map(item => item.tire_type))].filter(Boolean);
+      setTireTypes(circuitTireTypes);
+      
+      console.log('Selected Circuit:', selectedCircuit);
+      console.log('Tire Types for selected circuit:', circuitTireTypes);
+    }
+  }, [selectedCircuit, circuitData]);
 
-  // Get tire types for selected circuit
-  const tireTypes = [...new Set(circuitData
-    .filter(item => item.circuit === selectedCircuit)
-    .map(item => item.tire_type))];
+  // Debug logging
+  useEffect(() => {
+    console.log('Circuit Data:', circuitData);
+    console.log('Circuits:', circuits);
+    console.log('Selected Circuit:', selectedCircuit);
+    console.log('Tire Types:', tireTypes);
+  }, [circuitData, circuits, selectedCircuit, tireTypes]);
 
   // Add new stint
   const addStint = () => {
@@ -67,6 +156,19 @@ function StrategyPage() {
     };
     setStints([...stints, newStint]);
   };
+
+  // Initialize with one stint when circuit is selected
+  useEffect(() => {
+    if (selectedCircuit && tireTypes.length > 0 && stints.length === 0) {
+      const initialStint = {
+        id: Date.now(),
+        tire: tireTypes[0],
+        pushConserve: 0,
+        boxLap: 1
+      };
+      setStints([initialStint]);
+    }
+  }, [selectedCircuit, tireTypes]);
 
   // Remove stint
   const removeStint = (id) => {
@@ -224,6 +326,7 @@ function StrategyPage() {
             onChange={(e) => setSelectedCircuit(e.target.value)}
             className="circuit-selector"
           >
+            <option value="">Select a circuit...</option>
             {circuits.map(circuit => (
               <option key={circuit} value={circuit}>{circuit}</option>
             ))}
@@ -258,6 +361,7 @@ function StrategyPage() {
                       onChange={(e) => updateStint(stint.id, 'tire', e.target.value)}
                       className="stint-tire-selector"
                     >
+                      <option value="">Select tire type...</option>
                       {tireTypes.map(tire => (
                         <option key={tire} value={tire}>{tire}</option>
                       ))}
