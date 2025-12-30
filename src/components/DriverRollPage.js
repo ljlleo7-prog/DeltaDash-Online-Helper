@@ -6,6 +6,7 @@ function DriverRollPage() {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [rolledDriver, setRolledDriver] = useState(null);
   const [isRolling, setIsRolling] = useState(false);
+  const [isRollingTemplate, setIsRollingTemplate] = useState(false);
   const { language } = useContext(LanguageContext);
 
   // Helper function to get text based on language
@@ -35,6 +36,20 @@ function DriverRollPage() {
     setRolledDriver(null);
   };
 
+  const rollTemplate = () => {
+    if (!driverData || driverData.driverTemplates.length === 0) return;
+    
+    setIsRollingTemplate(true);
+    
+    // Simulate template rolling animation
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * driverData.driverTemplates.length);
+      const randomTemplate = driverData.driverTemplates[randomIndex];
+      setSelectedTemplate(randomTemplate);
+      setIsRollingTemplate(false);
+    }, 1000);
+  };
+
   const rollDriver = () => {
     if (!selectedTemplate || !driverData) return;
     
@@ -49,23 +64,28 @@ function DriverRollPage() {
         debuffs: []
       };
 
-      // Roll buffs
-      for (let i = 0; i < selectedTemplate.buffSlots; i++) {
-        const randomBuff = driverData.buffPool[Math.floor(Math.random() * driverData.buffPool.length)];
-        rolledDriver.buffs.push(randomBuff);
-      }
+      // Helper function to get unique traits from a pool
+      const getUniqueTraits = (pool, count) => {
+        const availableTraits = [...pool]; // Create a copy to avoid modifying original
+        const selectedTraits = [];
+        
+        for (let i = 0; i < count && availableTraits.length > 0; i++) {
+          const randomIndex = Math.floor(Math.random() * availableTraits.length);
+          const selectedTrait = availableTraits.splice(randomIndex, 1)[0];
+          selectedTraits.push(selectedTrait);
+        }
+        
+        return selectedTraits;
+      };
 
-      // Roll neutrals
-      for (let i = 0; i < selectedTemplate.neutralSlots; i++) {
-        const randomNeutral = driverData.neutralPool[Math.floor(Math.random() * driverData.neutralPool.length)];
-        rolledDriver.neutrals.push(randomNeutral);
-      }
+      // Roll buffs (no duplicates)
+      rolledDriver.buffs = getUniqueTraits(driverData.buffPool, selectedTemplate.buffSlots);
 
-      // Roll debuffs
-      for (let i = 0; i < selectedTemplate.debuffSlots; i++) {
-        const randomDebuff = driverData.debuffPool[Math.floor(Math.random() * driverData.debuffPool.length)];
-        rolledDriver.debuffs.push(randomDebuff);
-      }
+      // Roll neutrals (no duplicates)
+      rolledDriver.neutrals = getUniqueTraits(driverData.neutralPool, selectedTemplate.neutralSlots);
+
+      // Roll debuffs (no duplicates)
+      rolledDriver.debuffs = getUniqueTraits(driverData.debuffPool, selectedTemplate.debuffSlots);
 
       setRolledDriver(rolledDriver);
       setIsRolling(false);
@@ -80,19 +100,51 @@ function DriverRollPage() {
   if (!driverData) {
     return (
       <section id="driver-roll-page" className="page-content">
-        <h2>{language === 'zh' ? '驾驶员抽取' : 'Driver Roll'}</h2>
-        <p>{language === 'zh' ? '加载数据中...' : 'Loading data...'}</p>
+        <h2 className="page-title">{language === 'zh' ? '驾驶员抽取' : 'Driver Roll'}</h2>
+        <p className="loading-text">{language === 'zh' ? '加载数据中...' : 'Loading data...'}</p>
       </section>
     );
   }
 
   return (
     <section id="driver-roll-page" className="page-content">
-      <h2>{language === 'zh' ? '驾驶员抽取' : 'Driver Roll'}</h2>
+      <h2 className="page-title">{language === 'zh' ? '驾驶员抽取' : 'Driver Roll'}</h2>
       
       {!selectedTemplate ? (
         <div className="template-selection">
-          <h3>{language === 'zh' ? '选择驾驶员模板' : 'Select Driver Template'}</h3>
+          <h3 className="section-title">{language === 'zh' ? '选择驾驶员模板' : 'Select Driver Template'}</h3>
+          
+          {/* Template Roll Interface */}
+          <div className="template-roll-section">
+            <div className="roll-description">
+              <p>{language === 'zh' ? '随机抽取一个驾驶员模板开始游戏！' : 'Roll a random driver template to start the game!'}</p>
+            </div>
+            <button 
+              className="roll-template-button racing-btn" 
+              onClick={rollTemplate}
+              disabled={isRollingTemplate}
+            >
+              {isRollingTemplate ? (
+                <span className="rolling-animation">
+                  <span className="flag">🏁</span>
+                  {language === 'zh' ? '抽取模板中...' : 'Rolling Template...'}
+                  <span className="flag">🏁</span>
+                </span>
+              ) : (
+                <span>
+                  <span className="flag">🏁</span>
+                  {language === 'zh' ? '随机抽取模板' : 'Roll Template'}
+                  <span className="flag">🏁</span>
+                </span>
+              )}
+            </button>
+            <div className="or-separator">
+              <span>{language === 'zh' ? '或' : 'OR'}</span>
+            </div>
+          </div>
+          
+          {/* Manual Template Selection */}
+          <h4 className="manual-selection-title">{language === 'zh' ? '手动选择模板' : 'Manual Selection'}</h4>
           <div className="template-grid">
             {driverData.driverTemplates.map((template) => (
               <div 
@@ -101,10 +153,10 @@ function DriverRollPage() {
                 onClick={() => selectTemplate(template)}
               >
                 <div className="template-image">
-                  <div className="placeholder-image">🚗</div>
+                  <div className="placeholder-image">🏎️</div>
                 </div>
                 <div className="template-info">
-                  <h4>{getText(template.name)}</h4>
+                  <h4 className="driver-name">{getText(template.name)}</h4>
                   <div className="template-stats">
                     <span className="stat buff">+{template.buffSlots}</span>
                     <span className="stat neutral">• {template.neutralSlots}</span>
@@ -118,16 +170,14 @@ function DriverRollPage() {
       ) : (
         <div className="roll-interface">
           <div className="selected-template">
-            <h3>{getText(selectedTemplate.name)}</h3>
+            <h3 className="driver-title">{getText(selectedTemplate.name)}</h3>
             <div className="template-details">
               <div className="basic-data">
-                <h4>{language === 'zh' ? '基本信息' : 'Basic Data'}</h4>
-                <p><strong>{language === 'zh' ? '年龄:' : 'Age:'}</strong> {getText(selectedTemplate.basicData.age)}</p>
-                <p><strong>{language === 'zh' ? '经验:' : 'Experience:'}</strong> {getText(selectedTemplate.basicData.experience)}</p>
-                <p><strong>{language === 'zh' ? '国籍:' : 'Nationality:'}</strong> {getText(selectedTemplate.basicData.nationality)}</p>
+                <h4 className="data-title">{language === 'zh' ? '基本信息' : 'Basic Data'}</h4>
+                <p className="driver-description">{getText(selectedTemplate.description)}</p>
               </div>
               <div className="slot-info">
-                <h4>{language === 'zh' ? '属性槽位' : 'Attribute Slots'}</h4>
+                <h4 className="data-title">{language === 'zh' ? '属性槽位' : 'Attribute Slots'}</h4>
                 <div className="slots">
                   <span className="slot buff">+{selectedTemplate.buffSlots} {language === 'zh' ? '增益' : 'Buff'}</span>
                   <span className="slot neutral">• {selectedTemplate.neutralSlots} {language === 'zh' ? '中性' : 'Neutral'}</span>
@@ -140,26 +190,37 @@ function DriverRollPage() {
           {!rolledDriver ? (
             <div className="roll-section">
               <button 
-                className="roll-button" 
+                className="roll-button racing-btn" 
                 onClick={rollDriver}
                 disabled={isRolling}
               >
-                {isRolling ? 
-                  (language === 'zh' ? '抽取中...' : 'Rolling...') : 
-                  <span>{language === 'zh' ? '抽取驾驶员' : 'Roll Driver'}</span>
-                }
+                {isRolling ? (
+                  <span className="rolling-animation">
+                    <span className="flag">🏁</span>
+                    {language === 'zh' ? '抽取中...' : 'Rolling...'}
+                    <span className="flag">🏁</span>
+                  </span>
+                ) : (
+                  <span>
+                    <span className="flag">🏁</span>
+                    {language === 'zh' ? '抽取驾驶员' : 'Roll Driver'}
+                    <span className="flag">🏁</span>
+                  </span>
+                )}
               </button>
               <button 
-                className="back-btn" 
+                className="back-btn racing-btn secondary" 
                 onClick={resetRoll}
                 disabled={isRolling}
               >
+                <span className="flag">🏁</span>
                 {language === 'zh' ? '返回选择' : 'Back to Selection'}
+                <span className="flag">🏁</span>
               </button>
             </div>
           ) : (
             <div className="result-section">
-              <h3>{language === 'zh' ? '抽取结果' : 'Roll Result'}</h3>
+              <h3 className="result-title">{language === 'zh' ? '抽取结果' : 'Roll Result'}</h3>
               <div className="driver-result">
                 <div className="driver-header">
                   <div className="driver-image">
@@ -167,14 +228,14 @@ function DriverRollPage() {
                   </div>
                   <div className="driver-name">
                     <h4>{getText(selectedTemplate.name)}</h4>
-                    <span className="driver-type">{getText(selectedTemplate.basicData.experience)}</span>
+                    <span className="driver-type">{getText(selectedTemplate.description)}</span>
                   </div>
                 </div>
 
                 <div className="attributes-grid">
                   {rolledDriver.buffs.length > 0 && (
                     <div className="attribute-section buffs">
-                      <h5>🎯 {language === 'zh' ? '增益属性' : 'Buffs'}</h5>
+                      <h5 className="attribute-title">🎯 {language === 'zh' ? '增益属性' : 'Buffs'}</h5>
                       {rolledDriver.buffs.map((buff, index) => (
                         <div key={index} className="attribute-card buff">
                           <span className="attribute-name">{getText(buff.name)}</span>
@@ -186,7 +247,7 @@ function DriverRollPage() {
 
                   {rolledDriver.neutrals.length > 0 && (
                     <div className="attribute-section neutrals">
-                      <h5>⚖️ {language === 'zh' ? '中性属性' : 'Neutrals'}</h5>
+                      <h5 className="attribute-title">⚖️ {language === 'zh' ? '中性属性' : 'Neutrals'}</h5>
                       {rolledDriver.neutrals.map((neutral, index) => (
                         <div key={index} className="attribute-card neutral">
                           <span className="attribute-name">{getText(neutral.name)}</span>
@@ -198,7 +259,7 @@ function DriverRollPage() {
 
                   {rolledDriver.debuffs.length > 0 && (
                     <div className="attribute-section debuffs">
-                      <h5>⚠️ {language === 'zh' ? '减益属性' : 'Debuffs'}</h5>
+                      <h5 className="attribute-title">⚠️ {language === 'zh' ? '减益属性' : 'Debuffs'}</h5>
                       {rolledDriver.debuffs.map((debuff, index) => (
                         <div key={index} className="attribute-card debuff">
                           <span className="attribute-name">{getText(debuff.name)}</span>
@@ -208,12 +269,25 @@ function DriverRollPage() {
                     </div>
                   )}
                 </div>
-
-                <div className="result-actions">
-                  <button className="roll-button" onClick={resetRoll}>
-                    <span>{language === 'zh' ? '再次抽取' : 'Roll Again'}</span>
-                  </button>
-                </div>
+              </div>
+              
+              <div className="result-actions">
+                <button 
+                  className="roll-again-btn racing-btn" 
+                  onClick={rollDriver}
+                >
+                  <span className="flag">🏁</span>
+                  {language === 'zh' ? '重新抽取' : 'Roll Again'}
+                  <span className="flag">🏁</span>
+                </button>
+                <button 
+                  className="new-driver-btn racing-btn secondary" 
+                  onClick={resetRoll}
+                >
+                  <span className="flag">🏁</span>
+                  {language === 'zh' ? '选择新驾驶员' : 'Select New Driver'}
+                  <span className="flag">🏁</span>
+                </button>
               </div>
             </div>
           )}
