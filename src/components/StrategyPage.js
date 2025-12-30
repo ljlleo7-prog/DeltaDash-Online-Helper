@@ -148,11 +148,28 @@ function StrategyPage() {
 
   // Add new stint
   const addStint = () => {
+    const totalLaps = parseInt(circuitData.find(item => item.circuit === selectedCircuit)?.total_laps || 78);
+    
+    let newBoxLap = totalLaps;
+    if (stints.length > 0) {
+      // New stint should have boxLap equal to total laps (it becomes the last stint)
+      newBoxLap = totalLaps;
+      
+      // Update the previous last stint to have a boxLap less than total laps
+      const updatedStints = [...stints];
+      const lastStintIndex = stints.length - 1;
+      updatedStints[lastStintIndex] = {
+        ...updatedStints[lastStintIndex],
+        boxLap: Math.max(1, Math.min(totalLaps - 1, stints[lastStintIndex].boxLap))
+      };
+      setStints(updatedStints);
+    }
+    
     const newStint = {
       id: Date.now(),
       tire: tireTypes[0] || 'Soft',
       pushConserve: 0,
-      boxLap: 1
+      boxLap: newBoxLap
     };
     setStints([...stints, newStint]);
   };
@@ -160,11 +177,12 @@ function StrategyPage() {
   // Initialize with one stint when circuit is selected
   useEffect(() => {
     if (selectedCircuit && tireTypes.length > 0 && stints.length === 0) {
+      const totalLaps = parseInt(circuitData.find(item => item.circuit === selectedCircuit)?.total_laps || 78);
       const initialStint = {
         id: Date.now(),
         tire: tireTypes[0],
         pushConserve: 0,
-        boxLap: 1
+        boxLap: totalLaps
       };
       setStints([initialStint]);
     }
@@ -172,15 +190,73 @@ function StrategyPage() {
 
   // Remove stint
   const removeStint = (id) => {
-    setStints(stints.filter(stint => stint.id !== id));
+    const updatedStints = stints.filter(stint => stint.id !== id);
+    
+    if (updatedStints.length > 0) {
+      // Update the new last stint to have boxLap equal to total laps
+      const totalLaps = parseInt(circuitData.find(item => item.circuit === selectedCircuit)?.total_laps || 78);
+      const lastStintIndex = updatedStints.length - 1;
+      updatedStints[lastStintIndex] = {
+        ...updatedStints[lastStintIndex],
+        boxLap: totalLaps
+      };
+    }
+    
+    setStints(updatedStints);
   };
 
   // Update stint
   const updateStint = (id, field, value) => {
-    setStints(stints.map(stint => 
-      stint.id === id ? { ...stint, [field]: value } : stint
-    ));
+    setStints(stints.map(stint => {
+      if (stint.id === id) {
+        const updatedStint = { ...stint, [field]: value };
+        
+        // If updating boxLap, validate the constraints
+        if (field === 'boxLap') {
+          const stintIndex = stints.findIndex(s => s.id === id);
+          const totalLaps = parseInt(circuitData.find(item => item.circuit === selectedCircuit)?.total_laps || 78);
+          
+          // For last stint, boxLap must equal total laps
+          if (stintIndex === stints.length - 1) {
+            updatedStint.boxLap = totalLaps;
+          } else {
+            // For non-last stints, boxLap must be less than next stint's boxLap
+            const nextStintBoxLap = stints[stintIndex + 1].boxLap;
+            if (value >= nextStintBoxLap) {
+              updatedStint.boxLap = Math.max(1, nextStintBoxLap - 1);
+            }
+            
+            // Also ensure boxLap is at least 1 and at most totalLaps
+            updatedStint.boxLap = Math.max(1, Math.min(totalLaps, updatedStint.boxLap));
+          }
+        }
+        
+        return updatedStint;
+      }
+      return stint;
+    }));
   };
+
+  // When circuit changes, update all stints' boxLap constraints
+  useEffect(() => {
+    if (selectedCircuit && stints.length > 0) {
+      const totalLaps = parseInt(circuitData.find(item => item.circuit === selectedCircuit)?.total_laps || 78);
+      
+      const updatedStints = stints.map((stint, index) => {
+        if (index === stints.length - 1) {
+          // Last stint: boxLap must equal total laps
+          return { ...stint, boxLap: totalLaps };
+        } else {
+          // Non-last stints: ensure boxLap is less than next stint's boxLap
+          const nextStintBoxLap = stints[index + 1].boxLap;
+          const constrainedBoxLap = Math.min(stint.boxLap, nextStintBoxLap - 1);
+          return { ...stint, boxLap: Math.max(1, constrainedBoxLap) };
+        }
+      });
+      
+      setStints(updatedStints);
+    }
+  }, [selectedCircuit, circuitData]);
 
   // Calculate lap times based on strategy
   const calculateStrategy = () => {
@@ -202,6 +278,7 @@ function StrategyPage() {
       if (!stintData) return;
 
       const wearRate = parseFloat(stintData.wear_rate_per_lap);
+      const baseDelta = parseFloat(stintData.base_delta) || 0;
       const boxLap = Math.min(parseInt(stint.boxLap), totalLaps);
       const stintLaps = stintIndex === stints.length - 1 ? 
         totalLaps - currentLap + 1 : 
@@ -210,11 +287,11 @@ function StrategyPage() {
       for (let lap = 1; lap <= stintLaps && currentLap <= totalLaps; lap++, currentLap++) {
         const degradation = Math.min(lap * wearRate, 100);
         const degradationKey = `degradation_${Math.floor(degradation / 10) * 10}`;
-        const baseDelta = parseFloat(stintData[degradationKey]);
+        const degradationDelta = parseFloat(stintData[degradationKey]);
         
-        // Apply push/conserve modifier
+        // Apply base delta and push/conserve modifier
         const modifier = stint.pushConserve * 0.1; // Each +1 adds 0.1s, each -1 subtracts 0.1s
-        const lapDelta = baseDelta + modifier;
+        const lapDelta = baseDelta + degradationDelta + modifier;
         
         cumulativeDelta += lapDelta;
         
