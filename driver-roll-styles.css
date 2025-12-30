@@ -339,3 +339,76 @@
   letter-spacing: 1px;
   margin-top: 5px;
 }
+
+/* Attribute Section Titles - Enhanced with Color Distinction */
+.attribute-section h5.attribute-title {
+  font-family: 'Racing Sans One', 'Audiowide', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.attribute-section.buffs h5.attribute-title {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.4));
+  color: #4CAF50;
+  border: 2px solid rgba(76, 175, 80, 0.6);
+}
+
+.attribute-section.neutrals h5.attribute-title {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.attribute-section.debuffs h5.attribute-title {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.2), rgba(244, 67, 54, 0.4));
+  color: #F44336;
+  border: 2px solid rgba(244, 67, 54, 0.6);
+}
+
+/* Attribute Cards Styling */
+.attribute-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.attribute-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(5px);
+}
+
+.attribute-card.buff {
+  border-left-color: #4CAF50;
+}
+
+.attribute-card.neutral {
+  border-left-color: #2196F3;
+}
+
+.attribute-card.debuff {
+  border-left-color: #F44336;
+}
+
+.attribute-name {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.attribute-desc {
+  font-size: 12px;
+  color: #d0d6dd;
+  opacity: 0.8;
+}
