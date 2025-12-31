@@ -135,7 +135,7 @@ body {
   /* Navigation Menu */
   .navigation {
     display: flex;
-    gap: 80px;
+    gap: 8px;
     margin-bottom: 25px;
     flex-wrap: nowrap;
     justify-content: center;
