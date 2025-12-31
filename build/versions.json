@@ -115,8 +115,8 @@
       "zh": "包含现实增强的重大进步，但其复杂性也使其成为一个糟糕的产品。"
     },
     "description": {
-      "en": "Version 1.1 Alpha was an ultra-realistic version of 1.0 including realistic gear-shift data sheet, re-designed track for better data resolution, and refined UI using F1 font. However, its complexity made it almost unplayable without the developer as host and easy to crash, this version, though said 'better than 1.0', was still horrible as a product and not ready for publish.",
-      "zh": "版本1.1 Alpha是1.0的超现实版本，包括现实的换挡数据表、重新设计的赛道以获得更好的数据分辨率，以及使用F1字体的精美用户界面。然而，其复杂性使得没有开发者作为主持人几乎无法玩，并且容易崩溃，这个版本虽然据说'比1.0好'，但作为产品仍然很糟糕，不适合发布。"
+      "en": "Version 1.1 Alpha was an ultra-realistic version of 1.0 including realistic gear-shift data sheet, re-designed track for better data resolution, and refined UI using XX font. However, its complexity made it almost unplayable without the developer as host and easy to crash, this version, though said 'better than 1.0', was still horrible as a product and not ready for publish.",
+      "zh": "版本1.1 Alpha是1.0的超现实版本，包括现实的换挡数据表、重新设计的赛道以获得更好的数据分辨率，以及使用XX字体的精美用户界面。然而，其复杂性使得没有开发者作为主持人几乎无法玩，并且容易崩溃，这个版本虽然据说'比1.0好'，但作为产品仍然很糟糕，不适合发布。"
     }
   },
   {
