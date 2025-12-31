@@ -48,6 +48,10 @@
     "tire": "轮胎",
     "degradation": "磨损度",
     "delta": "差异",
-    "cumulative": "累计"
+    "cumulative": "累计",
+    "calculation_mode": "计算模式",
+    "refined": "精确模式",
+    "coarse": "粗略模式",
+    "calculation_mode_hint": "粗略模式四舍五入到0.5秒 (桌游风格)"
   }
 }

@@ -48,6 +48,10 @@
     "tire": "Tire",
     "degradation": "Degradation",
     "delta": "Delta",
-    "cumulative": "Cumulative"
+    "cumulative": "Cumulative",
+    "calculation_mode": "Calculation Mode",
+    "refined": "Refined",
+    "coarse": "Coarse",
+    "calculation_mode_hint": "Coarse mode rounds to nearest 0.5s (boardgame style)"
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import Papa from 'papaparse';
 import {
   Chart as ChartJS,
@@ -36,6 +36,7 @@ function StrategyPage() {
   const [tireTypes, setTireTypes] = useState([]);
   const [translations, setTranslations] = useState({});
   const { language } = useContext(LanguageContext);
+  const [calculationMode, setCalculationMode] = useState('refined'); // 'refined' or 'coarse'
 
   // Load translations based on language
   useEffect(() => {
@@ -171,6 +172,81 @@ function StrategyPage() {
     }
   }, [selectedCircuit, circuitData]);
 
+  // Calculate lap times based on strategy
+  const calculateStrategy = useCallback(() => {
+    if (!selectedCircuit || stints.length === 0) return;
+
+    const circuitInfo = circuitData.find(item => item.circuit === selectedCircuit);
+    if (!circuitInfo) return;
+
+    const totalLaps = parseInt(circuitInfo.total_laps);
+    const lapTimesArray = [];
+    let currentLap = 1;
+    let cumulativeDelta = 0;
+
+    stints.forEach((stint, stintIndex) => {
+      const stintData = circuitData.find(item => 
+        item.circuit === selectedCircuit && item.tire_type === stint.tire
+      );
+      
+      if (!stintData) return;
+
+      const baseWearRate = parseFloat(stintData.wear_rate_per_lap);
+      const boxLap = Math.min(parseInt(stint.boxLap), totalLaps);
+      const stintLaps = stintIndex === stints.length - 1 ? 
+        totalLaps - currentLap + 1 : 
+        boxLap - currentLap + 1;
+
+      // Calculate push/conserve effect per lap based on stint length
+      const pushPerLap = stint.pushConserve / stintLaps; // Divide push by stint length
+      const wearRateMultiplier = 1 + (pushPerLap * 0.5); // +5% wear per 0.1 push
+      const timeModifierPerLap = -pushPerLap * 1.5; // -0.15s per lap per 0.1 push
+
+      for (let lap = 1; lap <= stintLaps && currentLap <= totalLaps; lap++, currentLap++) {
+        // Apply push/conserve wear rate multiplier
+        const adjustedWearRate = baseWearRate * wearRateMultiplier;
+        
+        const degradation = Math.min(lap * adjustedWearRate, 100);
+        const degradationKey = `degradation_${Math.floor(degradation / 10) * 10}`;
+        let degradationDelta = parseFloat(stintData[degradationKey]);
+        
+        // Apply push/conserve time modifier per lap
+        let lapDelta = degradationDelta + timeModifierPerLap;
+        
+        // Apply rounding for coarse mode (nearest 0.5s)
+        if (calculationMode === 'coarse') {
+          lapDelta = Math.round(lapDelta * 2) / 2; // Round to nearest 0.5
+        }
+        
+        cumulativeDelta += lapDelta;
+        
+        lapTimesArray.push({
+          lap: currentLap,
+          stint: stintIndex + 1,
+          tire: stint.tire,
+          degradation: degradation,
+          lapDelta: lapDelta,
+          cumulativeDelta: cumulativeDelta,
+          pushConserve: stint.pushConserve
+        });
+      }
+    });
+
+    setLapTimes(lapTimesArray);
+    setTotalDelta(cumulativeDelta);
+  }, [selectedCircuit, stints, circuitData, calculationMode]);
+
+  // Automatically recalculate strategy when stint inputs change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (selectedCircuit && stints.length > 0) {
+        calculateStrategy();
+      }
+    }, 3000); // 3 second delay to ensure page is fully loaded
+    
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, [selectedCircuit, stints, calculateStrategy, calculationMode]);
+
   // Debug logging
   useEffect(() => {
     console.log('Circuit Data:', circuitData);
@@ -291,65 +367,6 @@ function StrategyPage() {
     }
   }, [selectedCircuit, circuitData]);
 
-  // Calculate lap times based on strategy
-  const calculateStrategy = () => {
-    if (!selectedCircuit || stints.length === 0) return;
-
-    const circuitInfo = circuitData.find(item => item.circuit === selectedCircuit);
-    if (!circuitInfo) return;
-
-    const totalLaps = parseInt(circuitInfo.total_laps);
-    const lapTimesArray = [];
-    let currentLap = 1;
-    let cumulativeDelta = 0;
-
-    stints.forEach((stint, stintIndex) => {
-      const stintData = circuitData.find(item => 
-        item.circuit === selectedCircuit && item.tire_type === stint.tire
-      );
-      
-      if (!stintData) return;
-
-      const baseWearRate = parseFloat(stintData.wear_rate_per_lap);
-      const boxLap = Math.min(parseInt(stint.boxLap), totalLaps);
-      const stintLaps = stintIndex === stints.length - 1 ? 
-        totalLaps - currentLap + 1 : 
-        boxLap - currentLap + 1;
-
-      // Calculate push/conserve effect per lap based on stint length
-      const pushPerLap = stint.pushConserve / stintLaps; // Divide push by stint length
-      const wearRateMultiplier = 1 + (pushPerLap * 0.5); // +5% wear per 0.1 push
-      const timeModifierPerLap = -pushPerLap * 1.5; // -0.15s per lap per 0.1 push
-
-      for (let lap = 1; lap <= stintLaps && currentLap <= totalLaps; lap++, currentLap++) {
-        // Apply push/conserve wear rate multiplier
-        const adjustedWearRate = baseWearRate * wearRateMultiplier;
-        
-        const degradation = Math.min(lap * adjustedWearRate, 100);
-        const degradationKey = `degradation_${Math.floor(degradation / 10) * 10}`;
-        const degradationDelta = parseFloat(stintData[degradationKey]);
-        
-        // Apply push/conserve time modifier per lap
-        const lapDelta = degradationDelta + timeModifierPerLap;
-        
-        cumulativeDelta += lapDelta;
-        
-        lapTimesArray.push({
-          lap: currentLap,
-          stint: stintIndex + 1,
-          tire: stint.tire,
-          degradation: degradation,
-          lapDelta: lapDelta,
-          cumulativeDelta: cumulativeDelta,
-          pushConserve: stint.pushConserve
-        });
-      }
-    });
-
-    setLapTimes(lapTimesArray);
-    setTotalDelta(cumulativeDelta);
-  };
-
   // Get color for lap delta
   const getDeltaColor = (delta) => {
     if (delta < 0.5) return '#4CAF50'; // Green for good
@@ -461,6 +478,25 @@ function StrategyPage() {
             <button onClick={addStint} className="add-stint-btn">{getText('strategy.add_stint')}</button>
           </div>
           
+          {/* Calculation Mode Toggle */}
+          <div className="calculation-mode-toggle">
+            <label>{getText('strategy.calculation_mode')}:</label>
+            <div className="toggle-buttons">
+              <button 
+                className={`toggle-btn ${calculationMode === 'refined' ? 'active' : ''}`}
+                onClick={() => setCalculationMode('refined')}
+              >
+                {getText('strategy.refined')}
+              </button>
+              <button 
+                className={`toggle-btn ${calculationMode === 'coarse' ? 'active' : ''}`}
+                onClick={() => setCalculationMode('coarse')}
+              >
+                {getText('strategy.coarse')}
+              </button>
+            </div>
+            <span className="hint">{getText('strategy.calculation_mode_hint')}</span>
+          </div>
           <div className="stint-cards">
             {stints.map((stint, index) => (
               <div key={stint.id} className="stint-card" style={{borderLeftColor: getStintColor(index)}}>
