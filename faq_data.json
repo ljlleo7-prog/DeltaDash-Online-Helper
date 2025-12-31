@@ -1,0 +1,156 @@
+{
+  "faq": {
+    "title": {
+      "en": "Frequently Asked Questions",
+      "zh": "常见问题解答"
+    },
+    "description": {
+      "en": "Find answers to the most common questions about Delta Dash",
+      "zh": "关于Delta Dash最常见问题的解答"
+    },
+    "questions": [
+      {
+        "id": 1,
+        "question": {
+          "en": "What is Delta Dash Online Assistant?",
+          "zh": "Delta Dash在线助手是什么？"
+        },
+        "answer": {
+          "en": "Delta Dash Online Assistant is a web-based tool designed to enhance your experience with the Delta Dash F1 boardgame. It provides features like driver rolling, strategy planning, and game information management.",
+          "zh": "Delta Dash在线助手是一个基于网页的工具，旨在增强您使用Delta Dash F1桌游的体验。它提供驾驶员抽取、策略规划和游戏信息管理等功能。"
+        },
+        "category": "general"
+      },
+      {
+        "id": 2,
+        "question": {
+          "en": "How do I use the Driver Roll feature?",
+          "zh": "如何使用驾驶员抽取功能？"
+        },
+        "answer": {
+          "en": "Navigate to the Driver Roll tab, select a driver template or roll randomly, then click 'Roll Driver' to generate your driver's attributes with buffs, neutrals, and debuffs.",
+          "zh": "导航到驾驶员抽取标签页，选择一个驾驶员模板或随机抽取，然后点击'抽取驾驶员'来生成带有增益、中性和减益属性的驾驶员。"
+        },
+        "category": "features"
+      },
+      {
+        "id": 3,
+        "question": {
+          "en": "What are buffs, neutrals, and debuffs in driver rolling?",
+          "zh": "驾驶员抽取中的增益、中性和减益是什么？"
+        },
+        "answer": {
+          "en": "Buffs are positive attributes that enhance your driver's performance. Neutrals are balanced attributes with no significant advantage or disadvantage. Debuffs are negative attributes that may hinder your driver's performance.",
+          "zh": "增益是提升驾驶员表现的积极属性。中性是平衡的属性，没有显著优势或劣势。减益是可能阻碍驾驶员表现的负面属性。"
+        },
+        "category": "gameplay"
+      },
+      {
+        "id": 4,
+        "question": {
+          "en": "Can I save my rolled drivers for future games?",
+          "zh": "我可以保存抽取的驾驶员用于未来的游戏吗？"
+        },
+        "answer": {
+          "en": "Currently, the assistant doesn't have a save feature. You'll need to record your driver's attributes manually for future reference.",
+          "zh": "目前助手没有保存功能。您需要手动记录驾驶员的属性以供将来参考。"
+        },
+        "category": "features"
+      },
+      {
+        "id": 5,
+        "question": {
+          "en": "How does the Strategy page work?",
+          "zh": "策略页面如何工作？"
+        },
+        "answer": {
+          "en": "The Strategy page helps you plan race strategies by calculating lap times, tire degradation, and pit stop strategies based on your inputs.",
+          "zh": "策略页面通过根据您的输入计算圈速、轮胎磨损和进站策略来帮助您规划比赛策略。"
+        },
+        "category": "features"
+      },
+      {
+        "id": 6,
+        "question": {
+          "en": "Is the assistant available in multiple languages?",
+          "zh": "助手支持多语言吗？"
+        },
+        "answer": {
+          "en": "Yes! The assistant supports both English and Chinese. Use the language switcher in the header to change languages.",
+          "zh": "是的！助手支持英文和中文。使用标题中的语言切换器来更改语言。"
+        },
+        "category": "general"
+      },
+      {
+        "id": 7,
+        "question": {
+          "en": "How can I provide feedback or report issues?",
+          "zh": "我如何提供反馈或报告问题？"
+        },
+        "answer": {
+          "en": "Use the Feedback tab to send us your suggestions, bug reports, or any other feedback. We appreciate your input!",
+          "zh": "使用反馈标签页向我们发送您的建议、错误报告或其他反馈。我们感谢您的意见！"
+        },
+        "category": "support"
+      },
+      {
+        "id": 8,
+        "question": {
+          "en": "Is the assistant free to use?",
+          "zh": "助手是免费使用的吗？"
+        },
+        "answer": {
+          "en": "Yes, Delta Dash Online Assistant is completely free to use for all Delta Dash boardgame players.",
+          "zh": "是的，Delta Dash在线助手对所有Delta Dash桌游玩家完全免费使用。"
+        },
+        "category": "general"
+      },
+      {
+        "id": 9,
+        "question": {
+          "en": "What browsers are supported?",
+          "zh": "支持哪些浏览器？"
+        },
+        "answer": {
+          "en": "The assistant works on all modern browsers including Chrome, Firefox, Safari, and Edge. Make sure your browser is up to date for the best experience.",
+          "zh": "助手适用于所有现代浏览器，包括Chrome、Firefox、Safari和Edge。请确保您的浏览器是最新版本以获得最佳体验。"
+        },
+        "category": "technical"
+      },
+      {
+        "id": 10,
+        "question": {
+          "en": "Can I use the assistant on mobile devices?",
+          "zh": "我可以在移动设备上使用助手吗？"
+        },
+        "answer": {
+          "en": "Yes! The assistant is fully responsive and works well on smartphones and tablets.",
+          "zh": "可以！助手完全响应式设计，在智能手机和平板电脑上运行良好。"
+        },
+        "category": "technical"
+      }
+    ],
+    "categories": {
+      "general": {
+        "en": "General",
+        "zh": "一般问题"
+      },
+      "features": {
+        "en": "Features",
+        "zh": "功能"
+      },
+      "gameplay": {
+        "en": "Gameplay",
+        "zh": "游戏玩法"
+      },
+      "technical": {
+        "en": "Technical",
+        "zh": "技术问题"
+      },
+      "support": {
+        "en": "Support",
+        "zh": "支持"
+      }
+    }
+  }
+}
