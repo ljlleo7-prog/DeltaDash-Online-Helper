@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/DeltaDash-Online-Helper/static/css/main.1a9938ee.css",
-    "main.js": "/DeltaDash-Online-Helper/static/js/main.ba12c943.js",
+    "main.js": "/DeltaDash-Online-Helper/static/js/main.e8743670.js",
     "static/media/front_page.jpg": "/DeltaDash-Online-Helper/static/media/front_page.98e709d86890e441b728.jpg",
     "index.html": "/DeltaDash-Online-Helper/index.html",
     "main.1a9938ee.css.map": "/DeltaDash-Online-Helper/static/css/main.1a9938ee.css.map",
-    "main.ba12c943.js.map": "/DeltaDash-Online-Helper/static/js/main.ba12c943.js.map"
+    "main.e8743670.js.map": "/DeltaDash-Online-Helper/static/js/main.e8743670.js.map"
   },
   "entrypoints": [
     "static/css/main.1a9938ee.css",
-    "static/js/main.ba12c943.js"
+    "static/js/main.e8743670.js"
   ]
 }
