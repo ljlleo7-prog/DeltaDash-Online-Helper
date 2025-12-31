@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Papa from 'papaparse';
 import {
   Chart as ChartJS,
@@ -12,6 +12,7 @@ import {
   BarElement
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 // Register Chart.js components
 ChartJS.register(
@@ -33,6 +34,38 @@ function StrategyPage() {
   const [totalDelta, setTotalDelta] = useState(0);
   const [circuits, setCircuits] = useState([]);
   const [tireTypes, setTireTypes] = useState([]);
+  const [translations, setTranslations] = useState({});
+  const { language } = useContext(LanguageContext);
+
+  // Load translations based on language
+  useEffect(() => {
+    const loadTranslations = async () => {
+      try {
+        const response = await fetch(`${process.env.PUBLIC_URL || ''}/translations/${language}.json`);
+        if (response.ok) {
+          const data = await response.json();
+          setTranslations(data);
+        }
+      } catch (error) {
+        console.error('Error loading translations:', error);
+      }
+    };
+
+    loadTranslations();
+  }, [language]);
+
+  // Helper function to get text based on language
+  const getText = (key) => {
+    const keys = key.split('.');
+    let value = translations;
+    
+    for (const k of keys) {
+      value = value?.[k];
+      if (value === undefined) return key; // Fallback to key if translation not found
+    }
+    
+    return value || key;
+  };
 
   // List of possible CSV file paths for different build environments
   const csvPaths = [
@@ -399,24 +432,24 @@ function StrategyPage() {
   return (
     <section id="strategy-page" className="page-content">
       <div className="strategy-container">
-        <h2 className="strategy-title">🏎️ Strategy Simulation</h2>
+        <h2 className="strategy-title">{getText('strategy.title')}</h2>
         
         {/* Circuit Selection */}
         <div className="circuit-section">
-          <h3>Circuit Selection</h3>
+          <h3>{getText('strategy.circuit_selection')}</h3>
           <select 
             value={selectedCircuit} 
             onChange={(e) => setSelectedCircuit(e.target.value)}
             className="circuit-selector"
           >
-            <option value="">Select a circuit...</option>
+            <option value="">{getText('strategy.select_circuit')}</option>
             {circuits.map(circuit => (
               <option key={circuit} value={circuit}>{circuit}</option>
             ))}
           </select>
           {selectedCircuit && (
             <div className="circuit-info">
-              <p>Total Laps: {circuitData.find(item => item.circuit === selectedCircuit)?.total_laps}</p>
+              <p>{getText('strategy.total_laps')}: {circuitData.find(item => item.circuit === selectedCircuit)?.total_laps}</p>
             </div>
           )}
         </div>
@@ -424,27 +457,27 @@ function StrategyPage() {
         {/* Stint Management */}
         <div className="stint-section">
           <div className="section-header">
-            <h3>Race Strategy Stints</h3>
-            <button onClick={addStint} className="add-stint-btn">+ Add Stint</button>
+            <h3>{getText('strategy.race_strategy_stints')}</h3>
+            <button onClick={addStint} className="add-stint-btn">{getText('strategy.add_stint')}</button>
           </div>
           
           <div className="stint-cards">
             {stints.map((stint, index) => (
               <div key={stint.id} className="stint-card" style={{borderLeftColor: getStintColor(index)}}>
                 <div className="stint-header">
-                  <h4 className="stint-number">Stint {index + 1}</h4>
+                  <h4 className="stint-number">{getText('strategy.stint')} {index + 1}</h4>
                   <button onClick={() => removeStint(stint.id)} className="remove-stint-btn">×</button>
                 </div>
                 
                 <div className="stint-form">
                   <div className="form-group">
-                    <label>Tire Type:</label>
+                    <label>{getText('strategy.tire_type')}:</label>
                     <select 
                       value={stint.tire} 
                       onChange={(e) => updateStint(stint.id, 'tire', e.target.value)}
                       className="stint-tire-selector"
                     >
-                      <option value="">Select tire type...</option>
+                      <option value="">{getText('strategy.select_tire_type')}</option>
                       {tireTypes.map(tire => (
                         <option key={tire} value={tire}>{tire}</option>
                       ))}
@@ -452,7 +485,7 @@ function StrategyPage() {
                   </div>
                   
                   <div className="form-group">
-                    <label>Push/Conserve:</label>
+                    <label>{getText('strategy.push_conserve')}:</label>
                     <input 
                       type="number" 
                       min="-5" 
@@ -462,11 +495,11 @@ function StrategyPage() {
                       placeholder="0"
                       className="stint-push-conserve"
                     />
-                    <span className="hint">(+ push, - conserve)</span>
+                    <span className="hint">{getText('strategy.push_conserve_hint')}</span>
                   </div>
                   
                   <div className="form-group">
-                    <label>Box Lap:</label>
+                    <label>{getText('strategy.box_lap')}:</label>
                     <input 
                       type="number" 
                       min="1" 
@@ -484,18 +517,18 @@ function StrategyPage() {
         {/* Calculate Button */}
         <div className="results-section">
           <button onClick={calculateStrategy} className="calculate-btn">
-            🏁 Calculate Strategy
+            {getText('strategy.calculate_strategy')}
           </button>
         </div>
 
         {/* Results */}
         {lapTimes.length > 0 && (
           <div className="results-section">
-            <h3>Strategy Results</h3>
+            <h3>{getText('strategy.strategy_results')}</h3>
             
             {/* Lap Time Graph */}
             <div className="graph-container">
-              <h4 className="graph-title">Lap Time Delta (seconds)</h4>
+              <h4 className="graph-title">{getText('strategy.lap_time_delta')}</h4>
               <div className="lap-time-chart">
                 <Bar data={lapTimeChartConfig} options={chartOptions} />
               </div>
@@ -503,23 +536,23 @@ function StrategyPage() {
 
             {/* Cumulative Delta */}
             <div className="cumulative-delta-container">
-              <h4 className="cumulative-delta-title">Total Race Time Delta</h4>
+              <h4 className="cumulative-delta-title">{getText('strategy.total_race_time_delta')}</h4>
               <div className="cumulative-delta-value">
-                {totalDelta >= 0 ? '+' : ''}{totalDelta.toFixed(2)} seconds
+                {totalDelta >= 0 ? '+' : ''}{totalDelta.toFixed(2)} {language === 'zh' ? '秒' : 'seconds'}
               </div>
             </div>
 
             {/* Lap Details Table */}
             <div className="lap-details">
-              <h4>Lap-by-Lap Analysis</h4>
+              <h4>{getText('strategy.lap_by_lap_analysis')}</h4>
               <div className="lap-table">
                 <div className="lap-header">
-                  <span>Lap</span>
-                  <span>Stint</span>
-                  <span>Tire</span>
-                  <span>Degradation</span>
-                  <span>Delta</span>
-                  <span>Cumulative</span>
+                  <span>{getText('strategy.lap')}</span>
+                  <span>{getText('strategy.stint_number')}</span>
+                  <span>{getText('strategy.tire')}</span>
+                  <span>{getText('strategy.degradation')}</span>
+                  <span>{getText('strategy.delta')}</span>
+                  <span>{getText('strategy.cumulative')}</span>
                 </div>
                 {lapTimes.slice(0, 20).map((lapData) => (
                   <div key={lapData.lap} className="lap-row">
