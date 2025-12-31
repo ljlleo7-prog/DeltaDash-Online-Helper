@@ -135,28 +135,28 @@ body {
   /* Navigation Menu */
   .navigation {
     display: flex;
-    gap: 10px;
+    gap: 80px;
     margin-bottom: 25px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     animation: slideDown 0.8s ease-out 0.1s both;
   }
 
   .nav-btn {
-    padding: 10px 18px;
+    padding: 10px 14px;
     background: rgba(255,255,255,0.03);
     color: #fff;
     border: 1px solid rgba(255,255,255,0.04);
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.18s ease;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
   }
 
   .nav-btn:hover {
@@ -172,7 +172,7 @@ body {
   }
 
   .nav-btn .icon {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   /* Main Content */

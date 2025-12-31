@@ -16,73 +16,49 @@
           "zh": "Delta Dash在线助手是什么？"
         },
         "answer": {
-          "en": "Delta Dash Online Assistant is a web-based tool designed to enhance your experience with the Delta Dash F1 boardgame. It provides features like driver rolling, strategy planning, and game information management.",
-          "zh": "Delta Dash在线助手是一个基于网页的工具，旨在增强您使用Delta Dash F1桌游的体验。它提供驾驶员抽取、策略规划和游戏信息管理等功能。"
+          "en": "Delta Dash Online Assistant is a web-based tool designed to enhance your experience with the Delta Dash boardgame. It provides features like driver rolling, strategy planning, and game information management.",
+          "zh": "Delta Dash在线助手是一个基于网页的工具，旨在增强您使用Delta Dash赛车桌游的体验。它提供驾驶员抽取、策略规划和游戏信息管理等功能。"
         },
         "category": "general"
       },
       {
         "id": 2,
         "question": {
-          "en": "How do I use the Driver Roll feature?",
-          "zh": "如何使用驾驶员抽取功能？"
+          "en": "How do we move? Are there any auto forwarding?",
+          "zh": "我们怎么移动？有没有自动前进什么的？"
         },
         "answer": {
-          "en": "Navigate to the Driver Roll tab, select a driver template or roll randomly, then click 'Roll Driver' to generate your driver's attributes with buffs, neutrals, and debuffs.",
-          "zh": "导航到驾驶员抽取标签页，选择一个驾驶员模板或随机抽取，然后点击'抽取驾驶员'来生成带有增益、中性和减益属性的驾驶员。"
+          "en": "Well, we don't normally move, and that's because the rulebook does not say so. This is also our featured mechanism - Delta mechanism. We only iterate relative position, so there is no need to move together in any ways. In other words, every turn, you just moved an entire lap, and net zero displacement. However, if the rulebook says you should move forward or backward, then you do what it tells you to. This marks your displacement after a lap time.",
+          "zh": "呃，其实一般不用移动，而这是因为规则书没说有什么自动移动。这也是我们最具特色的机制-Detla机制。我们只迭代相对位置，所以并不需要集体移动。换句话说，每回合你移动了一整圈，也就是位移0m。不过，如果规则书让你前进或后退，请照做——前进和后退就是你一圈时间的位移。"
         },
-        "category": "features"
+        "category": "gameplay"
       },
       {
         "id": 3,
         "question": {
-          "en": "What are buffs, neutrals, and debuffs in driver rolling?",
-          "zh": "驾驶员抽取中的增益、中性和减益是什么？"
+          "en": "Then what is the point of a circuit? Isn't it clearer to use a straight line?",
+          "zh": "那么为啥还有赛道图？直线赛道不是更直白些？"
         },
         "answer": {
-          "en": "Buffs are positive attributes that enhance your driver's performance. Neutrals are balanced attributes with no significant advantage or disadvantage. Debuffs are negative attributes that may hinder your driver's performance.",
-          "zh": "增益是提升驾驶员表现的积极属性。中性是平衡的属性，没有显著优势或劣势。减益是可能阻碍驾驶员表现的负面属性。"
+          "en": "We admit that a circuit is a bit misleading, but this is actually the product of our test players' collective preference. First, we need to simulate the 'lapped' effect (very important in affecting the World Champion Winner sometimes). During our testing, we used a circle circuit to achieve the same purpose, but the testers complained that 'it is NASCAR', so we included different circuit configurations to make the game more immersive.",
+          "zh": "我们承认赛道有点误导性，但这其实是内部测试人员的集体意愿。首先，我们希望模拟套圈效果（因为这有时会影响世界冠军争夺）。在测试中，我们曾使用环形赛道来兼顾规则与无误导，但测试人员集体抱怨说'开成纳斯卡了'，于是我们最终加入了赛道布局，增加点代入感。"
         },
         "category": "gameplay"
       },
       {
         "id": 4,
         "question": {
-          "en": "Can I save my rolled drivers for future games?",
-          "zh": "我可以保存抽取的驾驶员用于未来的游戏吗？"
+          "en": "If we have relative position, why do we need DRS zones? DRS should be always activated.",
+          "zh": "既然我们以相对位置记录，为啥还要有DRS区呢？DRS应该一直生效。"
         },
         "answer": {
-          "en": "Currently, the assistant doesn't have a save feature. You'll need to record your driver's attributes manually for future reference.",
-          "zh": "目前助手没有保存功能。您需要手动记录驾驶员的属性以供将来参考。"
+          "en": "Sadly, this is another misleading compensation for game balance. Notice that we have a 0-1s turbulence zone to reduce speed and the same 0-1s DRS zone to increase speed, and the only distinction is between corners and straights. If we allow DRS anytime, turbulence zone will be meaningless, but the existence of both turbulence and DRS is crucial for a wheel-to-wheel combat.",
+          "zh": "很抱歉，这又是一个为确保游戏平衡带来的误导性的妥协。注意到，我们有0-1s范围的脏空气区和0-1s的DRS区，而唯一的生效区别就是弯道或直道。如果我们让DRS永远在0-1s生效，脏空气就没作用了，直接无脑开DRS就行了。但是，我们仍然希望DRS和脏空气并存，带来多样的轮对轮缠斗。"
         },
-        "category": "features"
+        "category": "gameplay"
       },
       {
         "id": 5,
-        "question": {
-          "en": "How does the Strategy page work?",
-          "zh": "策略页面如何工作？"
-        },
-        "answer": {
-          "en": "The Strategy page helps you plan race strategies by calculating lap times, tire degradation, and pit stop strategies based on your inputs.",
-          "zh": "策略页面通过根据您的输入计算圈速、轮胎磨损和进站策略来帮助您规划比赛策略。"
-        },
-        "category": "features"
-      },
-      {
-        "id": 6,
-        "question": {
-          "en": "Is the assistant available in multiple languages?",
-          "zh": "助手支持多语言吗？"
-        },
-        "answer": {
-          "en": "Yes! The assistant supports both English and Chinese. Use the language switcher in the header to change languages.",
-          "zh": "是的！助手支持英文和中文。使用标题中的语言切换器来更改语言。"
-        },
-        "category": "general"
-      },
-      {
-        "id": 7,
         "question": {
           "en": "How can I provide feedback or report issues?",
           "zh": "我如何提供反馈或报告问题？"
@@ -92,42 +68,6 @@
           "zh": "使用反馈标签页向我们发送您的建议、错误报告或其他反馈。我们感谢您的意见！"
         },
         "category": "support"
-      },
-      {
-        "id": 8,
-        "question": {
-          "en": "Is the assistant free to use?",
-          "zh": "助手是免费使用的吗？"
-        },
-        "answer": {
-          "en": "Yes, Delta Dash Online Assistant is completely free to use for all Delta Dash boardgame players.",
-          "zh": "是的，Delta Dash在线助手对所有Delta Dash桌游玩家完全免费使用。"
-        },
-        "category": "general"
-      },
-      {
-        "id": 9,
-        "question": {
-          "en": "What browsers are supported?",
-          "zh": "支持哪些浏览器？"
-        },
-        "answer": {
-          "en": "The assistant works on all modern browsers including Chrome, Firefox, Safari, and Edge. Make sure your browser is up to date for the best experience.",
-          "zh": "助手适用于所有现代浏览器，包括Chrome、Firefox、Safari和Edge。请确保您的浏览器是最新版本以获得最佳体验。"
-        },
-        "category": "technical"
-      },
-      {
-        "id": 10,
-        "question": {
-          "en": "Can I use the assistant on mobile devices?",
-          "zh": "我可以在移动设备上使用助手吗？"
-        },
-        "answer": {
-          "en": "Yes! The assistant is fully responsive and works well on smartphones and tablets.",
-          "zh": "可以！助手完全响应式设计，在智能手机和平板电脑上运行良好。"
-        },
-        "category": "technical"
       }
     ],
     "categories": {
