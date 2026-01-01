@@ -37,6 +37,7 @@ function StrategyPage() {
   const [translations, setTranslations] = useState({});
   const { language } = useContext(LanguageContext);
   const [calculationMode, setCalculationMode] = useState('refined'); // 'refined' or 'coarse'
+  const [totalPitLoss, setTotalPitLoss] = useState(0); // Add totalPitLoss to state
 
   // Load translations based on language
   useEffect(() => {
@@ -183,6 +184,7 @@ function StrategyPage() {
     const lapTimesArray = [];
     let currentLap = 1;
     let cumulativeDelta = 0;
+    let totalPitLoss = 0; // Local variable for calculation
 
     stints.forEach((stint, stintIndex) => {
       const stintData = circuitData.find(item => 
@@ -190,6 +192,25 @@ function StrategyPage() {
       );
       
       if (!stintData) return;
+
+      // Add pit time loss for each tire change (except first stint)
+      if (stintIndex > 0) {
+        const pitLoss = parseFloat(stintData.pit_loss);
+        cumulativeDelta += pitLoss;
+        totalPitLoss += pitLoss;
+        
+        // Add pit stop entry to lap times array
+        lapTimesArray.push({
+          lap: currentLap,
+          stint: stintIndex + 1,
+          tire: 'PIT',
+          degradation: 0,
+          lapDelta: pitLoss,
+          cumulativeDelta: cumulativeDelta,
+          pushConserve: 0,
+          isPitStop: true
+        });
+      }
 
       const baseWearRate = parseFloat(stintData.wear_rate_per_lap);
       const boxLap = Math.min(parseInt(stint.boxLap), totalLaps);
@@ -227,13 +248,15 @@ function StrategyPage() {
           degradation: degradation,
           lapDelta: lapDelta,
           cumulativeDelta: cumulativeDelta,
-          pushConserve: stint.pushConserve
+          pushConserve: stint.pushConserve,
+          isPitStop: false
         });
       }
     });
 
     setLapTimes(lapTimesArray);
     setTotalDelta(cumulativeDelta);
+    setTotalPitLoss(totalPitLoss); // Update state with calculated pit loss
   }, [selectedCircuit, stints, circuitData, calculationMode]);
 
   // Automatically recalculate strategy when stint inputs change
@@ -242,7 +265,7 @@ function StrategyPage() {
       if (selectedCircuit && stints.length > 0) {
         calculateStrategy();
       }
-    }, 3000); // 3 second delay to ensure page is fully loaded
+    }, 200); // 3 second delay to ensure page is fully loaded
     
     return () => clearTimeout(timer); // Cleanup on unmount
   }, [selectedCircuit, stints, calculateStrategy, calculationMode]);
@@ -562,6 +585,16 @@ function StrategyPage() {
           <div className="results-section">
             <h3>{getText('strategy.strategy_results')}</h3>
             
+            {/* Pit Time Loss Summary */}
+            <div className="pit-loss-container">
+              <h4 className="pit-loss-title">Pit Stop Time Loss</h4>
+              <div className="pit-loss-info">
+                <p>Total Pit Loss: <span className="pit-loss-value">+{totalPitLoss.toFixed(1)} seconds</span></p>
+                <p>Number of Pit Stops: <span className="pit-stops-count">{stints.length - 1}</span></p>
+                <p>Average Pit Loss: <span className="pit-loss-average">+{(totalPitLoss / Math.max(1, stints.length - 1)).toFixed(1)} seconds</span></p>
+              </div>
+            </div>
+            
             {/* Lap Time Graph */}
             <div className="graph-container">
               <h4 className="graph-title">{getText('strategy.lap_time_delta')}</h4>
@@ -591,10 +624,10 @@ function StrategyPage() {
                   <span>{getText('strategy.cumulative')}</span>
                 </div>
                 {lapTimes.slice(0, 20).map((lapData) => (
-                  <div key={lapData.lap} className="lap-row">
+                  <div key={lapData.lap} className={`lap-row ${lapData.isPitStop ? 'pit-stop-row' : ''}`}>
                     <span>{lapData.lap}</span>
                     <span>{lapData.stint}</span>
-                    <span>{lapData.tire}</span>
+                    <span className={lapData.isPitStop ? 'pit-stop-tire' : ''}>{lapData.tire}</span>
                     <span>{lapData.degradation.toFixed(1)}%</span>
                     <span style={{color: getDeltaColor(lapData.lapDelta)}}>
                       +{lapData.lapDelta.toFixed(2)}s
