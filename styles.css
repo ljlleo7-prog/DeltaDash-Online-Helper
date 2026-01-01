@@ -2738,9 +2738,9 @@ body .content-box h2{ color: var(--accent-orange-2) !important }
 .stint-section {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  padding: 25px;
-  margin-bottom: 30px;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
   backdrop-filter: blur(10px);
 }
 
@@ -2790,8 +2790,8 @@ body .content-box h2{ color: var(--accent-orange-2) !important }
 .stint-card {
   background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.3));
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 15px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
