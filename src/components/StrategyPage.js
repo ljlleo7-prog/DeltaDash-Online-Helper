@@ -181,7 +181,7 @@ function StrategyPage() {
     if (!circuitInfo) return;
 
     const totalLaps = parseInt(circuitInfo.total_laps);
-    const lapTimesArray = [];
+    const lapTimesArray = []; // This will be cleared and recreated each time
     let currentLap = 1;
     let cumulativeDelta = 0;
     let totalPitLoss = 0; // Local variable for calculation
@@ -623,7 +623,7 @@ function StrategyPage() {
                   <span>{getText('strategy.delta')}</span>
                   <span>{getText('strategy.cumulative')}</span>
                 </div>
-                {lapTimes.slice(0, 20).map((lapData) => (
+                {lapTimes.map((lapData) => (
                   <div key={lapData.lap} className={`lap-row ${lapData.isPitStop ? 'pit-stop-row' : ''}`}>
                     <span>{lapData.lap}</span>
                     <span>{lapData.stint}</span>
