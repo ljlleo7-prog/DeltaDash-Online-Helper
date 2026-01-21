@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DeltaDash-Online-Helper/static/css/main.d35b179d.css",
-    "main.js": "/DeltaDash-Online-Helper/static/js/main.41dd6c12.js",
+    "main.css": "/DeltaDash-Online-Helper/static/css/main.f7cc280e.css",
+    "main.js": "/DeltaDash-Online-Helper/static/js/main.bcf903c2.js",
     "static/media/front_page.jpg": "/DeltaDash-Online-Helper/static/media/front_page.98e709d86890e441b728.jpg",
     "static/media/tire_degradation_data.csv": "/DeltaDash-Online-Helper/static/media/tire_degradation_data.1b0717c214dbbbac3015.csv",
     "index.html": "/DeltaDash-Online-Helper/index.html",
-    "main.d35b179d.css.map": "/DeltaDash-Online-Helper/static/css/main.d35b179d.css.map",
-    "main.41dd6c12.js.map": "/DeltaDash-Online-Helper/static/js/main.41dd6c12.js.map"
+    "main.f7cc280e.css.map": "/DeltaDash-Online-Helper/static/css/main.f7cc280e.css.map",
+    "main.bcf903c2.js.map": "/DeltaDash-Online-Helper/static/js/main.bcf903c2.js.map"
   },
   "entrypoints": [
-    "static/css/main.d35b179d.css",
-    "static/js/main.41dd6c12.js"
+    "static/css/main.f7cc280e.css",
+    "static/js/main.bcf903c2.js"
   ]
 }
