@@ -356,9 +356,9 @@
 }
 
 .attribute-section.buffs h5.attribute-title {
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.4));
-  color: #4CAF50;
-  border: 2px solid rgba(76, 175, 80, 0.6);
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.18), rgba(255, 87, 34, 0.5));
+  color: #ffeb3b;
+  border: 2px solid rgba(255, 152, 0, 0.7);
 }
 
 .attribute-section.neutrals h5.attribute-title {
@@ -389,11 +389,11 @@
 }
 
 .attribute-card.buff {
-  border-left-color: #4CAF50;
+  border-left-color: #ffb300;
 }
 
 .attribute-card.neutral {
-  border-left-color: #2196F3;
+  border-left-color: #ff8a65;
 }
 
 .attribute-card.debuff {
@@ -402,13 +402,41 @@
 
 .attribute-name {
   font-weight: bold;
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 5px;
   display: block;
 }
 
 .attribute-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: #d0d6dd;
   opacity: 0.8;
+}
+
+.template-image,
+.driver-image {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 179, 0, 0.3), transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.driver-thumbnail,
+.driver-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  filter: saturate(1.2) contrast(1.1);
+}
+
+.placeholder-image {
+  font-size: 40px;
+  filter: drop-shadow(0 0 10px rgba(255, 179, 0, 0.6));
 }

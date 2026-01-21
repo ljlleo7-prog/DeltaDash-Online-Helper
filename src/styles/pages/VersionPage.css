@@ -20,7 +20,7 @@
 
 .version-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
+  box-shadow: 0 10px 34px rgba(255, 107, 0, 0.45);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -45,15 +45,15 @@
 .version-header h3 {
   font-family: var(--font-tech);
   font-size: 22px;
-  color: #fff;
+  color: var(--text-main);
   margin: 0;
   letter-spacing: 1px;
 }
 
 .release-date {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--accent-cyan);
-  background: rgba(0, 242, 255, 0.1);
+  background: rgba(255, 107, 0, 0.16);
   padding: 4px 10px;
   border-radius: 2px;
   font-family: var(--font-tech);
@@ -75,7 +75,7 @@
   padding: 8px 20px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--bg-deep);
   background: var(--text-dim);
   font-family: var(--font-tech);

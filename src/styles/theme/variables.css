@@ -1,14 +1,14 @@
 :root {
-  /* Hi-Tech Palette */
+  /* Fiery / Passionate Palette */
   --bg-deep: #050507;
-  --bg-card: rgba(10, 11, 16, 0.7);
-  --accent-cyan: #00f2ff;
-  --accent-purple: #7000ff;
-  --accent-neon: #39ff14;
-  --text-main: #e0e6ed;
-  --text-dim: #94a3b8;
-  --border-glow: rgba(0, 242, 255, 0.3);
-  --glass-bg: rgba(15, 23, 42, 0.6);
+  --bg-card: rgba(15, 10, 8, 0.85);
+  --accent-cyan: #ff6b00;
+  --accent-purple: #ff1744;
+  --accent-neon: #ffd54f;
+  --text-main: #ffece0;
+  --text-dim: #f5c7aa;
+  --border-glow: rgba(255, 107, 0, 0.4);
+  --glass-bg: rgba(24, 8, 5, 0.85);
   --font-tech: 'Orbitron', 'Audiowide', sans-serif;
   --font-main: 'Roboto', 'Inter', system-ui, sans-serif;
   --hud-corner: 15px;
@@ -17,9 +17,9 @@
   --bg-900: #070709;
   --bg-800: #0b0b0d;
   --panel: #0f1113;
-  --muted: #bfc7d1;
-  --accent-orange-1: #ff8a00;
+  --muted: #f0d0bb;
+  --accent-orange-1: #ff6b00;
   --accent-orange-2: #ffb300;
-  --accent-blue-1: #4f7ef2;
-  --accent-blue-2: #6f7efb;
+  --accent-blue-1: #ff5252;
+  --accent-blue-2: #ff8a65;
 }

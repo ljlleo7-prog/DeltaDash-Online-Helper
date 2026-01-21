@@ -6,7 +6,7 @@
         "en": "Driver 1",
         "zh": "驾驶员 1"
       },
-      "imgSource": "assets/drivers/driver1.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Rookie talent with strong potential for growth",
         "zh": "具有强大成长潜力的新秀天才"
@@ -21,7 +21,7 @@
         "en": "Driver 2",
         "zh": "驾驶员 2"
       },
-      "imgSource": "assets/drivers/driver2.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Developing racer with improving skills",
         "zh": "技能不断提升的成长型车手"
@@ -36,7 +36,7 @@
         "en": "Driver 3",
         "zh": "驾驶员 3"
       },
-      "imgSource": "assets/drivers/driver3.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Consistent performer with reliable results",
         "zh": "成绩稳定的可靠型选手"
@@ -51,7 +51,7 @@
         "en": "Driver 4",
         "zh": "驾驶员 4"
       },
-      "imgSource": "assets/drivers/driver4.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Technical specialist with deep car knowledge",
         "zh": "对赛车有深入了解的技术专家"
@@ -66,7 +66,7 @@
         "en": "Driver 5",
         "zh": "驾驶员 5"
       },
-      "imgSource": "assets/drivers/driver5.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Aggressive racer with bold overtaking style",
         "zh": "具有大胆超车风格的激进型车手"
@@ -81,7 +81,7 @@
         "en": "Driver 6",
         "zh": "驾驶员 6"
       },
-      "imgSource": "assets/drivers/driver6.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Strategic thinker with excellent race planning",
         "zh": "具有出色比赛规划能力的策略型思考者"
@@ -96,7 +96,7 @@
         "en": "Driver 7",
         "zh": "驾驶员 7"
       },
-      "imgSource": "assets/drivers/driver7.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Endurance expert with strong stamina",
         "zh": "具有强大耐力的耐力专家"
@@ -111,7 +111,7 @@
         "en": "Driver 8",
         "zh": "驾驶员 8"
       },
-      "imgSource": "assets/drivers/driver8.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Wet weather specialist excelling in rain",
         "zh": "在雨天表现出色的雨战专家"
@@ -126,7 +126,7 @@
         "en": "Driver 9",
         "zh": "驾驶员 9"
       },
-      "imgSource": "assets/drivers/driver9.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Qualifying specialist with fast single laps",
         "zh": "具有快速单圈能力的排位赛专家"
@@ -141,7 +141,7 @@
         "en": "Driver 10",
         "zh": "驾驶员 10"
       },
-      "imgSource": "assets/drivers/driver10.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Veteran leader with extensive experience",
         "zh": "经验丰富的资深领袖"
@@ -156,7 +156,7 @@
         "en": "Driver 11",
         "zh": "驾驶员 11"
       },
-      "imgSource": "assets/drivers/driver11.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Overtaking master with exceptional passing skills",
         "zh": "具有出色超车技巧的超车大师"
@@ -171,7 +171,7 @@
         "en": "Driver 12",
         "zh": "驾驶员 12"
       },
-      "imgSource": "assets/drivers/driver12.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Defensive expert with strong position holding",
         "zh": "具有强大位置保持能力的防守专家"
@@ -186,7 +186,7 @@
         "en": "Driver 13",
         "zh": "驾驶员 13"
       },
-      "imgSource": "assets/drivers/driver13.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Tire management pro with excellent conservation",
         "zh": "具有出色轮胎保护能力的轮胎管理专家"
@@ -201,7 +201,7 @@
         "en": "Driver 14",
         "zh": "驾驶员 14"
       },
-      "imgSource": "assets/drivers/driver14.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Fuel efficiency expert with optimal consumption",
         "zh": "具有最佳燃油消耗效率的燃油效率专家"
@@ -216,7 +216,7 @@
         "en": "Driver 15",
         "zh": "驾驶员 15"
       },
-      "imgSource": "assets/drivers/driver15.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Race strategy master with tactical brilliance",
         "zh": "具有战术智慧的比赛策略大师"
@@ -231,7 +231,7 @@
         "en": "Driver 16",
         "zh": "驾驶员 16"
       },
-      "imgSource": "assets/drivers/driver16.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Safety car expert with restart proficiency",
         "zh": "具有重新启动熟练度的安全车专家"
@@ -246,7 +246,7 @@
         "en": "Driver 17",
         "zh": "驾驶员 17"
       },
-      "imgSource": "assets/drivers/driver17.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Pit stop specialist with fast service times",
         "zh": "具有快速服务时间的进站专家"
@@ -261,7 +261,7 @@
         "en": "Driver 18",
         "zh": "驾驶员 18"
       },
-      "imgSource": "assets/drivers/driver18.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Start line expert with quick reaction times",
         "zh": "具有快速反应时间的起步专家"
@@ -276,7 +276,7 @@
         "en": "Driver 19",
         "zh": "驾驶员 19"
       },
-      "imgSource": "assets/drivers/driver19.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "Overtaking specialist with aggressive moves",
         "zh": "具有激进超车动作的超车专家"
@@ -291,7 +291,7 @@
         "en": "Driver 20",
         "zh": "驾驶员 20"
       },
-      "imgSource": "assets/drivers/driver20.jpg",
+      "imgSource": "assets/logo.png",
       "description": {
         "en": "All-round performer with balanced skills",
         "zh": "具有平衡技能的全能型选手"

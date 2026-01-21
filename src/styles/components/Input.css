@@ -1,7 +1,7 @@
 .input-field, .form-input, .form-textarea {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: var(--text-main);
   padding: 15px 20px;
   border-radius: 2px;
   font-family: var(--font-main);
@@ -11,9 +11,9 @@
 
 .input-field:focus, .form-input:focus, .form-textarea:focus {
   border-color: var(--accent-cyan);
-  background: rgba(0, 242, 255, 0.05);
+  background: rgba(255, 107, 0, 0.08);
   outline: none;
-  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+  box-shadow: 0 0 18px rgba(255, 107, 0, 0.35);
 }
 
 .form-group {

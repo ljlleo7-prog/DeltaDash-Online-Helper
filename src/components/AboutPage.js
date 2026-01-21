@@ -182,7 +182,7 @@ function AboutPage() {
         </section>
 
         {/* Development Team Section */}
-        <section className="team-section">
+        <section className="dev-team-section">
           <div className="game-info-header">
             <span className="game-info-icon">👥</span>
             <h3 className="game-info-title">
@@ -190,13 +190,13 @@ function AboutPage() {
             </h3>
           </div>
           
-          <div className="team-grid">
+          <div className="dev-team-grid">
             {boardgameData.developmentTeam.members.map((member, index) => (
-              <div key={index} className="team-member">
-                <h4 className="team-member-name">
+              <div key={index} className="dev-team-member">
+                <h4 className="dev-team-member-name">
                   {getText(member.name)}
                 </h4>
-                <p className="team-member-role">
+                <p className="dev-team-member-role">
                   {getText(member.role)}
                 </p>
               </div>

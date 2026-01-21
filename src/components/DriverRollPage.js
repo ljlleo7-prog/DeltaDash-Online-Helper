@@ -8,6 +8,7 @@ function DriverRollPage() {
   const [rolledDriver, setRolledDriver] = useState(null);
   const [isRolling, setIsRolling] = useState(false);
   const [isRollingTemplate, setIsRollingTemplate] = useState(false);
+  const [brokenImages, setBrokenImages] = useState({});
   const { language } = useContext(LanguageContext);
 
   // Helper function to get text based on language
@@ -20,6 +21,10 @@ function DriverRollPage() {
   useEffect(() => {
     setDriverData(driverDataJson);
   }, []);
+
+  const handleImageError = (templateId) => {
+    setBrokenImages((prev) => ({ ...prev, [templateId]: true }));
+  };
 
   const selectTemplate = (template) => {
     setSelectedTemplate(template);
@@ -143,7 +148,16 @@ function DriverRollPage() {
                 onClick={() => selectTemplate(template)}
               >
                 <div className="template-image">
-                  <div className="placeholder-image">🏎️</div>
+                  {brokenImages[template.id] ? (
+                    <div className="placeholder-image">🏎️</div>
+                  ) : (
+                    <img 
+                      src={template.imgSource} 
+                      alt={getText(template.name)} 
+                      className="driver-thumbnail"
+                      onError={() => handleImageError(template.id)}
+                    />
+                  )}
                 </div>
                 <div className="template-info">
                   <h4 className="driver-name">{getText(template.name)}</h4>
@@ -214,7 +228,16 @@ function DriverRollPage() {
               <div className="driver-result">
                 <div className="driver-header">
                   <div className="driver-image">
-                    <div className="placeholder-image">🏎️</div>
+                    {brokenImages[selectedTemplate.id] ? (
+                      <div className="placeholder-image">🏎️</div>
+                    ) : (
+                      <img 
+                        src={selectedTemplate.imgSource} 
+                        alt={getText(selectedTemplate.name)} 
+                        className="driver-photo"
+                        onError={() => handleImageError(selectedTemplate.id)}
+                      />
+                    )}
                   </div>
                   <div className="driver-name">
                     <h4>{getText(selectedTemplate.name)}</h4>

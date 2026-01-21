@@ -17,7 +17,7 @@
 .submit-btn:hover, .calculate-btn:hover, .check-update-btn:hover {
   background: var(--accent-cyan);
   color: var(--bg-deep);
-  box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.55);
 }
 
 /* Button Group */

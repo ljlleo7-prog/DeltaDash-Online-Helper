@@ -38,13 +38,13 @@
 }
 
 .submit-feedback-btn:hover {
-  background: rgba(0, 242, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+  background: linear-gradient(135deg, rgba(229, 57, 53, 0.4), rgba(255, 140, 0, 0.25));
+  box-shadow: 0 0 24px rgba(229, 57, 53, 0.6);
 }
 
 .submit-feedback-btn.local-btn { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 .submit-feedback-btn.online-btn { border-color: var(--accent-purple); color: var(--accent-purple); }
-.submit-feedback-btn.online-btn:hover { background: rgba(112, 0, 255, 0.1); box-shadow: 0 0 20px rgba(112, 0, 255, 0.3); }
+.submit-feedback-btn.online-btn:hover { background: linear-gradient(135deg, rgba(255, 23, 68, 0.45), rgba(255, 140, 0, 0.25)); box-shadow: 0 0 24px rgba(255, 23, 68, 0.6); }
 
 .feedback-status {
   margin-top: 20px;
