@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
+import boardgameDataJson from '../data/boardgame_data.json';
 
 function AboutPage() {
   const { language } = useContext(LanguageContext);
@@ -7,51 +8,8 @@ function AboutPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadBoardgameData = async () => {
-      try {
-        console.log('Loading boardgame data...');
-        // Try different paths for the JSON file
-        const paths = [
-          '/boardgame_data.json',
-          './boardgame_data.json',
-          'boardgame_data.json',
-          '/public/boardgame_data.json',
-          './public/boardgame_data.json'
-        ];
-        
-        let data = null;
-        for (const path of paths) {
-          try {
-            console.log(`Trying path: ${path}`);
-            const response = await fetch(path);
-            
-            if (response.ok) {
-              data = await response.json();
-              console.log(`Success with path: ${path}`);
-              break;
-            } else {
-              console.log(`HTTP error with path ${path}: ${response.status} ${response.statusText}`);
-            }
-          } catch (error) {
-            console.log(`Failed with path ${path}:`, error.message);
-          }
-        }
-        
-        if (data) {
-          console.log('Boardgame data loaded successfully:', data);
-          setBoardgameData(data);
-        } else {
-          throw new Error('All paths failed to load boardgame data');
-        }
-      } catch (error) {
-        console.error('Error loading boardgame data:', error);
-        console.error('Error details:', error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadBoardgameData();
+    setBoardgameData(boardgameDataJson);
+    setLoading(false);
   }, []);
 
   const getText = (textObj) => {

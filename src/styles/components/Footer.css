@@ -1,0 +1,15 @@
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+  font-family: var(--font-tech);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.footer-link {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  margin-left: 10px;
+}

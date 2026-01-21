@@ -1,0 +1,25 @@
+:root {
+  /* Hi-Tech Palette */
+  --bg-deep: #050507;
+  --bg-card: rgba(10, 11, 16, 0.7);
+  --accent-cyan: #00f2ff;
+  --accent-purple: #7000ff;
+  --accent-neon: #39ff14;
+  --text-main: #e0e6ed;
+  --text-dim: #94a3b8;
+  --border-glow: rgba(0, 242, 255, 0.3);
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --font-tech: 'Orbitron', 'Audiowide', sans-serif;
+  --font-main: 'Roboto', 'Inter', system-ui, sans-serif;
+  --hud-corner: 15px;
+
+  /* Additional Colors (merged) */
+  --bg-900: #070709;
+  --bg-800: #0b0b0d;
+  --panel: #0f1113;
+  --muted: #bfc7d1;
+  --accent-orange-1: #ff8a00;
+  --accent-orange-2: #ffb300;
+  --accent-blue-1: #4f7ef2;
+  --accent-blue-2: #6f7efb;
+}

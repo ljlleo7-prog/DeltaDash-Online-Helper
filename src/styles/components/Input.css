@@ -1,0 +1,32 @@
+.input-field, .form-input, .form-textarea {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 2px;
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+  width: 100%; /* Ensure full width */
+}
+
+.input-field:focus, .form-input:focus, .form-textarea:focus {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 242, 255, 0.05);
+  outline: none;
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .input-field {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+}

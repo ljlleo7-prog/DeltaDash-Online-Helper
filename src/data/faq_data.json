@@ -1,0 +1,96 @@
+{
+  "faq": {
+    "title": {
+      "en": "Frequently Asked Questions",
+      "zh": "常见问题解答"
+    },
+    "description": {
+      "en": "Find answers to the most common questions about Delta Dash",
+      "zh": "关于Delta Dash最常见问题的解答"
+    },
+    "questions": [
+      {
+        "id": 1,
+        "question": {
+          "en": "What is Delta Dash Online Assistant?",
+          "zh": "Delta Dash在线助手是什么？"
+        },
+        "answer": {
+          "en": "Delta Dash Online Assistant is a web-based tool designed to enhance your experience with the Delta Dash boardgame. It provides features like driver rolling, strategy planning, and game information management.",
+          "zh": "Delta Dash在线助手是一个基于网页的工具，旨在增强您使用Delta Dash赛车桌游的体验。它提供驾驶员抽取、策略规划和游戏信息管理等功能。"
+        },
+        "category": "general"
+      },
+      {
+        "id": 2,
+        "question": {
+          "en": "How do we move? Are there any auto forwarding?",
+          "zh": "我们怎么移动？有没有自动前进什么的？"
+        },
+        "answer": {
+          "en": "Well, we don't normally move, and that's because the rulebook does not say so. This is also our featured mechanism - Delta mechanism. We only iterate relative position, so there is no need to move together in any ways. In other words, every turn, you just moved an entire lap, and net zero displacement. However, if the rulebook says you should move forward or backward, then you do what it tells you to. This marks your displacement after a lap time.",
+          "zh": "呃，其实一般不用移动，而这是因为规则书没说有什么自动移动。这也是我们最具特色的机制-Detla机制。我们只迭代相对位置，所以并不需要集体移动。换句话说，每回合你移动了一整圈，也就是位移0m。不过，如果规则书让你前进或后退，请照做——前进和后退就是你一圈时间的位移。"
+        },
+        "category": "gameplay"
+      },
+      {
+        "id": 3,
+        "question": {
+          "en": "Then what is the point of a circuit? Isn't it clearer to use a straight line?",
+          "zh": "那么为啥还有赛道图？直线赛道不是更直白些？"
+        },
+        "answer": {
+          "en": "We admit that a circuit is a bit misleading, but this is actually the product of our test players' collective preference. First, we need to simulate the 'lapped' effect (very important in affecting the World Champion Winner sometimes). During our testing, we used a circle circuit to achieve the same purpose, but the testers complained that 'it is NASCAR', so we included different circuit configurations to make the game more immersive.",
+          "zh": "我们承认赛道有点误导性，但这其实是内部测试人员的集体意愿。首先，我们希望模拟套圈效果（因为这有时会影响世界冠军争夺）。在测试中，我们曾使用环形赛道来兼顾规则与无误导，但测试人员集体抱怨说'开成纳斯卡了'，于是我们最终加入了赛道布局，增加点代入感。"
+        },
+        "category": "gameplay"
+      },
+      {
+        "id": 4,
+        "question": {
+          "en": "If we have relative position, why do we need DRS zones? DRS should be always activated.",
+          "zh": "既然我们以相对位置记录，为啥还要有DRS区呢？DRS应该一直生效。"
+        },
+        "answer": {
+          "en": "Sadly, this is another misleading compensation for game balance. Notice that we have a 0-1s turbulence zone to reduce speed and the same 0-1s DRS zone to increase speed, and the only distinction is between corners and straights. If we allow DRS anytime, turbulence zone will be meaningless, but the existence of both turbulence and DRS is crucial for a wheel-to-wheel combat.",
+          "zh": "很抱歉，这又是一个为确保游戏平衡带来的误导性的妥协。注意到，我们有0-1s范围的脏空气区和0-1s的DRS区，而唯一的生效区别就是弯道或直道。如果我们让DRS永远在0-1s生效，脏空气就没作用了，直接无脑开DRS就行了。但是，我们仍然希望DRS和脏空气并存，带来多样的轮对轮缠斗。"
+        },
+        "category": "gameplay"
+      },
+      {
+        "id": 5,
+        "question": {
+          "en": "How can I provide feedback or report issues?",
+          "zh": "我如何提供反馈或报告问题？"
+        },
+        "answer": {
+          "en": "Use the Feedback tab to send us your suggestions, bug reports, or any other feedback. We appreciate your input!",
+          "zh": "使用反馈标签页向我们发送您的建议、错误报告或其他反馈。我们感谢您的意见！"
+        },
+        "category": "support"
+      }
+    ],
+    "categories": {
+      "general": {
+        "en": "General",
+        "zh": "一般问题"
+      },
+      "features": {
+        "en": "Features",
+        "zh": "功能"
+      },
+      "gameplay": {
+        "en": "Gameplay",
+        "zh": "游戏玩法"
+      },
+      "technical": {
+        "en": "Technical",
+        "zh": "技术问题"
+      },
+      "support": {
+        "en": "Support",
+        "zh": "支持"
+      }
+    }
+  }
+}

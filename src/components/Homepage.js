@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { formatDate, escapeHtml } from '../utils/helpers';
 import { LanguageContext } from '../contexts/LanguageContext';
+import newsData from '../data/news.json';
+import aboutUsData from '../data/about_us.json';
 
 function HomePage() {
   const [news, setNews] = useState([]);
@@ -9,33 +11,11 @@ function HomePage() {
   const { language } = useContext(LanguageContext);
 
   useEffect(() => {
-    loadNews();
-    loadAboutUs();
+    // Load data from imported JSON
+    setNews(newsData.news || []);
+    setAboutUs(aboutUsData.about_us);
+    setLoading(false);
   }, []);
-
-  const loadNews = async () => {
-    try {
-      const response = await fetch(`${process.env.PUBLIC_URL || ''}/news.json`);
-      if (!response.ok) throw new Error('Could not load news.json');
-      const data = await response.json();
-      setNews(data.news || []);
-    } catch (error) {
-      console.error('Error loading news:', error);
-    }
-  };
-
-  const loadAboutUs = async () => {
-    try {
-      const response = await fetch(`${process.env.PUBLIC_URL || ''}/about_us.json`);
-      if (!response.ok) throw new Error('Could not load about_us.json');
-      const data = await response.json();
-      setAboutUs(data.about_us);
-    } catch (error) {
-      console.error('Error loading about us:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   // Helper function to get text based on language
   const getText = (textObj) => {

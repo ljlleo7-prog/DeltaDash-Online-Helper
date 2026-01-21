@@ -1,0 +1,57 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "strategies": "Strategies", 
+    "versions": "Versions",
+    "feedback": "Feedback",
+    "contact": "Contact",
+    "email": "Email",
+    "bilibili": "Bilibili",
+    "learn_more": "Learn More",
+    "read_more": "Read More",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "homepage": {
+    "welcome": "Welcome to Delta Dash Online Assistant",
+    "subtitle": "Your AI-powered trading companion",
+    "description": "Delta Dash is the ultimate F1 boardgame experience that combines strategic depth with thrilling racing action. Our online assistant helps you master the game's mechanics and develop winning strategies.",
+    "features": "Key Features",
+    "contact_info": "Contact Information"
+  },
+  "about": {
+    "company_name": "Geeks Production Studio",
+    "mission": "To revolutionize F1 boardgame through innovative mechanisms to bring out the best of F1 racing characteristics to our passionate fans.",
+    "description": "Delta Dash is developed by passionate motorsports enthusiasts and boardgame designers who believe that motorsports boardgames should illustrate the true essence of the particular racing event to the largest extent without running against legal regulations."
+  },
+  "strategy": {
+    "title": "🏎️ Strategy Simulation",
+    "circuit_selection": "Circuit Selection",
+    "select_circuit": "Select a circuit...",
+    "total_laps": "Total Laps",
+    "race_strategy_stints": "Race Strategy Stints",
+    "add_stint": "+ Add Stint",
+    "stint": "Stint",
+    "tire_type": "Tire Type",
+    "select_tire_type": "Select tire type...",
+    "push_conserve": "Push/Conserve",
+    "push_conserve_hint": "(+ push, - conserve)",
+    "box_lap": "Box Lap",
+    "calculate_strategy": "🏁 Calculate Strategy",
+    "strategy_results": "Strategy Results",
+    "lap_time_delta": "Lap Time Delta (seconds)",
+    "total_race_time_delta": "Total Race Time Delta",
+    "lap_by_lap_analysis": "Lap-by-Lap Analysis",
+    "lap": "Lap",
+    "stint_number": "Stint",
+    "tire": "Tire",
+    "degradation": "Degradation",
+    "delta": "Delta",
+    "cumulative": "Cumulative",
+    "calculation_mode": "Calculation Mode",
+    "refined": "Refined",
+    "coarse": "Coarse",
+    "calculation_mode_hint": "Coarse mode rounds to nearest 0.5s (boardgame style)"
+  }
+}

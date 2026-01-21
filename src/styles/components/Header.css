@@ -1,0 +1,104 @@
+/* Header HUD Styling */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  padding: 20px;
+}
+
+.title-wrapper {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  padding: 40px 24px;
+  border-radius: 4px;
+  border: 1px solid var(--border-glow);
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+  overflow: hidden;
+  /* Dark theme override */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.14));
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* HUD Corners */
+.title-wrapper::before,
+.title-wrapper::after {
+  content: '';
+  position: absolute;
+  width: var(--hud-corner);
+  height: var(--hud-corner);
+  border-color: var(--accent-cyan);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.title-wrapper::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.title-wrapper::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.main-title {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 4px;
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.main-title .delta,
+.main-title .dash,
+.main-title .online,
+.main-title .assistant {
+  background: linear-gradient(180deg, #fff 30%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.5));
+}
+
+.site-logo {
+  height: 80px;
+  width: auto;
+  filter: drop-shadow(0 0 10px var(--accent-cyan));
+  border: 1px solid var(--border-glow);
+  padding: 5px;
+  background: rgba(0, 242, 255, 0.05);
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--accent-cyan);
+  font-family: var(--font-tech);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+  
+  .main-title span {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .title-wrapper {
+    padding: 30px 20px; /* Merged from media query */
+  }
+}

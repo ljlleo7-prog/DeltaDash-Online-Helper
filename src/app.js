@@ -7,7 +7,7 @@ import VersionPage from './components/VersionPage';
 import StrategyPage from './components/StrategyPage';
 import FeedbackPage from './components/FeedbackPage';
 import DriverRollPage from './components/DriverRollPage';
-import FAQPage from './components/FAQPage';
+import StewardPage from './components/StewardPage';
 import Footer from './components/Footer';
 import { setupFrontBackground } from './utils/frontBackground';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -27,7 +27,7 @@ function App() {
     about: <AboutPage />,
     version: <VersionPage />,
     strategy: <StrategyPage />,
-    faq: <FAQPage />,
+    steward: <StewardPage />,
     driverroll: <DriverRollPage />,
     feedback: <FeedbackPage />
   };

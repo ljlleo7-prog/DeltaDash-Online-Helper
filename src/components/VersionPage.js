@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { formatDate, escapeHtml } from '../utils/helpers';
 import { LanguageContext } from '../contexts/LanguageContext';
+import versionsData from '../data/versions.json';
 
 function VersionPage() {
   const [versions, setVersions] = useState([]);
@@ -15,21 +16,10 @@ function VersionPage() {
   };
 
   useEffect(() => {
-    loadVersions();
+    const data = versionsData;
+    setVersions(Array.isArray(data) ? data : data.versions || []);
+    setLoading(false);
   }, []);
-
-  const loadVersions = async () => {
-    try {
-      const response = await fetch('./versions.json', { cache: 'no-store' });
-      if (!response.ok) throw new Error(`Could not load versions.json: ${response.status} ${response.statusText}`);
-      const data = await response.json();
-      setVersions(Array.isArray(data) ? data : data.versions || []);
-    } catch (error) {
-      console.error('Error loading versions:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const showVersionModal = (title, date, description) => {
     const modal = document.createElement('div');

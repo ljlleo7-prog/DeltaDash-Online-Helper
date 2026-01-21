@@ -13,6 +13,9 @@ import {
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
 import { LanguageContext } from '../contexts/LanguageContext';
+import enTranslations from '../data/translations/en.json';
+import zhTranslations from '../data/translations/zh.json';
+import tireDegradationCsvPath from '../data/tire_degradation_data.csv';
 
 // Register Chart.js components
 ChartJS.register(
@@ -41,19 +44,11 @@ function StrategyPage() {
 
   // Load translations based on language
   useEffect(() => {
-    const loadTranslations = async () => {
-      try {
-        const response = await fetch(`${process.env.PUBLIC_URL || ''}/translations/${language}.json`);
-        if (response.ok) {
-          const data = await response.json();
-          setTranslations(data);
-        }
-      } catch (error) {
-        console.error('Error loading translations:', error);
-      }
-    };
-
-    loadTranslations();
+    if (language === 'zh') {
+      setTranslations(zhTranslations);
+    } else {
+      setTranslations(enTranslations);
+    }
   }, [language]);
 
   // Helper function to get text based on language
@@ -69,71 +64,52 @@ function StrategyPage() {
     return value || key;
   };
 
-  // List of possible CSV file paths for different build environments
-  const csvPaths = [
-    '/tire_degradation_data.csv',                    // Production build (served from public/)
-    './tire_degradation_data.csv',                   // Relative path in development
-    '../public/tire_degradation_data.csv',           // Relative to src/components
-    '../../public/tire_degradation_data.csv',        // Relative to src/components
-    '/public/tire_degradation_data.csv',             // Absolute path in development
-    '/build/tire_degradation_data.csv',              // Build directory
-    '/generated/tire_degradation_data.csv',          // Generated directory
-    'tire_degradation_data.csv'                      // Same directory (fallback)
-  ];
-
-  // Function to try loading CSV from multiple paths
+  // Function to try loading CSV from imported path
   const loadCSVData = async () => {
-    for (const path of csvPaths) {
-      try {
-        console.log(`Trying to load CSV from: ${path}`);
-        const response = await fetch(path);
-        
-        if (!response.ok) {
-          console.log(`Path ${path} not found, trying next path...`);
-          continue;
-        }
-        
-        const csvText = await response.text();
-        
-        return new Promise((resolve, reject) => {
-          Papa.parse(csvText, {
-            header: true,
-            complete: (result) => {
-              console.log(`CSV loaded successfully from: ${path}`);
-              console.log('CSV parsed successfully:', result.data);
-              setCircuitData(result.data);
-              
-              // Extract unique circuits
-              const uniqueCircuits = [...new Set(result.data.map(item => item.circuit))].filter(Boolean);
-              setCircuits(uniqueCircuits);
-              
-              if (uniqueCircuits.length > 0) {
-                const firstCircuit = uniqueCircuits[0];
-                setSelectedCircuit(firstCircuit);
-                
-                // Extract tire types for the selected circuit
-                const circuitTireTypes = [...new Set(result.data
-                  .filter(item => item.circuit === firstCircuit)
-                  .map(item => item.tire_type))].filter(Boolean);
-                setTireTypes(circuitTireTypes);
-              }
-              resolve(result.data);
-            },
-            error: (error) => {
-              console.error(`Error parsing CSV from ${path}:`, error);
-              reject(error);
-            }
-          });
-        });
-        
-      } catch (error) {
-        console.log(`Failed to load from ${path}:`, error.message);
-        // Continue to next path
+    try {
+      console.log(`Trying to load CSV from: ${tireDegradationCsvPath}`);
+      const response = await fetch(tireDegradationCsvPath);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch CSV: ${response.status} ${response.statusText}`);
       }
+      
+      const csvText = await response.text();
+      
+      return new Promise((resolve, reject) => {
+        Papa.parse(csvText, {
+          header: true,
+          complete: (result) => {
+            console.log(`CSV loaded successfully`);
+            console.log('CSV parsed successfully:', result.data);
+            setCircuitData(result.data);
+            
+            // Extract unique circuits
+            const uniqueCircuits = [...new Set(result.data.map(item => item.circuit))].filter(Boolean);
+            setCircuits(uniqueCircuits);
+            
+            if (uniqueCircuits.length > 0) {
+              const firstCircuit = uniqueCircuits[0];
+              setSelectedCircuit(firstCircuit);
+              
+              // Extract tire types for the selected circuit
+              const circuitTireTypes = [...new Set(result.data
+                .filter(item => item.circuit === firstCircuit)
+                .map(item => item.tire_type))].filter(Boolean);
+              setTireTypes(circuitTireTypes);
+            }
+            resolve(result.data);
+          },
+          error: (error) => {
+            console.error(`Error parsing CSV:`, error);
+            reject(error);
+          }
+        });
+      });
+    } catch (error) {
+      console.log(`Failed to load CSV:`, error.message);
+      throw error;
     }
-    
-    // If all paths fail, use fallback data
-    throw new Error('All CSV paths failed, using fallback data');
   };
 
   // Load CSV data on component mount
@@ -220,13 +196,16 @@ function StrategyPage() {
 
       // Calculate push/conserve effect per lap based on stint length
       const pushPerLap = stint.pushConserve / stintLaps; // Divide push by stint length
-      const wearRateMultiplier = 1 + (pushPerLap * 0.5); // +5% wear per 0.1 push
+      
+      // Use wear rate adjustment from CSV data
+      const pushWearAdjustment = parseFloat(stintData.push_wear_adjustment);
+      const wearRateAdjustment = pushWearAdjustment * pushPerLap;
+      const adjustedWearRate = baseWearRate + wearRateAdjustment;
+      
       const timeModifierPerLap = -pushPerLap * 1.5; // -0.15s per lap per 0.1 push
 
       for (let lap = 1; lap <= stintLaps && currentLap <= totalLaps; lap++, currentLap++) {
-        // Apply push/conserve wear rate multiplier
-        const adjustedWearRate = baseWearRate * wearRateMultiplier;
-        
+        // Apply push/conserve wear rate adjustment
         const degradation = Math.min(lap * adjustedWearRate, 100);
         const degradationKey = `degradation_${Math.floor(degradation / 10) * 10}`;
         let degradationDelta = parseFloat(stintData[degradationKey]);
@@ -304,6 +283,11 @@ function StrategyPage() {
       boxLap: newBoxLap
     };
     setStints([...stints, newStint]);
+    
+    // Immediately recalculate strategy after adding stint
+    setTimeout(() => {
+      calculateStrategy();
+    }, 50);
   };
 
   // Initialize with one stint when circuit is selected
@@ -335,6 +319,11 @@ function StrategyPage() {
     }
     
     setStints(updatedStints);
+    
+    // Immediately recalculate strategy after removing stint
+    setTimeout(() => {
+      calculateStrategy();
+    }, 50);
   };
 
   // Update stint
@@ -367,6 +356,13 @@ function StrategyPage() {
       }
       return stint;
     }));
+    
+    // Immediately recalculate strategy after updating boxLap
+    if (field === 'boxLap' && selectedCircuit && stints.length > 0) {
+      setTimeout(() => {
+        calculateStrategy();
+      }, 50); // Small delay to ensure state is updated
+    }
   };
 
   // When circuit changes, update all stints' boxLap constraints

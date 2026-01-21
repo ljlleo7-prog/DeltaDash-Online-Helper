@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
+import driverDataJson from '../data/driver_data.json';
 
 function DriverRollPage() {
   const [driverData, setDriverData] = useState(null);
@@ -17,19 +18,8 @@ function DriverRollPage() {
   };
 
   useEffect(() => {
-    loadDriverData();
+    setDriverData(driverDataJson);
   }, []);
-
-  const loadDriverData = async () => {
-    try {
-      const response = await fetch('./driver_data.json', { cache: 'no-store' });
-      if (!response.ok) throw new Error(`Could not load driver_data.json: ${response.status} ${response.statusText}`);
-      const data = await response.json();
-      setDriverData(data);
-    } catch (error) {
-      console.error('Error loading driver data:', error);
-    }
-  };
 
   const selectTemplate = (template) => {
     setSelectedTemplate(template);
