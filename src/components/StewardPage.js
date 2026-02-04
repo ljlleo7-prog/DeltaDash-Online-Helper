@@ -3,18 +3,60 @@ import { LanguageContext } from '../contexts/LanguageContext';
 import faqDataJson from '../data/faq_data.json';
 import { escapeHtml } from '../utils/helpers';
 
+const resolveStewardAccessCodes = () => {
+  const list = process.env.REACT_APP_STEWARD_CODES;
+  if (list && typeof list === 'string') {
+    const parsed = list
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+    if (parsed.length > 0) {
+      return parsed;
+    }
+  }
+  const single = process.env.REACT_APP_STEWARD_CODE;
+  if (single && typeof single === 'string' && single.trim()) {
+    return [single.trim()];
+  }
+  return ['DELTA-STWD-2026'];
+};
+
+const STEWARD_ACCESS_CODES = resolveStewardAccessCodes();
+
 function StewardPage() {
   const { language } = useContext(LanguageContext);
-  const [activeTab, setActiveTab] = useState('flow'); // flow, faq, calc
+  const [activeTab, setActiveTab] = useState('flow');
   const [expandedQuestion, setExpandedQuestion] = useState(null);
+  const [accessCode, setAccessCode] = useState('');
+  const [authorized, setAuthorized] = useState(false);
+  const [accessError, setAccessError] = useState('');
 
-  // Helper function to get text based on language
   const getText = (textObj) => {
     return textObj ? (textObj[language] || textObj.en || '') : '';
   };
 
   const toggleQuestion = (id) => {
     setExpandedQuestion(expandedQuestion === id ? null : id);
+  };
+
+  const handleAccessSubmit = (event) => {
+    event.preventDefault();
+    const normalizedInput = (accessCode || '').trim();
+
+    if (!normalizedInput) {
+      setAccessError(language === 'zh' ? '请输入访问口令。' : 'Please enter the access code.');
+      setAuthorized(false);
+      return;
+    }
+
+    if (STEWARD_ACCESS_CODES.includes(normalizedInput)) {
+      setAuthorized(true);
+      setAccessError('');
+      return;
+    }
+
+    setAccessError(language === 'zh' ? '访问口令不正确。' : 'Invalid access code.');
+    setAuthorized(false);
   };
 
   const renderGameFlow = () => {
@@ -79,35 +121,132 @@ function StewardPage() {
   return (
     <section id="steward-page" className="page-content">
       <h2>{language === 'zh' ? '赛会干事' : 'Steward'}</h2>
-      
-      <div className="steward-tabs">
-        <button 
-          className={`steward-tab-btn ${activeTab === 'flow' ? 'active' : ''}`}
-          onClick={() => setActiveTab('flow')}
-        >
-          {language === 'zh' ? '游戏流程' : 'Game Flow'}
-        </button>
-        <button 
-          className={`steward-tab-btn ${activeTab === 'faq' ? 'active' : ''}`}
-          onClick={() => setActiveTab('faq')}
-        >
-          {language === 'zh' ? '常见问题' : 'FAQ'}
-        </button>
-        <button 
-          className={`steward-tab-btn ${activeTab === 'calc' ? 'active' : ''}`}
-          onClick={() => setActiveTab('calc')}
-        >
-          {language === 'zh' ? '数据计算' : 'Calculation'}
-        </button>
+
+      <div className="steward-access">
+        {authorized ? (
+          <div className="steward-access-message">
+            {language === 'zh' ? '已解锁赛会干事工具。' : 'Steward tools unlocked.'}
+          </div>
+        ) : (
+          <form className="steward-access-form" onSubmit={handleAccessSubmit}>
+            <p className="steward-access-description">
+              {language === 'zh'
+                ? '请输入赛会干事专用口令以访问详细工具和资料。'
+                : 'Enter the steward-only access code to view detailed tools and data.'}
+            </p>
+            <input
+              type="password"
+              className="steward-access-input"
+              value={accessCode}
+              onChange={(event) => {
+                setAccessCode(event.target.value);
+                if (accessError) {
+                  setAccessError('');
+                }
+              }}
+              placeholder={language === 'zh' ? '输入访问口令' : 'Enter access code'}
+            />
+            <button type="submit" className="steward-access-btn">
+              {language === 'zh' ? '解锁干事页面' : 'Unlock Steward Page'}
+            </button>
+            {accessError && (
+              <div className="steward-access-error">
+                {accessError}
+              </div>
+            )}
+          </form>
+        )}
       </div>
 
-      <div className="steward-content">
-        {activeTab === 'flow' && renderGameFlow()}
-        {activeTab === 'faq' && renderFAQ()}
-        {activeTab === 'calc' && renderCalculation()}
-      </div>
+      {authorized && (
+        <>
+          <div className="steward-tabs">
+            <button
+              className={`steward-tab-btn ${activeTab === 'flow' ? 'active' : ''}`}
+              onClick={() => setActiveTab('flow')}
+            >
+              {language === 'zh' ? '游戏流程' : 'Game Flow'}
+            </button>
+            <button
+              className={`steward-tab-btn ${activeTab === 'faq' ? 'active' : ''}`}
+              onClick={() => setActiveTab('faq')}
+            >
+              {language === 'zh' ? '常见问题' : 'FAQ'}
+            </button>
+            <button
+              className={`steward-tab-btn ${activeTab === 'calc' ? 'active' : ''}`}
+              onClick={() => setActiveTab('calc')}
+            >
+              {language === 'zh' ? '数据计算' : 'Calculation'}
+            </button>
+          </div>
+
+          <div className="steward-content">
+            {activeTab === 'flow' && renderGameFlow()}
+            {activeTab === 'faq' && renderFAQ()}
+            {activeTab === 'calc' && renderCalculation()}
+          </div>
+        </>
+      )}
 
       <style jsx>{`
+        .steward-access {
+          margin-bottom: 20px;
+          padding: 16px 20px;
+          border-radius: 8px;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .steward-access-form {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .steward-access-description {
+          margin: 0;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.8);
+        }
+        .steward-access-input {
+          padding: 10px 12px;
+          border-radius: 6px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(0, 0, 0, 0.6);
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 14px;
+        }
+        .steward-access-input:focus {
+          outline: none;
+          border-color: var(--accent-color, #e10600);
+          box-shadow: 0 0 8px rgba(225, 6, 0, 0.5);
+        }
+        .steward-access-btn {
+          align-self: flex-start;
+          padding: 8px 18px;
+          border-radius: 999px;
+          border: 1px solid var(--accent-color, #e10600);
+          background: linear-gradient(135deg, #e53935, #ffb300);
+          color: #111;
+          font-weight: 600;
+          cursor: pointer;
+          font-size: 13px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          transition: all 0.2s ease;
+        }
+        .steward-access-btn:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 0 16px rgba(225, 6, 0, 0.6);
+        }
+        .steward-access-error {
+          margin-top: 4px;
+          font-size: 13px;
+          color: #ff6b6b;
+        }
+        .steward-access-message {
+          font-size: 14px;
+          color: #ffb300;
+        }
         .steward-tabs {
           display: flex;
           gap: 10px;

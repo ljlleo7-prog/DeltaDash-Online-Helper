@@ -16,6 +16,21 @@
   },
   {
     "name": {
+      "en": "Delta Dash Version 4.0 Lite Beta",
+      "zh": "Delta Dash 4.0 Lite 公共测试版"
+    },
+    "date": "Feb 8, 2026",
+    "brief": {
+      "en": "The second BETA test stage, an alternative B version for BETA test, simplified.",
+      "zh": "第二个BETA测试阶段，为BETA测试提供的替代版本，简化了用户界面。"
+    },
+    "description": {
+      "en": "Version 4.0 Lite Beta is a coarse rebuild version of Delta Dash 3.1, addressing only first-sight bugfixes and alternative card mechanism. This is still a small scale BETA version, and will be released at small scale among our fans. Each user must produce the game itself from digital version in order to reduce printing and transportation cost.",
+      "zh": "版本4.0 Lite测试版是Delta Dash 3.1的粗重建版本，仅修复了明显的错误和替代卡牌机制。这仍然是一个小规模的BETA版本，将在我们的粉丝中以小规模发布。每个用户必须从数字版本自行制作游戏，以减少约2000美元的印刷和运输成本。"
+    }
+  },
+  {
+    "name": {
       "en": "Delta Dash Version 3.1 Beta",
       "zh": "Delta Dash 3.1 Beta公共测试版"
     },
