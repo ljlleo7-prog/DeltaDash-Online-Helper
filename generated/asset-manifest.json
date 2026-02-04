@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/deltadash/static/css/main.9551838d.css",
-    "main.js": "/deltadash/static/js/main.d7475515.js",
-    "static/media/front_page.jpg": "/deltadash/static/media/front_page.98e709d86890e441b728.jpg",
-    "static/media/tire_degradation_data.csv": "/deltadash/static/media/tire_degradation_data.1b0717c214dbbbac3015.csv",
-    "index.html": "/deltadash/index.html",
-    "main.9551838d.css.map": "/deltadash/static/css/main.9551838d.css.map",
-    "main.d7475515.js.map": "/deltadash/static/js/main.d7475515.js.map"
+    "main.css": "/static/css/main.d85c9e33.css",
+    "main.js": "/static/js/main.ee173513.js",
+    "static/media/front_page.jpg": "/static/media/front_page.98e709d86890e441b728.jpg",
+    "static/media/tire_degradation_data.csv": "/static/media/tire_degradation_data.1b0717c214dbbbac3015.csv",
+    "index.html": "/index.html",
+    "main.d85c9e33.css.map": "/static/css/main.d85c9e33.css.map",
+    "main.ee173513.js.map": "/static/js/main.ee173513.js.map"
   },
   "entrypoints": [
-    "static/css/main.9551838d.css",
-    "static/js/main.d7475515.js"
+    "static/css/main.d85c9e33.css",
+    "static/js/main.ee173513.js"
   ]
 }
