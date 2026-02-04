@@ -1,0 +1,200 @@
+.game-flow-editor {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background: #252525;
+  border-bottom: 1px solid #333;
+}
+
+.toolbar-section {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.toolbar-section h4 {
+  margin: 0;
+  margin-right: 8px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.editor-toolbar button, .file-btn, .edge-label-input {
+  padding: 5px 10px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+  font-weight: 600; /* Heavy text */
+}
+
+.edge-label-input {
+  cursor: text;
+  width: 100px;
+}
+
+.editor-toolbar button:hover, .file-btn:hover, .edge-label-input:focus {
+  background: #444;
+  border-color: #ff4d00;
+  outline: none;
+}
+
+.editor-toolbar button.active {
+  background: #ff4d00;
+  border-color: #ff4d00;
+}
+
+.editor-canvas {
+  flex: 1;
+  position: relative;
+  overflow: auto;
+  background: #111;
+  /* Grid pattern */
+  background-image: linear-gradient(#222 1px, transparent 1px),
+    linear-gradient(90deg, #222 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.canvas-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none; /* Allow full size */
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.edges-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: visiblePainted; /* Allow events on painted strokes */
+  z-index: 1;
+  overflow: visible;
+}
+
+.edge-group {
+  cursor: pointer;
+}
+
+.edge-group:hover path {
+  stroke-width: 4;
+}
+
+.edge-label-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.edge-label {
+  background: #222;
+  color: #ff4d00;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 800; /* Heavy text */
+  border: 1px solid #ff4d00;
+  white-space: nowrap;
+}
+
+.flow-node {
+  position: absolute;
+  width: 120px; /* Slightly wider */
+  height: 60px; /* Slightly taller */
+  background: #333;
+  border: 2px solid #555;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  z-index: 2;
+  user-select: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.flow-node:active {
+  cursor: grabbing;
+}
+
+.flow-node.selected {
+  border-color: #ff4d00;
+  box-shadow: 0 0 15px rgba(255, 77, 0, 0.6);
+}
+
+.flow-node.type-start {
+  border-radius: 30px;
+  background: #1b5e20; /* Darker green */
+  border-color: #4caf50;
+}
+
+.flow-node.type-decision {
+  transform: rotate(0deg); 
+  border-color: #ff9800;
+  background: #5d4037; /* Darker brown */
+}
+
+.flow-node.type-end {
+  border-radius: 30px;
+  background: #b71c1c; /* Darker red */
+  border-color: #f44336;
+}
+
+.node-content {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+
+.node-content input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 14px; /* Larger font */
+  font-weight: 700; /* Heavy text */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.node-content input:focus {
+  outline: none;
+  border-bottom: 1px solid #ff4d00;
+}
+
+.connecting-indicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background: #ff4d00;
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}

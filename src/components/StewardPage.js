@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
 import faqDataJson from '../data/faq_data.json';
 import { escapeHtml } from '../utils/helpers';
+import GameFlowEditor from './GameFlowEditor';
 
 const resolveStewardAccessCodes = () => {
   const list = process.env.REACT_APP_STEWARD_CODES;
@@ -30,6 +31,8 @@ function StewardPage() {
   const [accessCode, setAccessCode] = useState('');
   const [authorized, setAuthorized] = useState(false);
   const [accessError, setAccessError] = useState('');
+  const [flowData, setFlowData] = useState(null);
+  const fileInputRef = useRef(null);
 
   const getText = (textObj) => {
     return textObj ? (textObj[language] || textObj.en || '') : '';
@@ -59,17 +62,74 @@ function StewardPage() {
     setAuthorized(false);
   };
 
+  const handleFlowDataImport = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const data = JSON.parse(evt.target.result);
+          setFlowData(data);
+        } catch (err) {
+          console.error("Invalid JSON", err);
+          alert(language === 'zh' ? "无效的 JSON 文件" : "Invalid JSON file");
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
   const renderGameFlow = () => {
     return (
       <div className="steward-section">
         <h3>{language === 'zh' ? '交互式游戏流程图' : 'Interactive Game Flow Graph'}</h3>
-        <div className="game-flow-container" style={{ padding: '20px', textAlign: 'center', background: 'rgba(0,0,0,0.2)', borderRadius: '8px' }}>
-          <p>{language === 'zh' ? '即将推出...' : 'Coming Soon...'}</p>
-          {/* Placeholder for interactive graph */}
-          <div style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed #666' }}>
-            [Game Flow Graph Placeholder]
+        <div className="game-flow-wrapper">
+          <div className="flow-viewer-controls" style={{ marginBottom: '10px' }}>
+             <button 
+               className="steward-btn-small"
+               onClick={() => fileInputRef.current.click()}
+             >
+               {language === 'zh' ? '导入流程 JSON' : 'Import Flow JSON'}
+             </button>
+             <input 
+               type="file" 
+               accept=".json" 
+               ref={fileInputRef} 
+               onChange={handleFlowDataImport} 
+               hidden 
+             />
+             {!flowData && (
+               <span style={{ marginLeft: '10px', fontSize: '12px', color: '#aaa' }}>
+                 {language === 'zh' ? '请导入 JSON 文件以查看流程图' : 'Please import a JSON file to view the flow graph'}
+               </span>
+             )}
+          </div>
+          
+          <div className="flow-canvas-container" style={{ height: '500px', border: '1px solid #444', borderRadius: '8px', overflow: 'hidden' }}>
+             <GameFlowEditor 
+               language={language} 
+               readOnly={true} 
+               data={flowData} 
+             />
           </div>
         </div>
+      </div>
+    );
+  };
+
+  const renderEditor = () => {
+    return (
+      <div className="steward-section">
+        <h3>{language === 'zh' ? '流程图编辑器' : 'Game Flow Editor'}</h3>
+        <p style={{ fontSize: '12px', color: '#aaa', marginBottom: '10px' }}>
+          {language === 'zh' 
+            ? '使用此编辑器创建游戏流程，导出 JSON 文件，然后在“游戏流程”标签页中导入。' 
+            : 'Use this editor to create game flows, export as JSON, and then import in the "Game Flow" tab.'}
+        </p>
+        <GameFlowEditor 
+          language={language} 
+          onExport={(data) => setFlowData(data)} // Auto-update viewer when exporting
+        />
       </div>
     );
   };
@@ -168,6 +228,12 @@ function StewardPage() {
               {language === 'zh' ? '游戏流程' : 'Game Flow'}
             </button>
             <button
+              className={`steward-tab-btn ${activeTab === 'editor' ? 'active' : ''}`}
+              onClick={() => setActiveTab('editor')}
+            >
+              {language === 'zh' ? '编辑器' : 'Editor'}
+            </button>
+            <button
               className={`steward-tab-btn ${activeTab === 'faq' ? 'active' : ''}`}
               onClick={() => setActiveTab('faq')}
             >
@@ -183,6 +249,7 @@ function StewardPage() {
 
           <div className="steward-content">
             {activeTab === 'flow' && renderGameFlow()}
+            {activeTab === 'editor' && renderEditor()}
             {activeTab === 'faq' && renderFAQ()}
             {activeTab === 'calc' && renderCalculation()}
           </div>
@@ -254,6 +321,129 @@ function StewardPage() {
           border-bottom: 1px solid rgba(255,255,255,0.1);
           padding-bottom: 10px;
         }
+        .game-flow-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          background: rgba(0,0,0,0.2);
+          border-radius: 8px;
+          padding: 20px;
+          border: 1px solid rgba(255,255,255,0.05);
+        }
+        .flow-toolbar {
+          display: flex;
+          gap: 15px;
+          padding: 10px;
+          background: rgba(255,255,255,0.03);
+          border-radius: 6px;
+          overflow-x: auto;
+        }
+        .flow-tool-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 16px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 4px;
+          cursor: grab;
+          font-size: 12px;
+          font-weight: bold;
+          white-space: nowrap;
+          transition: all 0.2s;
+        }
+        .flow-tool-item:hover {
+          background: rgba(255,255,255,0.1);
+          border-color: var(--accent-color, #e10600);
+        }
+        .shape-diamond::before {
+          content: '◇';
+          margin-right: 6px;
+          font-size: 16px;
+          color: #FFC107;
+        }
+        .shape-rect::before {
+          content: '□';
+          margin-right: 6px;
+          font-size: 16px;
+          color: #4CAF50;
+        }
+        .shape-group::before {
+          content: '◳';
+          margin-right: 6px;
+          font-size: 16px;
+          color: #2196F3;
+        }
+        .shape-loop::before {
+          content: '↻';
+          margin-right: 6px;
+          font-size: 16px;
+          color: #9C27B0;
+        }
+        .flow-canvas {
+          height: 400px;
+          background: rgba(0,0,0,0.3);
+          border: 1px dashed rgba(255,255,255,0.2);
+          border-radius: 6px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding-top: 40px;
+          overflow: hidden;
+        }
+        .flow-placeholder-text {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          color: rgba(255,255,255,0.3);
+          font-style: italic;
+          font-size: 12px;
+        }
+        .mock-graph {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          opacity: 0.6;
+        }
+        .mock-node {
+          padding: 10px 20px;
+          border-radius: 4px;
+          background: #333;
+          border: 1px solid #555;
+          font-size: 12px;
+          font-weight: bold;
+          min-width: 100px;
+          text-align: center;
+        }
+        .mock-node.start {
+          border-radius: 20px;
+          background: #2E7D32;
+          border-color: #4CAF50;
+        }
+        .mock-node.action {
+          background: #1565C0;
+          border-color: #2196F3;
+        }
+        .mock-node.decision {
+          transform: rotate(0deg); /* Diamond shape usually rotated, but using CSS border/clip-path is complex for mock, sticking to rect */
+          background: #F57F17;
+          border-color: #FFC107;
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          padding: 15px 10px;
+          width: 100px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .mock-arrow {
+          color: rgba(255,255,255,0.3);
+          font-size: 18px;
+        }
+
         .steward-tab-btn {
           background: transparent;
           border: 1px solid rgba(255,255,255,0.2);
