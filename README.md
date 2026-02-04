@@ -99,14 +99,21 @@ Create a production build:
 npm run build
 ```
 
-### Deployment to GitHub Pages
+### Deployment
 
-Deploy to GitHub Pages:
+#### GitHub Pages
+To deploy to GitHub Pages (legacy):
 ```bash
-npm run deploy
+npm run deploy:gh
 ```
 
-This will automatically build the project and deploy it to the `gh-pages` branch.
+#### Custom Domain / Other Hosts
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+2. Upload the contents of the `build` directory to your hosting provider (e.g., Supabase, Vercel, Netlify).
+
 
 ## Usage
 

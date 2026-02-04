@@ -1,7 +1,7 @@
 {
   "name": "delta-dash-online-assistant",
   "version": "1.0.0",
-  "homepage": "https://geeksproductionstudio.com/deltadash",
+  "homepage": "https://geeksproductionstudio.com/DeltaDash-Online-Helper",
   "description": "Delta Dash Online Assistant - A powerful assistant for your tasks",
   "keywords": [
     "delta-dash",
@@ -16,7 +16,8 @@
     "eject": "react-scripts eject",
     "generate": "rm -rf generated && cp -a build generated",
     "predeploy": "npm run build && npm run generate",
-    "deploy": "gh-pages -d generated"
+    "deploy:gh": "gh-pages -d generated",
+    "deploy": "echo 'Run npm run deploy:gh to deploy to GitHub Pages. For other hosts, upload the build/ folder.'"
   },
   "license": "MIT",
   "dependencies": {
