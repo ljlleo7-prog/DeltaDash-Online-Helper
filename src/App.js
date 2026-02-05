@@ -11,6 +11,7 @@ import StewardPage from './components/StewardPage';
 import Footer from './components/Footer';
 import { setupFrontBackground } from './utils/frontBackground';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   const [activePage, setActivePage] = useState('homepage');
@@ -34,17 +35,19 @@ function App() {
 
   return (
     <LanguageProvider>
-      <div className="App">
-        <div id="front-bg" aria-hidden="true"></div>
-        <div className="container">
-          <Header />
-          <Navigation activePage={activePage} setActivePage={setActivePage} />
-          <main className="main-content">
-            {pages[activePage]}
-          </main>
-          <Footer />
+      <AuthProvider>
+        <div className="App">
+          <div id="front-bg" aria-hidden="true"></div>
+          <div className="container">
+            <Header />
+            <Navigation activePage={activePage} setActivePage={setActivePage} />
+            <main className="main-content">
+              {pages[activePage]}
+            </main>
+            <Footer />
+          </div>
         </div>
-      </div>
+      </AuthProvider>
     </LanguageProvider>
   );
 }

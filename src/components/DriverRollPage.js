@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
+import { AuthContext } from '../contexts/AuthContext';
 import driverDataJson from '../data/driver_data.json';
 
 function DriverRollPage() {
@@ -10,7 +11,8 @@ function DriverRollPage() {
   const [isRollingTemplate, setIsRollingTemplate] = useState(false);
   const [brokenImages, setBrokenImages] = useState({});
   const { language } = useContext(LanguageContext);
-
+  const { user, loading } = useContext(AuthContext);
+  
   // Helper function to get text based on language
   const getText = (textObj) => {
     if (!textObj) return '';
@@ -21,6 +23,35 @@ function DriverRollPage() {
   useEffect(() => {
     setDriverData(driverDataJson);
   }, []);
+
+  if (loading) {
+    return (
+      <section id="driver-roll-page" className="page-content">
+        <div style={{ textAlign: 'center', padding: '50px' }}>
+          {language === 'zh' ? '加载中...' : 'Loading...'}
+        </div>
+      </section>
+    );
+  }
+
+  if (!user) {
+    return (
+      <section id="driver-roll-page" className="page-content">
+        <h2 className="page-title">{language === 'zh' ? '驾驶员抽取' : 'Driver Roll'}</h2>
+        <div className="login-required" style={{ textAlign: 'center', padding: '50px', background: 'rgba(0,0,0,0.5)', borderRadius: '8px' }}>
+          <h3>{language === 'zh' ? '需要登录' : 'Authentication Required'}</h3>
+          <p>{language === 'zh' ? '请登录以使用此功能。' : 'Please sign in to access this feature.'}</p>
+          <button 
+            onClick={() => window.location.href = 'https://geeksproductionstudio.com/login'}
+            className="action-btn primary"
+            style={{ marginTop: '20px' }}
+          >
+            {language === 'zh' ? '前往登录' : 'Go to Login'}
+          </button>
+        </div>
+      </section>
+    );
+  }
 
   const handleImageError = (templateId) => {
     setBrokenImages((prev) => ({ ...prev, [templateId]: true }));
